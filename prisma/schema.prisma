@@ -17,6 +17,7 @@ datasource db {
 
 enum SourceKind {
   ARXIV
+  HUGGINGFACE
   HACKERNEWS
 }
 

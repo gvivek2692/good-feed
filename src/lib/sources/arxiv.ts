@@ -85,6 +85,8 @@ function normalizeEntry(entry: RawEntry): NormalizedItem | null {
     canonicalUrl: pdfUrl ?? absUrl,
     sourceUrl: absUrl,
     text: clean(entry.summary) || null,
+    // Version-stripped, so v1 and v2 of a paper join to the same cluster.
+    arxivId: externalId.replace(/v\d+$/, ""),
     signals: {
       primaryCategory: entry["arxiv:primary_category"]?.["@_term"] ?? null,
       categoryCount: categories.length,

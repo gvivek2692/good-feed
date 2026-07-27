@@ -76,9 +76,26 @@ These come from the spec's Boundaries section. They are not stylistic.
 that tells users what to *do* with an item (out of scope by design) · starting phase-2 comparative
 reranking.
 
+## Sources and the two-cluster model
+
+Three sources, forming **two clusters that share no items** — measured, see
+[ADR 001](docs/adr/001-source-selection-and-cross-source-joins.md):
+
+- **Research cluster:** arXiv + HuggingFace Papers, joined on version-stripped `arxivId`.
+  91 real pairs in the fixtures (37% of HF papers).
+- **Discussion cluster:** Hacker News, standalone. Measured **zero** joins to either paper source
+  via three independent strategies. HN items never cluster with papers and can never carry a
+  cross-source coverage signal — ranking must not assume otherwise.
+
+HuggingFace Papers is a **curated funnel** (~17 papers/day vs arXiv's ~143), so absence from HF is
+not evidence a paper is unimportant. Papers with Code is **dead** — its API 302s to HuggingFace.
+
 ## Source API behaviors
 
 Established by live calls during Task 3:
+
+- **HuggingFace `daily_papers` is day-scoped** — one request per day, no range parameter. A paper
+  recurs across days while trending; keep the highest-upvote snapshot.
 
 - **Algolia (HN) does not support boolean `OR` in `query`.** It treats `"AI OR LLM"` as a phrase and
   matches titles literally containing "AI or LLM" — near-zero results. Each term must be a separate

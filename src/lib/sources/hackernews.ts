@@ -67,6 +67,9 @@ function normalizeHit(raw: unknown): NormalizedItem | null {
     canonicalUrl: hit.url ?? hnUrl,
     sourceUrl: hnUrl,
     text: hit.story_text?.trim() || null,
+    // HN occasionally links straight to arXiv. Measured at 0/64 in the
+    // fixture corpus, so this is opportunistic rather than load-bearing.
+    arxivId: /arxiv\.org\/(?:abs|pdf)\/([\d.]+)/.exec(hit.url ?? "")?.[1] ?? null,
     signals: {
       points,
       comments,

@@ -8,7 +8,7 @@ import { z } from "zod";
 export const NormalizedItem = z.object({
   /** Stable id within the source. Combined with `kind` it must be unique. */
   externalId: z.string().min(1),
-  kind: z.enum(["ARXIV", "HACKERNEWS"]),
+  kind: z.enum(["ARXIV", "HUGGINGFACE", "HACKERNEWS"]),
   title: z.string().min(1),
   authors: z.array(z.string()),
   publishedAt: z.date(),
@@ -18,6 +18,13 @@ export const NormalizedItem = z.object({
   sourceUrl: z.url(),
   /** Abstract or self-text. Absent for HN link posts. */
   text: z.string().nullable(),
+  /**
+   * Version-stripped arXiv id (e.g. "2607.22534"), when the item is a paper.
+   * This is the join key for the research cluster — arXiv and HuggingFace
+   * Papers cluster on this and nothing else. Null for HN items, which never
+   * cluster with papers. See docs/adr/001.
+   */
+  arxivId: z.string().nullable(),
   /**
    * Source-native ranking signals, kept separate from `text` because ranking
    * consumes them directly. Shapes differ per source by design.

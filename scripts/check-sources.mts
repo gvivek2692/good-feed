@@ -1,6 +1,7 @@
 import "dotenv/config";
 
 import * as arxiv from "@/lib/sources/arxiv";
+import * as hf from "@/lib/sources/huggingface";
 import * as hn from "@/lib/sources/hackernews";
 
 /**
@@ -16,6 +17,13 @@ async function main(): Promise<void> {
     const item = a.value[0];
     console.log("  ", item.title.slice(0, 65));
     console.log("   authors:", item.authors.length, "| repo:", item.signals.repoUrl ?? "none");
+  }
+
+  const f = await hf.fetchRecent({ since });
+  console.log("HF:", f.ok ? `${f.value.length} papers` : `ERROR ${JSON.stringify(f.error)}`);
+  if (f.ok && f.value[0]) {
+    const item = f.value[0];
+    console.log(`   ${item.signals.upvotes}up ${item.title.slice(0, 55)}`);
   }
 
   const h = await hn.fetchRecent({ since, limit: 30 });

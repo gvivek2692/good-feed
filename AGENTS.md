@@ -76,6 +76,20 @@ These come from the spec's Boundaries section. They are not stylistic.
 that tells users what to *do* with an item (out of scope by design) · starting phase-2 comparative
 reranking.
 
+## Source API behaviors
+
+Established by live calls during Task 3:
+
+- **Algolia (HN) does not support boolean `OR` in `query`.** It treats `"AI OR LLM"` as a phrase and
+  matches titles literally containing "AI or LLM" — near-zero results. Each term must be a separate
+  request, merged and deduped by `objectID`. `src/lib/sources/hackernews.ts` does this.
+- **arXiv requires HTTPS.** `http://export.arxiv.org` returns an empty body rather than redirecting.
+- **arXiv has no server-side date filter.** Sort by `submittedDate` descending and trim client-side.
+- **fast-xml-parser collapses single repeated elements to objects.** A one-author paper yields
+  `author: {name}`, not `author: [{name}]`. Always normalize through `toArray`.
+- Fixtures live in `tests/fixtures/`. The unit suite runs entirely offline against them; live checks
+  go in `scripts/check-sources.mts`, which is not part of `npm test`.
+
 ## Verified environment facts
 
 Confirmed by live API call on 2026-07-27, not assumed:

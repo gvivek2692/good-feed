@@ -1,0 +1,2304 @@
+{
+  "hits": [
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "robin_reala"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "Meta launched a new <em>AI</em> optimism ad set to a song about human extinction"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://techcrunch.com/2026/07/23/meta-launched-a-new-<em>ai</em>-optimism-ad-set-to-a-song-about-human-extinction/"
+        }
+      },
+      "_tags": ["story", "author_robin_reala", "story_49066519"],
+      "author": "robin_reala",
+      "children": [49067378, 49067580, 49067159, 49067610],
+      "created_at": "2026-07-27T08:09:32Z",
+      "created_at_i": 1785139772,
+      "num_comments": 7,
+      "objectID": "49066519",
+      "points": 20,
+      "story_id": 49066519,
+      "title": "Meta launched a new AI optimism ad set to a song about human extinction",
+      "updated_at": "2026-07-27T11:07:46Z",
+      "url": "https://techcrunch.com/2026/07/23/meta-launched-a-new-ai-optimism-ad-set-to-a-song-about-human-extinction/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "NordStreamYacht"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Foxconn drops VMware, adopts hyperconverged upstart Arcrfra"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://www.theregister.com/virtualization/2026/07/27/foxconn-drops-vmware-adopts-hyperconverged-upstart-arcrfra-for-workloads-including-<em>ai</em>/5278684"
+        }
+      },
+      "_tags": ["story", "author_NordStreamYacht", "story_49065039"],
+      "author": "NordStreamYacht",
+      "children": [49065711, 49065065],
+      "created_at": "2026-07-27T03:55:01Z",
+      "created_at_i": 1785124501,
+      "num_comments": 1,
+      "objectID": "49065039",
+      "points": 11,
+      "story_id": 49065039,
+      "title": "Foxconn drops VMware, adopts hyperconverged upstart Arcrfra",
+      "updated_at": "2026-07-27T10:49:16Z",
+      "url": "https://www.theregister.com/virtualization/2026/07/27/foxconn-drops-vmware-adopts-hyperconverged-upstart-arcrfra-for-workloads-including-ai/5278684"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "andsoitis"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "The old-school way of keeping the summer heat out of your home"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://monocle.com/design/architecture/keeping-your-home-cool-without-<em>ai</em>r-conditioning/"
+        }
+      },
+      "_tags": ["story", "author_andsoitis", "story_49064588", "front_page"],
+      "author": "andsoitis",
+      "children": [49067093, 49067049, 49067380, 49064631, 49066674, 49067613],
+      "created_at": "2026-07-27T02:33:22Z",
+      "created_at_i": 1785119602,
+      "num_comments": 37,
+      "objectID": "49064588",
+      "points": 21,
+      "story_id": 49064588,
+      "title": "The old-school way of keeping the summer heat out of your home",
+      "updated_at": "2026-07-27T11:08:31Z",
+      "url": "https://monocle.com/design/architecture/keeping-your-home-cool-without-air-conditioning/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "mudil"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "Big Firms Are Starting to Hire Again, Defying Predictions of <em>AI</em> Wipeout"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://www.wsj.com/business/big-companies-are-starting-to-hire-again-defying-predictions-of-<em>ai</em>-wipeout-f4974e99"
+        }
+      },
+      "_tags": ["story", "author_mudil", "story_49064256"],
+      "author": "mudil",
+      "children": [49064609, 49065176, 49064384],
+      "created_at": "2026-07-27T01:40:59Z",
+      "created_at_i": 1785116459,
+      "num_comments": 3,
+      "objectID": "49064256",
+      "points": 11,
+      "story_id": 49064256,
+      "title": "Big Firms Are Starting to Hire Again, Defying Predictions of AI Wipeout",
+      "updated_at": "2026-07-27T08:58:01Z",
+      "url": "https://www.wsj.com/business/big-companies-are-starting-to-hire-again-defying-predictions-of-ai-wipeout-f4974e99"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "cdrnsf"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "Quebec scraps <em>AI</em> and automation projects in the public sector"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://www.ctvnews.ca/montreal/article/quebec-scraps-<em>ai</em>-and-automation-projects-in-the-public-sector/"
+        }
+      },
+      "_tags": ["story", "author_cdrnsf", "story_49063723"],
+      "author": "cdrnsf",
+      "children": [49064657],
+      "created_at": "2026-07-27T00:14:20Z",
+      "created_at_i": 1785111260,
+      "num_comments": 0,
+      "objectID": "49063723",
+      "points": 10,
+      "story_id": 49063723,
+      "title": "Quebec scraps AI and automation projects in the public sector",
+      "updated_at": "2026-07-27T10:49:16Z",
+      "url": "https://www.ctvnews.ca/montreal/article/quebec-scraps-ai-and-automation-projects-in-the-public-sector/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "SilenN"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "Hi HN, we built world-model-optimizer, an open source tool to continually improve models specialized to agents.<p>Agent traces you already capture are opportunities to get signal on how to make your model cheaper, faster, better.<p>We do this by continuously a) distilling relevant chain of thought from larger open source models into smaller ones, b) model routing to frontier + OS models, and c) token compaction to remove noise and save on tokens.<p>`wmo build` allows you to build a simulation to optimize against with your agent traces with your OpenRouter key<p>`wmo optimize` trains a router, compaction, and distills chain of thought from a larger model into your specialized model<p>`wmo serve` gives you an endpoint for your model<p>When you call your model, behind the scenes a router decides which tasks should go to the frontier versus your model. Tinker continually trains as new traces arrive.<p>We're also working on a hosted solution that does continual training + serving for you <a href=\"https://experientiallabs.ai\">https://experientiallabs.<em>ai</em></a>"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Distill and serve models with frontier quality for half the cost"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/experientiallabs/world-model-optimizer"
+        }
+      },
+      "_tags": ["story", "author_SilenN", "story_49063454", "show_hn"],
+      "author": "SilenN",
+      "children": [49063733, 49063682, 49063654, 49063672, 49063801, 49063671, 49063646, 49066529],
+      "created_at": "2026-07-26T23:35:15Z",
+      "created_at_i": 1785108915,
+      "num_comments": 21,
+      "objectID": "49063454",
+      "points": 43,
+      "story_id": 49063454,
+      "story_text": "Hi HN, we built world-model-optimizer, an open source tool to continually improve models specialized to agents.<p>Agent traces you already capture are opportunities to get signal on how to make your model cheaper, faster, better.<p>We do this by continuously a) distilling relevant chain of thought from larger open source models into smaller ones, b) model routing to frontier + OS models, and c) token compaction to remove noise and save on tokens.<p>`wmo build` allows you to build a simulation to optimize against with your agent traces with your OpenRouter key<p>`wmo optimize` trains a router, compaction, and distills chain of thought from a larger model into your specialized model<p>`wmo serve` gives you an endpoint for your model<p>When you call your model, behind the scenes a router decides which tasks should go to the frontier versus your model. Tinker continually trains as new traces arrive.<p>We&#x27;re also working on a hosted solution that does continual training + serving for you <a href=\"https:&#x2F;&#x2F;experientiallabs.ai\">https:&#x2F;&#x2F;experientiallabs.ai</a>",
+      "title": "Show HN: Distill and serve models with frontier quality for half the cost",
+      "updated_at": "2026-07-27T09:45:46Z",
+      "url": "https://github.com/experientiallabs/world-model-optimizer"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "eecc"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "US citizen charged after GrapheneOS phone wipes during <em>ai</em>rport search"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://www.techspot.com/news/113236-us-prosecutors-charge-atlanta-man-after-grapheneos-phone.html"
+        }
+      },
+      "_tags": ["story", "author_eecc", "story_49063022", "front_page"],
+      "author": "eecc",
+      "children": [
+        49066003, 49064242, 49063972, 49063468, 49065508, 49064210, 49064376, 49065131, 49065799,
+        49067220, 49067731, 49067091, 49063760, 49064041, 49065737, 49064881, 49067365, 49067703,
+        49064453, 49064867, 49066802, 49067349, 49064716, 49067321, 49065262, 49064024, 49065753,
+        49066080, 49065860, 49067119, 49066045, 49064076, 49064227, 49066156, 49063864, 49065926,
+        49063885, 49066532, 49064643, 49066843, 49065617, 49065548, 49066418, 49065789, 49064442,
+        49067200, 49065772, 49065054, 49064970, 49063713, 49065582, 49066107, 49065354, 49064963,
+        49064537, 49067420, 49065959, 49067473, 49065177, 49065599, 49064068, 49065676, 49065420,
+        49067017, 49065544, 49065507, 49064624, 49064355, 49064166, 49065461, 49064750, 49064415,
+        49064350, 49064913, 49063991, 49065247, 49066233, 49064336, 49064075, 49065655, 49063953,
+        49064022, 49066111, 49065104
+      ],
+      "created_at": "2026-07-26T22:21:41Z",
+      "created_at_i": 1785104501,
+      "num_comments": 617,
+      "objectID": "49063022",
+      "points": 826,
+      "story_id": 49063022,
+      "title": "US citizen charged after GrapheneOS phone wipes during airport search",
+      "updated_at": "2026-07-27T11:08:31Z",
+      "url": "https://www.techspot.com/news/113236-us-prosecutors-charge-atlanta-man-after-grapheneos-phone.html"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "marysminefnuf"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "Multiway Turing Machines (2021 pre-<em>ai</em>)"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://bulletins.wolframphysics.org/2021/02/multiway-turing-machines/"
+        }
+      },
+      "_tags": ["story", "author_marysminefnuf", "story_49062259"],
+      "author": "marysminefnuf",
+      "children": [49062942, 49062265],
+      "created_at": "2026-07-26T20:49:43Z",
+      "created_at_i": 1785098983,
+      "num_comments": 3,
+      "objectID": "49062259",
+      "points": 22,
+      "story_id": 49062259,
+      "title": "Multiway Turing Machines (2021 pre-ai)",
+      "updated_at": "2026-07-27T10:50:16Z",
+      "url": "https://bulletins.wolframphysics.org/2021/02/multiway-turing-machines/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "<em>ai</em>nch"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Kimi K3 is not cheap"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://www.alexinch.com/blog/kimi-k3"
+        }
+      },
+      "_tags": ["story", "author_ainch", "story_49061620"],
+      "author": "ainch",
+      "children": [
+        49061809, 49061830, 49061820, 49061854, 49061771, 49061791, 49061831, 49061813, 49062066,
+        49062086, 49061781, 49061797
+      ],
+      "created_at": "2026-07-26T19:37:09Z",
+      "created_at_i": 1785094629,
+      "num_comments": 22,
+      "objectID": "49061620",
+      "points": 21,
+      "story_id": 49061620,
+      "title": "Kimi K3 is not cheap",
+      "updated_at": "2026-07-27T08:56:45Z",
+      "url": "https://www.alexinch.com/blog/kimi-k3"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "hevolveai"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "Show HN: HART OS \u2013 an open-source <em>AI</em> OS built so frontier <em>AI</em> needs no datacenter"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://github.com/hertz-<em>ai</em>/HARTOS"
+        }
+      },
+      "_tags": ["story", "author_hevolveai", "story_49061015", "show_hn"],
+      "author": "hevolveai",
+      "children": [
+        49062131, 49061736, 49061801, 49061718, 49061980, 49061540, 49061811, 49061998, 49061973,
+        49061938, 49062018, 49061982, 49061059, 49061032
+      ],
+      "created_at": "2026-07-26T18:40:08Z",
+      "created_at_i": 1785091208,
+      "num_comments": 20,
+      "objectID": "49061015",
+      "points": 18,
+      "story_id": 49061015,
+      "title": "Show HN: HART OS \u2013 an open-source AI OS built so frontier AI needs no datacenter",
+      "updated_at": "2026-07-27T07:42:16Z",
+      "url": "https://github.com/hertz-ai/HARTOS"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "andytratt"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "This July I Was Fired from Simple <em>AI</em> (A Deeply YC Company)"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://andys.blog/this-july-i-was-fired-from-simple-<em>ai</em>/"
+        }
+      },
+      "_tags": ["story", "author_andytratt", "story_49059587"],
+      "author": "andytratt",
+      "children": [
+        49059880, 49061701, 49059967, 49060009, 49059926, 49063026, 49067005, 49059991, 49060830,
+        49062392, 49061117, 49060353, 49059873, 49059962, 49059923, 49060013, 49059898, 49061034,
+        49061486, 49062166, 49059831
+      ],
+      "created_at": "2026-07-26T16:14:46Z",
+      "created_at_i": 1785082486,
+      "num_comments": 122,
+      "objectID": "49059587",
+      "points": 52,
+      "story_id": 49059587,
+      "title": "This July I Was Fired from Simple AI (A Deeply YC Company)",
+      "updated_at": "2026-07-27T10:51:46Z",
+      "url": "https://andys.blog/this-july-i-was-fired-from-simple-ai/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "agotterer"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "London Gatwick has launched a robotic <em>ai</em>rport parking service"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://aerospaceglobalnews.com/news/gatwick-<em>ai</em>rport-robotic-parking-stanley-robotics/"
+        }
+      },
+      "_tags": ["story", "author_agotterer", "story_49058669"],
+      "author": "agotterer",
+      "children": [
+        49059244, 49060627, 49060396, 49059149, 49059251, 49059684, 49058958, 49059707, 49058984,
+        49059691, 49061360, 49060713, 49060585, 49063081, 49060217, 49061023, 49060847, 49059915,
+        49060694, 49060028, 49060323, 49061339, 49059230, 49060893, 49060841, 49059451, 49060121,
+        49060511, 49059136, 49059654, 49061398, 49059397, 49061777, 49059759, 49062616, 49062372,
+        49061095, 49059073, 49060561, 49059697, 49061028, 49062326, 49060905, 49060320, 49060189,
+        49060034, 49059370, 49059658, 49059766, 49060037, 49059105
+      ],
+      "created_at": "2026-07-26T14:40:27Z",
+      "created_at_i": 1785076827,
+      "num_comments": 242,
+      "objectID": "49058669",
+      "points": 278,
+      "story_id": 49058669,
+      "title": "London Gatwick has launched a robotic airport parking service",
+      "updated_at": "2026-07-27T11:07:46Z",
+      "url": "https://aerospaceglobalnews.com/news/gatwick-airport-robotic-parking-stanley-robotics/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "zecice"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "i am an incoming msc student thinking about a research direction in reinforcement learning. which rl subfields do you think have the most potential right now? i am particularly interested in emboddied <em>ai</em> and bcis."
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Ask HN: What are the most promising RL fields for a new master student?"
+        }
+      },
+      "_tags": ["story", "author_zecice", "story_49057972", "ask_hn"],
+      "author": "zecice",
+      "children": [
+        49067607, 49058520, 49058685, 49059806, 49058474, 49064529, 49061580, 49059396, 49058841,
+        49058683, 49058704, 49065205, 49059618, 49059260
+      ],
+      "created_at": "2026-07-26T13:22:59Z",
+      "created_at_i": 1785072179,
+      "num_comments": 14,
+      "objectID": "49057972",
+      "points": 33,
+      "story_id": 49057972,
+      "story_text": "i am an incoming msc student thinking about a research direction in reinforcement learning. which rl subfields do you think have the most potential right now? i am particularly interested in emboddied ai and bcis.",
+      "title": "Ask HN: What are the most promising RL fields for a new master student?",
+      "updated_at": "2026-07-27T10:44:16Z"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "mgh2"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "Coinbase Switches to Chinese <em>AI</em> Models GLM and Kimi, Cuts <em>AI</em> Spending by 50%"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://mlq.<em>ai</em>/news/coinbase-switches-to-chinese-<em>ai</em>-models-glm-and-kimi-cuts-<em>ai</em>-spending-by-50/"
+        }
+      },
+      "_tags": ["story", "author_mgh2", "story_49057963"],
+      "author": "mgh2",
+      "children": [49058303],
+      "created_at": "2026-07-26T13:21:54Z",
+      "created_at_i": 1785072114,
+      "num_comments": 1,
+      "objectID": "49057963",
+      "points": 10,
+      "story_id": 49057963,
+      "title": "Coinbase Switches to Chinese AI Models GLM and Kimi, Cuts AI Spending by 50%",
+      "updated_at": "2026-07-26T15:29:29Z",
+      "url": "https://mlq.ai/news/coinbase-switches-to-chinese-ai-models-glm-and-kimi-cuts-ai-spending-by-50/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "mooreds"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "The New <em>AI</em> Superpowers: Focus and Followthrough"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://www.rickmanelius.com/p/the-new-<em>ai</em>-superpowers-focus-and"
+        }
+      },
+      "_tags": ["story", "author_mooreds", "story_49057877"],
+      "author": "mooreds",
+      "children": [
+        49061112, 49059217, 49066790, 49067181, 49066019, 49067419, 49061910, 49065312, 49060097,
+        49063667, 49065809, 49062588, 49059447, 49059369, 49059258, 49066134, 49060080, 49064874,
+        49060967, 49059764, 49061839, 49059304, 49059167, 49064193
+      ],
+      "created_at": "2026-07-26T13:13:03Z",
+      "created_at_i": 1785071583,
+      "num_comments": 70,
+      "objectID": "49057877",
+      "points": 204,
+      "story_id": 49057877,
+      "title": "The New AI Superpowers: Focus and Followthrough",
+      "updated_at": "2026-07-27T11:08:16Z",
+      "url": "https://www.rickmanelius.com/p/the-new-ai-superpowers-focus-and"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "bkotrys"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "<em>AI</em> Tokenomics: What <em>AI</em> tokens cost and where they're wasted"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://github.com/QuesmaOrg/awesome-<em>ai</em>-tokenomics"
+        }
+      },
+      "_tags": ["story", "author_bkotrys", "story_49057082"],
+      "author": "bkotrys",
+      "created_at": "2026-07-26T11:39:19Z",
+      "created_at_i": 1785065959,
+      "num_comments": 0,
+      "objectID": "49057082",
+      "points": 12,
+      "story_id": 49057082,
+      "title": "AI Tokenomics: What AI tokens cost and where they're wasted",
+      "updated_at": "2026-07-27T08:01:46Z",
+      "url": "https://github.com/QuesmaOrg/awesome-ai-tokenomics"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "wong2kim"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "Show HN: Wmux \u2013 A workspace multiplexer for <em>AI</em> agents"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/openwong2kim/wmux"
+        }
+      },
+      "_tags": ["story", "author_wong2kim", "story_49056854", "show_hn"],
+      "author": "wong2kim",
+      "children": [49056891],
+      "created_at": "2026-07-26T11:06:16Z",
+      "created_at_i": 1785063976,
+      "num_comments": 0,
+      "objectID": "49056854",
+      "points": 12,
+      "story_id": 49056854,
+      "title": "Show HN: Wmux \u2013 A workspace multiplexer for AI agents",
+      "updated_at": "2026-07-27T07:46:02Z",
+      "url": "https://github.com/openwong2kim/wmux"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Anon84"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "Terence Tao: Mathematics in the Age of <em>AI</em> [pdf]"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://teorth.github.io/tao-web/slides/age-of-<em>ai</em>-icm-2026.pdf"
+        }
+      },
+      "_tags": ["story", "author_Anon84", "story_49056620"],
+      "author": "Anon84",
+      "children": [
+        49061601, 49060633, 49059352, 49061528, 49062932, 49060142, 49060960, 49059202, 49061783,
+        49060226, 49065511, 49060476, 49060132, 49060350, 49060696
+      ],
+      "created_at": "2026-07-26T10:32:35Z",
+      "created_at_i": 1785061955,
+      "num_comments": 50,
+      "objectID": "49056620",
+      "points": 126,
+      "story_id": 49056620,
+      "title": "Terence Tao: Mathematics in the Age of AI [pdf]",
+      "updated_at": "2026-07-27T10:55:31Z",
+      "url": "https://teorth.github.io/tao-web/slides/age-of-ai-icm-2026.pdf"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "_tk_"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "Anthropic secures its <em>AI</em>-native software development lifecycle"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://claude.com/blog/how-anthropic-secures-its-<em>ai</em>-native-software-development-lifecycle"
+        }
+      },
+      "_tags": ["story", "author__tk_", "story_49055849"],
+      "author": "_tk_",
+      "created_at": "2026-07-26T08:12:28Z",
+      "created_at_i": 1785053548,
+      "num_comments": 0,
+      "objectID": "49055849",
+      "points": 10,
+      "story_id": 49055849,
+      "title": "Anthropic secures its AI-native software development lifecycle",
+      "updated_at": "2026-07-27T00:57:59Z",
+      "url": "https://claude.com/blog/how-anthropic-secures-its-ai-native-software-development-lifecycle"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "SanjayMehta"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "MIT to become hotbed of <em>AI</em> video surveillance"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["ai"],
+          "value": "https://www.schneier.com/blog/archives/2026/07/mit-to-become-hotbed-of-<em>ai</em>-video-surveillance.html"
+        }
+      },
+      "_tags": ["story", "author_SanjayMehta", "story_49054638"],
+      "author": "SanjayMehta",
+      "children": [49055601, 49054837],
+      "created_at": "2026-07-26T04:07:54Z",
+      "created_at_i": 1785038874,
+      "num_comments": 2,
+      "objectID": "49054638",
+      "points": 23,
+      "story_id": 49054638,
+      "title": "MIT to become hotbed of AI video surveillance",
+      "updated_at": "2026-07-26T19:59:13Z",
+      "url": "https://www.schneier.com/blog/archives/2026/07/mit-to-become-hotbed-of-ai-video-surveillance.html"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "ConteMascetti71"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "What if <em>LLM</em>s escape through inferences itself? This is fiction. For now"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://www.agrillo.it/EvasionEn.html"
+        }
+      },
+      "_tags": ["story", "author_ConteMascetti71", "story_49059660"],
+      "author": "ConteMascetti71",
+      "children": [
+        49060359, 49062369, 49060219, 49061838, 49059661, 49060738, 49060206, 49060201, 49060235,
+        49060664, 49060547, 49060506, 49060365, 49060324, 49060234, 49060068, 49060448, 49060002
+      ],
+      "created_at": "2026-07-26T16:23:56Z",
+      "created_at_i": 1785083036,
+      "num_comments": 75,
+      "objectID": "49059660",
+      "points": 32,
+      "story_id": 49059660,
+      "title": "What if LLMs escape through inferences itself? This is fiction. For now",
+      "updated_at": "2026-07-27T09:09:46Z",
+      "url": "https://www.agrillo.it/EvasionEn.html"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "arnav__1"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "Hey HN, we\u2019re the developers of OpenLake, an open source storage engine for offloading <em>LLM</em> KV caches from GPU memory into a shared tier of RAM and NVMe.\nWe built OpenLake because KV caches are outgrowing GPU memory.<p>A single 256K token conversation on Gemma 4 31B produces approximately 43GB of KV state, more than half the memory of an 80GB H100. \nThe problem becomes even harder across a cluster: a prefix cached on one GPU host is unavailable when the next request lands on a different GPU, forcing the new GPU to repeat work the fleet has already completed.<p>Once the KV cache is offloaded, network bandwidth becomes a major constraint on read latency. To move less data across the wire, we built deferred materialization: a custom CUDA kernel that losslessly compresses KV blocks before they leave GPU memory and decompresses them on the GPU after retrieval. In our tests, this achieved:<p>- 1.72\u00d7 lossless KV compression.\n - Approximately 600GB/s decompression throughput on an H100\n - 80GB/s of effective KV throughput over a physical 50GB/s link<p>At 128K context, retrieving cached KV reduces TTFT from 44 seconds to 0.6 seconds, a 66\u00d7 improvement. \nAcross the complete workload, GPU time reduces from 1,169 seconds to 606 seconds, saving 48.2% of GPU cost.<p>OpenLake is written in Rust and uses io_uring with one pinned runtime per physical core.\nWe provide connectors for vLLM and SGLang so the cache can be enabled without modifying the inference engine itself.<p>I would love to hear how others are handling KV reuse across GPU hosts, especially for long contexts, and get to know your thoughts.<p>Thanks!<p>GitHub: <a href=\"https://github.com/openlake-project/openlake\" rel=\"nofollow\">https://github.com/openlake-project/openlake</a><p>Here is our blog: <a href=\"https://cloud.theopenlake.com/blog/taming-the-beast-managing-100-tb-of-kv-cache-on-open-source-inference\" rel=\"nofollow\">https://cloud.theopenlake.com/blog/taming-the-beast-managing...</a>"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Cuts Long Horizon Inference Costs by 50% via external KV Cache Offload"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/openlake-project/openlake"
+        }
+      },
+      "_tags": ["story", "author_arnav__1", "story_49057767", "show_hn"],
+      "author": "arnav__1",
+      "children": [49057866],
+      "created_at": "2026-07-26T13:02:21Z",
+      "created_at_i": 1785070941,
+      "num_comments": 0,
+      "objectID": "49057767",
+      "points": 21,
+      "story_id": 49057767,
+      "story_text": "Hey HN, we\u2019re the developers of OpenLake, an open source storage engine for offloading LLM KV caches from GPU memory into a shared tier of RAM and NVMe.\nWe built OpenLake because KV caches are outgrowing GPU memory.<p>A single 256K token conversation on Gemma 4 31B produces approximately 43GB of KV state, more than half the memory of an 80GB H100. \nThe problem becomes even harder across a cluster: a prefix cached on one GPU host is unavailable when the next request lands on a different GPU, forcing the new GPU to repeat work the fleet has already completed.<p>Once the KV cache is offloaded, network bandwidth becomes a major constraint on read latency. To move less data across the wire, we built deferred materialization: a custom CUDA kernel that losslessly compresses KV blocks before they leave GPU memory and decompresses them on the GPU after retrieval. In our tests, this achieved:<p>- 1.72\u00d7 lossless KV compression.\n - Approximately 600GB&#x2F;s decompression throughput on an H100\n - 80GB&#x2F;s of effective KV throughput over a physical 50GB&#x2F;s link<p>At 128K context, retrieving cached KV reduces TTFT from 44 seconds to 0.6 seconds, a 66\u00d7 improvement. \nAcross the complete workload, GPU time reduces from 1,169 seconds to 606 seconds, saving 48.2% of GPU cost.<p>OpenLake is written in Rust and uses io_uring with one pinned runtime per physical core.\nWe provide connectors for vLLM and SGLang so the cache can be enabled without modifying the inference engine itself.<p>I would love to hear how others are handling KV reuse across GPU hosts, especially for long contexts, and get to know your thoughts.<p>Thanks!<p>GitHub: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;openlake-project&#x2F;openlake\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;openlake-project&#x2F;openlake</a><p>Here is our blog: <a href=\"https:&#x2F;&#x2F;cloud.theopenlake.com&#x2F;blog&#x2F;taming-the-beast-managing-100-tb-of-kv-cache-on-open-source-inference\" rel=\"nofollow\">https:&#x2F;&#x2F;cloud.theopenlake.com&#x2F;blog&#x2F;taming-the-beast-managing...</a>",
+      "title": "Show HN: Cuts Long Horizon Inference Costs by 50% via external KV Cache Offload",
+      "updated_at": "2026-07-26T15:10:32Z",
+      "url": "https://github.com/openlake-project/openlake"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "bathtub365"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "Agentic test processes, <em>LLM</em> benchmarks, and other notes on agentic coding"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://danluu.com/ai-coding/"
+        }
+      },
+      "_tags": ["story", "author_bathtub365", "story_49054268"],
+      "author": "bathtub365",
+      "children": [49056417],
+      "created_at": "2026-07-26T03:02:17Z",
+      "created_at_i": 1785034937,
+      "num_comments": 1,
+      "objectID": "49054268",
+      "points": 17,
+      "story_id": 49054268,
+      "title": "Agentic test processes, LLM benchmarks, and other notes on agentic coding",
+      "updated_at": "2026-07-27T01:35:45Z",
+      "url": "https://danluu.com/ai-coding/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "ald0r"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "The graph is free to explore and requires no registration.<p>SynapTale builds a model of a story as a temporal graph made up of nodes (entities) and edges (their actions and relationships).\nThe graph is not a visualization of the wiki. The wiki, timelines, relationship histories, and analytics are projections of the graph.<p>The current demo contains 232 entities, 1,852 edges, and a snapshot of the story\u2019s state at every chapter. By chapter 100, it still remembers a promise made in chapter 8 and turns the story into a set of source-verifiable facts.<p>The most interesting things can be found in the graph itself and in the Analytics tab. A few things I found:<p>1. The character with the highest kill count is the Tin Woodman\u2014the same character who cries over a beetle he accidentally crushed. Dorothy comes second, with three killing events.\n2. Dorothy never deceives anyone during the first 100 chapters of the series.\n3. The Scarecrow\u2019s debt to the stork has remained active for 92 chapters, starting in chapter 8.\n4. The Cowardly Lion ranks third by number of threats.\n5. The first 100 chapters contain 60 secrets and 254 dialogue events.<p>Technical details<p>1. Five different multi-agent pipelines combining <em>LLM</em>s and NLP: a prescan, ontology construction, chapter-by-chapter graph extraction, retrospective validation over spans of dozens of chapters, and a linguistic prescan for speech profiles and linguistic edges.<p>2. A living story needs a living graph. It has to account for time, because entities and the relationships between them evolve. A simple is_active field is not enough.<p>I ended up with three types of edges:<p>event: an instantaneous action;\nidentity: a fact;\nstate: a persistent action whose termination requires justification and a supporting quote from the text.<p>The vast majority of edges are events and end in the same chapter in which they began. This allows the system to scale well, since only a minority of state and identity edges remain continuously active.<p>3. Ontology. You cannot simply ask an <em>LLM</em> to extract entities and relationships into a graph. With every chapter, even the smartest model will keep inventing unimportant fields, creating new aliases for existing fields, and representing the same fields inconsistently.<p>Before extracting the graph, the system therefore performs an ontology scan across the entire story. It captures story-specific entity and edge types, along with their fields and descriptions.<p>4. Epistemics. Events are only one part of a story. It is also important to understand how information is distributed, which is difficult to represent using event edges alone.<p>I addressed this by introducing a new node type: epistemic nodes, which capture different entities\u2019 perspectives on the same fact. Subtle hints can still be missed, the system is not yet perfect in this area."
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: What 180k words look like as a temporal knowledge graph (Oz series)"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://synaptale.com/graph?ch=100"
+        }
+      },
+      "_tags": ["story", "author_ald0r", "story_49053986", "show_hn"],
+      "author": "ald0r",
+      "children": [49055078, 49054992, 49055052, 49055280, 49054889, 49057828],
+      "created_at": "2026-07-26T02:18:31Z",
+      "created_at_i": 1785032311,
+      "num_comments": 11,
+      "objectID": "49053986",
+      "points": 20,
+      "story_id": 49053986,
+      "story_text": "The graph is free to explore and requires no registration.<p>SynapTale builds a model of a story as a temporal graph made up of nodes (entities) and edges (their actions and relationships).\nThe graph is not a visualization of the wiki. The wiki, timelines, relationship histories, and analytics are projections of the graph.<p>The current demo contains 232 entities, 1,852 edges, and a snapshot of the story\u2019s state at every chapter. By chapter 100, it still remembers a promise made in chapter 8 and turns the story into a set of source-verifiable facts.<p>The most interesting things can be found in the graph itself and in the Analytics tab. A few things I found:<p>1. The character with the highest kill count is the Tin Woodman\u2014the same character who cries over a beetle he accidentally crushed. Dorothy comes second, with three killing events.\n2. Dorothy never deceives anyone during the first 100 chapters of the series.\n3. The Scarecrow\u2019s debt to the stork has remained active for 92 chapters, starting in chapter 8.\n4. The Cowardly Lion ranks third by number of threats.\n5. The first 100 chapters contain 60 secrets and 254 dialogue events.<p>Technical details<p>1. Five different multi-agent pipelines combining LLMs and NLP: a prescan, ontology construction, chapter-by-chapter graph extraction, retrospective validation over spans of dozens of chapters, and a linguistic prescan for speech profiles and linguistic edges.<p>2. A living story needs a living graph. It has to account for time, because entities and the relationships between them evolve. A simple is_active field is not enough.<p>I ended up with three types of edges:<p>event: an instantaneous action;\nidentity: a fact;\nstate: a persistent action whose termination requires justification and a supporting quote from the text.<p>The vast majority of edges are events and end in the same chapter in which they began. This allows the system to scale well, since only a minority of state and identity edges remain continuously active.<p>3. Ontology. You cannot simply ask an LLM to extract entities and relationships into a graph. With every chapter, even the smartest model will keep inventing unimportant fields, creating new aliases for existing fields, and representing the same fields inconsistently.<p>Before extracting the graph, the system therefore performs an ontology scan across the entire story. It captures story-specific entity and edge types, along with their fields and descriptions.<p>4. Epistemics. Events are only one part of a story. It is also important to understand how information is distributed, which is difficult to represent using event edges alone.<p>I addressed this by introducing a new node type: epistemic nodes, which capture different entities\u2019 perspectives on the same fact. Subtle hints can still be missed, the system is not yet perfect in this area.",
+      "title": "Show HN: What 180k words look like as a temporal knowledge graph (Oz series)",
+      "updated_at": "2026-07-26T22:46:30Z",
+      "url": "https://synaptale.com/graph?ch=100"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "sideras56"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "I built Rudoc because I wanted a smaller tool for simple file convertion workflow. (Pandoc was so heavy for me) I once wanted to try Pandoc, but after I downloaded it from GitHub, I found that it is around 70 MB. It also needed a lot of dependencies.<p>Rudoc is not a substitue of Pandoc, it supports <em>lim</em>ited set of formats (only txt, md, html, typ, docx, pdf, pptx, xml, json) and doesn't support advanced formatting. The most common workflow is just turn a markdown file to a html. PDF generation can work without Typst, but PDF input conversion requires Typst as a backend. It has no other runtime dependencies and can run as a single binary, by the way.<p>It is pretty easy to use, just use the format of\nrudoc input.file output.file\nOne sample usage is like this:\n```powershell\nrudoc OhPDF_ROADMAP.md.txt r.md\n[rudoc] OhPDF_ROADMAP.md.txt \u2192 r.md  (txt\u2192md)\n[rudoc] done in 52ms  (6286 bytes)\nrudoc r.md r.html\n[rudoc] r.md \u2192 r.html  (md\u2192html)\n[rudoc] done in 4ms  (7363 bytes)\n```<p>Some complex formats (such as pptx) still have <em>lim</em>ited compatibility. I planned to add standard error messages and better format compatibilities. I'd be pleased to see feedback or issues on my project.<p>QA:\nWhy not Pandoc?\nPandoc is a great tool, but sometimes we only need a convenient little one to handle common conversion tasks.<p>How compatible is it to docx/pptx?\nCurrently it supports basic text conversion, and I'm trying to make it be able to keep advanced formatting."
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Rudoc \u2013 a 4.5MB Rust document converter"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/asong56/rudoc"
+        }
+      },
+      "_tags": ["story", "author_sideras56", "story_49052181", "show_hn"],
+      "author": "sideras56",
+      "children": [49056573, 49052195, 49053278],
+      "created_at": "2026-07-25T22:11:59Z",
+      "created_at_i": 1785017519,
+      "num_comments": 2,
+      "objectID": "49052181",
+      "points": 16,
+      "story_id": 49052181,
+      "story_text": "I built Rudoc because I wanted a smaller tool for simple file convertion workflow. (Pandoc was so heavy for me) I once wanted to try Pandoc, but after I downloaded it from GitHub, I found that it is around 70 MB. It also needed a lot of dependencies.<p>Rudoc is not a substitue of Pandoc, it supports limited set of formats (only txt, md, html, typ, docx, pdf, pptx, xml, json) and doesn&#x27;t support advanced formatting. The most common workflow is just turn a markdown file to a html. PDF generation can work without Typst, but PDF input conversion requires Typst as a backend. It has no other runtime dependencies and can run as a single binary, by the way.<p>It is pretty easy to use, just use the format of\nrudoc input.file output.file\nOne sample usage is like this:\n```powershell\nrudoc OhPDF_ROADMAP.md.txt r.md\n[rudoc] OhPDF_ROADMAP.md.txt \u2192 r.md  (txt\u2192md)\n[rudoc] done in 52ms  (6286 bytes)\nrudoc r.md r.html\n[rudoc] r.md \u2192 r.html  (md\u2192html)\n[rudoc] done in 4ms  (7363 bytes)\n```<p>Some complex formats (such as pptx) still have limited compatibility. I planned to add standard error messages and better format compatibilities. I&#x27;d be pleased to see feedback or issues on my project.<p>QA:\nWhy not Pandoc?\nPandoc is a great tool, but sometimes we only need a convenient little one to handle common conversion tasks.<p>How compatible is it to docx&#x2F;pptx?\nCurrently it supports basic text conversion, and I&#x27;m trying to make it be able to keep advanced formatting.",
+      "title": "Show HN: Rudoc \u2013 a 4.5MB Rust document converter",
+      "updated_at": "2026-07-26T22:15:14Z",
+      "url": "https://github.com/asong56/rudoc"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "felixdoerp"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "Becoming a Research Engineer at a Big <em>LLM</em> Lab"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://www.maxmynter.com/pages/blog/jobhunt"
+        }
+      },
+      "_tags": ["story", "author_felixdoerp", "story_49051707"],
+      "author": "felixdoerp",
+      "children": [
+        49053756, 49056972, 49055309, 49054244, 49056826, 49053905, 49053243, 49053859, 49053503,
+        49053319
+      ],
+      "created_at": "2026-07-25T21:19:42Z",
+      "created_at_i": 1785014382,
+      "num_comments": 18,
+      "objectID": "49051707",
+      "points": 50,
+      "story_id": 49051707,
+      "title": "Becoming a Research Engineer at a Big LLM Lab",
+      "updated_at": "2026-07-27T10:41:46Z",
+      "url": "https://www.maxmynter.com/pages/blog/jobhunt"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "zdw"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "<em>LLM</em> Usage in Debian: Three Proposals"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://www.debian.org/vote/2026/vote_002"
+        }
+      },
+      "_tags": ["story", "author_zdw", "story_49050859"],
+      "author": "zdw",
+      "children": [
+        49052930, 49052826, 49053112, 49052461, 49052499, 49053646, 49052691, 49052758, 49051992,
+        49056548, 49058452, 49055522, 49058999, 49053714, 49057491, 49056645, 49054432, 49053031,
+        49052612, 49052372, 49054825, 49054849, 49055306, 49054572, 49052936, 49053956, 49056452,
+        49059300, 49054566, 49062387, 49058656, 49054102, 49055610, 49053270, 49053690, 49054283,
+        49052917, 49052335, 49054522, 49052966, 49054856
+      ],
+      "created_at": "2026-07-25T19:44:39Z",
+      "created_at_i": 1785008679,
+      "num_comments": 208,
+      "objectID": "49050859",
+      "points": 209,
+      "story_id": 49050859,
+      "title": "LLM Usage in Debian: Three Proposals",
+      "updated_at": "2026-07-27T10:55:31Z",
+      "url": "https://www.debian.org/vote/2026/vote_002"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "boveyking"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "Running a 28.9M parameter <em>LLM</em> on an $8 microcontroller"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/slvDev/esp32-ai"
+        }
+      },
+      "_tags": ["story", "author_boveyking", "story_49050512"],
+      "author": "boveyking",
+      "children": [
+        49053776, 49055573, 49053141, 49053161, 49053410, 49054813, 49058286, 49055233, 49053048,
+        49057727, 49052957, 49050513, 49054498, 49053362, 49056247, 49057113, 49059591, 49059147,
+        49059284
+      ],
+      "created_at": "2026-07-25T18:59:50Z",
+      "created_at_i": 1785005990,
+      "num_comments": 70,
+      "objectID": "49050512",
+      "points": 277,
+      "story_id": 49050512,
+      "title": "Running a 28.9M parameter LLM on an $8 microcontroller",
+      "updated_at": "2026-07-27T10:12:01Z",
+      "url": "https://github.com/slvDev/esp32-ai"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "LozzKappa"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "I'm a mechatronics designer with a background in control systems, robotics, PCB design, and embedded hardware. I design physical systems: motors, sensors, microcontrollers, and real-time control loops.<p>I applied this design thinking to <em>LLM</em> memory management \u2013 and it worked.<p>HotPin is a set of patches for llama.cpp that runs 30B\u2013120B Mixture of Experts (MoE) models on far less RAM than their disk footprint, with bit-identical (lossless) output.<p>Tested on an AMD Ryzen AI 9 HX 370 (Zen5, AVX512), 23.6GB LPDDR5X, NVMe &gt;1GB/s, CPU-only.<p>Results:\n| Model | Disk | Min RAM | Savings | tok/s |\n|-------|------|---------|---------|-------|\n| gpt-oss:120b | 58.5GB | 19.1GB | -67% | 3.84 |\n| qwen3:30b-a3b | 18.0GB | 10.4GB | -42% | 19.7 |\n| gemma4:26b-a4b | 16.2GB | 10.6GB | -35% | 11.5 |\n| GLM-4.7-Flash | 19.0GB | 13.3GB | -30% | 12.4 |<p>Output is SHA-256 bit-identical to full-RAM runs. Verified.<p>How it works (~50 lines of C++ in llama.cpp):\n1. Profile MoE expert routing frequencies.\n2. mmap the entire model from disk.\n3. mlock only the hottest experts into physical RAM.\n4. posix_fadvise / prefetch cold experts from NVMe before they're needed.<p>Boundary condition: if Disk &gt; RAM, pinning gives +45% speedup (gpt-oss: 2.64 \u2192 3.84 tok/s). If model fits in RAM, pinning adds zero overhead.<p>Tested on: Linux native, WSL, Windows native (VirtualLock).<p>Repo: https://github.com/LozzKappa/hotpin-<em>llm</em>\nPaper (PDF + LaTeX) in the repo \u2013 arXiv submission pending endorsement in cs.LG.<p>I'm looking for:\n1. An arXiv endorser (cs.LG) \u2013 if you're a researcher and this work interests you, please reach out.\n2. Feedback from anyone who tests it on their hardware.<p>The technique is simple, lossless, and works today. Test it and tell me your benchmarks.<p>Thanks for reading."
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Ask HN: HotPin \u2013 lossless 120B MoE inference on 24GB RAM (CPU, 50 loc)"
+        }
+      },
+      "_tags": ["story", "author_LozzKappa", "story_49050356", "ask_hn"],
+      "author": "LozzKappa",
+      "children": [49056593],
+      "created_at": "2026-07-25T18:41:01Z",
+      "created_at_i": 1785004861,
+      "num_comments": 0,
+      "objectID": "49050356",
+      "points": 10,
+      "story_id": 49050356,
+      "story_text": "I&#x27;m a mechatronics designer with a background in control systems, robotics, PCB design, and embedded hardware. I design physical systems: motors, sensors, microcontrollers, and real-time control loops.<p>I applied this design thinking to LLM memory management \u2013 and it worked.<p>HotPin is a set of patches for llama.cpp that runs 30B\u2013120B Mixture of Experts (MoE) models on far less RAM than their disk footprint, with bit-identical (lossless) output.<p>Tested on an AMD Ryzen AI 9 HX 370 (Zen5, AVX512), 23.6GB LPDDR5X, NVMe &gt;1GB&#x2F;s, CPU-only.<p>Results:\n| Model | Disk | Min RAM | Savings | tok&#x2F;s |\n|-------|------|---------|---------|-------|\n| gpt-oss:120b | 58.5GB | 19.1GB | -67% | 3.84 |\n| qwen3:30b-a3b | 18.0GB | 10.4GB | -42% | 19.7 |\n| gemma4:26b-a4b | 16.2GB | 10.6GB | -35% | 11.5 |\n| GLM-4.7-Flash | 19.0GB | 13.3GB | -30% | 12.4 |<p>Output is SHA-256 bit-identical to full-RAM runs. Verified.<p>How it works (~50 lines of C++ in llama.cpp):\n1. Profile MoE expert routing frequencies.\n2. mmap the entire model from disk.\n3. mlock only the hottest experts into physical RAM.\n4. posix_fadvise &#x2F; prefetch cold experts from NVMe before they&#x27;re needed.<p>Boundary condition: if Disk &gt; RAM, pinning gives +45% speedup (gpt-oss: 2.64 \u2192 3.84 tok&#x2F;s). If model fits in RAM, pinning adds zero overhead.<p>Tested on: Linux native, WSL, Windows native (VirtualLock).<p>Repo: https:&#x2F;&#x2F;github.com&#x2F;LozzKappa&#x2F;hotpin-llm\nPaper (PDF + LaTeX) in the repo \u2013 arXiv submission pending endorsement in cs.LG.<p>I&#x27;m looking for:\n1. An arXiv endorser (cs.LG) \u2013 if you&#x27;re a researcher and this work interests you, please reach out.\n2. Feedback from anyone who tests it on their hardware.<p>The technique is simple, lossless, and works today. Test it and tell me your benchmarks.<p>Thanks for reading.",
+      "title": "Ask HN: HotPin \u2013 lossless 120B MoE inference on 24GB RAM (CPU, 50 loc)",
+      "updated_at": "2026-07-26T13:22:13Z"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "cyanbane"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Apple Is the King of AI and Nobody Knows It"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "https://<em>lim</em>itededitionjonathan.substack.com/p/apple-is-the-king-of-ai-and-nobody"
+        }
+      },
+      "_tags": ["story", "author_cyanbane", "story_49049241"],
+      "author": "cyanbane",
+      "children": [
+        49049572, 49049365, 49049850, 49049889, 49050081, 49049917, 49049869, 49049356, 49049765,
+        49049658, 49050072, 49049414, 49050187, 49050291, 49049882
+      ],
+      "created_at": "2026-07-25T16:55:45Z",
+      "created_at_i": 1784998545,
+      "num_comments": 34,
+      "objectID": "49049241",
+      "points": 22,
+      "story_id": 49049241,
+      "title": "Apple Is the King of AI and Nobody Knows It",
+      "updated_at": "2026-07-27T06:10:01Z",
+      "url": "https://limitededitionjonathan.substack.com/p/apple-is-the-king-of-ai-and-nobody"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "paulpauper"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "Brazilian farmers tokenized dairy cows to get loans, bypassing bank <em>lim</em>its"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "https://www.coindesk.com/markets/2026/07/24/brazilian-farmers-tokenized-dairy-cows-to-get-loans-bypassing-bank-lending-<em>lim</em>its"
+        }
+      },
+      "_tags": ["story", "author_paulpauper", "story_49048645"],
+      "author": "paulpauper",
+      "children": [
+        49050022, 49049271, 49049385, 49050037, 49054007, 49050323, 49050641, 49050033, 49049351,
+        49049138
+      ],
+      "created_at": "2026-07-25T15:51:26Z",
+      "created_at_i": 1784994686,
+      "num_comments": 52,
+      "objectID": "49048645",
+      "points": 59,
+      "story_id": 49048645,
+      "title": "Brazilian farmers tokenized dairy cows to get loans, bypassing bank limits",
+      "updated_at": "2026-07-27T07:40:00Z",
+      "url": "https://www.coindesk.com/markets/2026/07/24/brazilian-farmers-tokenized-dairy-cows-to-get-loans-bypassing-bank-lending-limits"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "tbharath"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "What really happens behind the scenes when we select high effort vs medium effort for the same <em>LLM</em> models?"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "What happens behind the scenes when we change effort for same <em>LLM</em> models?"
+        }
+      },
+      "_tags": ["story", "author_tbharath", "story_49048125", "ask_hn"],
+      "author": "tbharath",
+      "children": [49049690, 49049100, 49049224, 49064333, 49050863],
+      "created_at": "2026-07-25T14:59:52Z",
+      "created_at_i": 1784991592,
+      "num_comments": 8,
+      "objectID": "49048125",
+      "points": 13,
+      "story_id": 49048125,
+      "story_text": "What really happens behind the scenes when we select high effort vs medium effort for the same LLM models?",
+      "title": "What happens behind the scenes when we change effort for same LLM models?",
+      "updated_at": "2026-07-27T01:56:45Z"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "o4c"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "An Introduction to Formal Logic(2020) [pdf]"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "https://logicmatters.net/ifl/pdfs/IFL2_<em>LM</em>.pdf"
+        }
+      },
+      "_tags": ["story", "author_o4c", "story_49044501"],
+      "author": "o4c",
+      "created_at": "2026-07-25T04:21:52Z",
+      "created_at_i": 1784953312,
+      "num_comments": 0,
+      "objectID": "49044501",
+      "points": 14,
+      "story_id": 49044501,
+      "title": "An Introduction to Formal Logic(2020) [pdf]",
+      "updated_at": "2026-07-26T21:28:44Z",
+      "url": "https://logicmatters.net/ifl/pdfs/IFL2_LM.pdf"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "secabeen"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "Debian launches competing General Resolutions on <em>LLM</em> usage in Debian code"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://www.debian.org/vote/2026/vote_002"
+        }
+      },
+      "_tags": ["story", "author_secabeen", "story_49041395"],
+      "author": "secabeen",
+      "children": [49043934],
+      "created_at": "2026-07-24T20:48:45Z",
+      "created_at_i": 1784926125,
+      "num_comments": 1,
+      "objectID": "49041395",
+      "points": 15,
+      "story_id": 49041395,
+      "title": "Debian launches competing General Resolutions on LLM usage in Debian code",
+      "updated_at": "2026-07-25T22:26:11Z",
+      "url": "https://www.debian.org/vote/2026/vote_002"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "plucafs"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "The front end framework for correctness: built on Effect, architected like <em>Elm</em>"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://foldkit.dev/"
+        }
+      },
+      "_tags": ["story", "author_plucafs", "story_49037031"],
+      "author": "plucafs",
+      "children": [
+        49037612, 49039064, 49041811, 49037697, 49040727, 49038386, 49038110, 49042085, 49044742,
+        49037758, 49037534, 49037456, 49039532, 49042420, 49040512, 49038224, 49044508, 49037840,
+        49039980
+      ],
+      "created_at": "2026-07-24T15:24:00Z",
+      "created_at_i": 1784906640,
+      "num_comments": 50,
+      "objectID": "49037031",
+      "points": 92,
+      "story_id": 49037031,
+      "title": "The front end framework for correctness: built on Effect, architected like Elm",
+      "updated_at": "2026-07-26T22:34:14Z",
+      "url": "https://foldkit.dev/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Eyosias_x5"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "<em>LLM</em>s Are Still Toxic, Stuck in the Past, and Bad at Math"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "https://www.eyosias.dev/blog/<em>llm</em>s-are-still-toxic-and-bad-at-math"
+        }
+      },
+      "_tags": ["story", "author_Eyosias_x5", "story_49034838"],
+      "author": "Eyosias_x5",
+      "children": [49035059, 49035065, 49035124, 49034839],
+      "created_at": "2026-07-24T12:51:13Z",
+      "created_at_i": 1784897473,
+      "num_comments": 7,
+      "objectID": "49034838",
+      "points": 15,
+      "story_id": 49034838,
+      "title": "LLMs Are Still Toxic, Stuck in the Past, and Bad at Math",
+      "updated_at": "2026-07-27T05:35:45Z",
+      "url": "https://www.eyosias.dev/blog/llms-are-still-toxic-and-bad-at-math"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "jonas_scholz"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "Hetzner is working on <em>LLM</em> Inference"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://sliplane.io/blog/hetzner-inference"
+        }
+      },
+      "_tags": ["story", "author_jonas_scholz", "story_49033087"],
+      "author": "jonas_scholz",
+      "children": [
+        49034047, 49033456, 49034101, 49038083, 49050214, 49033435, 49036028, 49036802, 49036623,
+        49034771, 49034485, 49036435, 49034457, 49036353, 49034685
+      ],
+      "created_at": "2026-07-24T09:24:44Z",
+      "created_at_i": 1784885084,
+      "num_comments": 87,
+      "objectID": "49033087",
+      "points": 155,
+      "story_id": 49033087,
+      "title": "Hetzner is working on LLM Inference",
+      "updated_at": "2026-07-27T06:51:30Z",
+      "url": "https://sliplane.io/blog/hetzner-inference"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "adam_rida"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "I\u2019ve been building Echo (<a href=\"https://echo.tracerml.ai/\" rel=\"nofollow\">https://echo.tracerml.ai/</a>), an experiment in making one AI system out of a pool of open-weight models rather than choosing a single model and using it for every task.<p>It started with a simple experiment. I took a group of models, including GLM-5.2, Kimi K2.7 and others, and ran them on the same evaluations. Then I measured what would happen if, for each problem, you somehow knew in advance which models would be useful and how their outputs should be combined.<p>That hypothetical system performed substantially better than any individual model in the pool. Of course, it is not something you can actually deploy because it relies on knowing which decisions were good after seeing the result. Echo is my attempt to recover some of that advantage without having that information in advance.<p>For each request, Echo decides how much computation to allocate, which models should participate, and how their work should be combined. Some prompts may only need a relatively small amount of inference, while others benefit from multiple models working on different parts of the problem.<p>One thing that surprised me while building it was how complementary the models are. A model that is clearly weaker overall can still be extremely useful on particular problems or as part of a combination.<p>On my first evaluation mix, Echo consistently performed better than the best individual model in its pool. It also reached roughly the same aggregate result as Fable, which I used as one of the stronger comparison systems, at around one third of the inference cost.<p>There are still some cases where Echo makes the wrong allocation or combination decision. I\u2019m currently spending a lot of time understanding those failures, as well as testing whether the same approach holds up on coding and agentic tasks where measuring the quality of each decision becomes much harder.<p>I built a chat interface (echo.tracerml.ai) and an OpenAI-compatible API (<a href=\"https://echo.tracerml.ai/docs/api\" rel=\"nofollow\">https://echo.tracerml.ai/docs/api</a>) so the system can be tested outside the evaluation setup.<p>Here is a short/high level video on how it works: <a href=\"https://www.youtube.com/watch?v=lJFJSvOdXhg\" rel=\"nofollow\">https://www.youtube.com/watch?v=lJFJSvOdXhg</a><p>I wrote up the evaluation methodology, individual model results, costs and current <em>lim</em>itations here: <a href=\"https://echo.tracerml.ai/eval\" rel=\"nofollow\">https://echo.tracerml.ai/eval</a><p>I would love for you to try it! Especially if you hit any weird failure cases or places where the allocation looks unintuitive."
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Echo \u2013 Fable-level results at 1/3 the cost using open-weight models"
+        }
+      },
+      "_tags": ["story", "author_adam_rida", "story_49026810", "show_hn"],
+      "author": "adam_rida",
+      "children": [
+        49032948, 49030253, 49029061, 49031663, 49027029, 49026989, 49027950, 49029078, 49028294,
+        49028256, 49036741, 49031934, 49030429, 49028551, 49027014, 49030022, 49027140, 49027097,
+        49031722, 49037306, 49031597, 49030301, 49036560, 49027554, 49032258, 49044423, 49029508,
+        49027730, 49036294, 49031540, 49031726, 49030297, 49031717, 49027230, 49029630, 49032173,
+        49054550, 49028334, 49031951, 49027682, 49027790, 49030008, 49029638, 49029626, 49027074,
+        49027336, 49027374, 49032356, 49027299, 49027755, 49028999, 49027302, 49029762, 49027727,
+        49028780, 49027514, 49061960, 49028008, 49058181, 49031666, 49030113, 49033008, 49043577,
+        49045014, 49030110, 49033108, 49033012, 49030804, 49027395
+      ],
+      "created_at": "2026-07-23T19:26:01Z",
+      "created_at_i": 1784834761,
+      "num_comments": 222,
+      "objectID": "49026810",
+      "points": 476,
+      "story_id": 49026810,
+      "story_text": "I\u2019ve been building Echo (<a href=\"https:&#x2F;&#x2F;echo.tracerml.ai&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;echo.tracerml.ai&#x2F;</a>), an experiment in making one AI system out of a pool of open-weight models rather than choosing a single model and using it for every task.<p>It started with a simple experiment. I took a group of models, including GLM-5.2, Kimi K2.7 and others, and ran them on the same evaluations. Then I measured what would happen if, for each problem, you somehow knew in advance which models would be useful and how their outputs should be combined.<p>That hypothetical system performed substantially better than any individual model in the pool. Of course, it is not something you can actually deploy because it relies on knowing which decisions were good after seeing the result. Echo is my attempt to recover some of that advantage without having that information in advance.<p>For each request, Echo decides how much computation to allocate, which models should participate, and how their work should be combined. Some prompts may only need a relatively small amount of inference, while others benefit from multiple models working on different parts of the problem.<p>One thing that surprised me while building it was how complementary the models are. A model that is clearly weaker overall can still be extremely useful on particular problems or as part of a combination.<p>On my first evaluation mix, Echo consistently performed better than the best individual model in its pool. It also reached roughly the same aggregate result as Fable, which I used as one of the stronger comparison systems, at around one third of the inference cost.<p>There are still some cases where Echo makes the wrong allocation or combination decision. I\u2019m currently spending a lot of time understanding those failures, as well as testing whether the same approach holds up on coding and agentic tasks where measuring the quality of each decision becomes much harder.<p>I built a chat interface (echo.tracerml.ai) and an OpenAI-compatible API (<a href=\"https:&#x2F;&#x2F;echo.tracerml.ai&#x2F;docs&#x2F;api\" rel=\"nofollow\">https:&#x2F;&#x2F;echo.tracerml.ai&#x2F;docs&#x2F;api</a>) so the system can be tested outside the evaluation setup.<p>Here is a short&#x2F;high level video on how it works: <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=lJFJSvOdXhg\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=lJFJSvOdXhg</a><p>I wrote up the evaluation methodology, individual model results, costs and current limitations here: <a href=\"https:&#x2F;&#x2F;echo.tracerml.ai&#x2F;eval\" rel=\"nofollow\">https:&#x2F;&#x2F;echo.tracerml.ai&#x2F;eval</a><p>I would love for you to try it! Especially if you hit any weird failure cases or places where the allocation looks unintuitive.",
+      "title": "Show HN: Echo \u2013 Fable-level results at 1/3 the cost using open-weight models",
+      "updated_at": "2026-07-27T11:06:01Z"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "louis030195"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["llm"],
+          "value": "Hi Hacker News, I'm Louis. I built Screenpipe (<a href=\"https://screenpipe.com\">https://screenpipe.com</a>), an app that records your screen and audio locally (only!), and gives AI agents a searchable memory of what you've seen, said, and heard. This makes it easier to automate your repetitive tasks, turn them into SOPs (Standard Operating Procedure) and so on.<p>I made a HN-style demo video at <a href=\"https://www.tella.tv/video/build-your-ai-second-brain-with-screenpipe-e1j7\" rel=\"nofollow\">https://www.tella.tv/video/build-your-ai-second-brain-with-s...</a> and there\u2019s a marketing video at <a href=\"https://www.youtube.com/watch?v=c1jV6E9pyug\" rel=\"nofollow\">https://www.youtube.com/watch?v=c1jV6E9pyug</a>.<p>I\u2019ve been obsessed with this for a long time. I\u2019ve been maintaining a \u201csecond brain\u201d since 2020, in which I would store journals, handwritten notes, music I listen to, projects I'm working on, conversations I have with people, personal CRM etc. I experimented a lot of RAG in the early days with ParlAI, hundreds of fine-tuned GPT2 models, and GPT3 (<a href=\"https://forum.obsidian.md/t/fine-tuning-openai-api-gpt3-on-your-second-brain-obsidian/21849/4\" rel=\"nofollow\">https://forum.obsidian.md/t/fine-tuning-openai-api-gpt3-on-y...</a>). Later I built Ava, the first Obsidian AI plugin, which grew to a few thousands of users quickly. It then became Embedbase, an API to make it easier to build AI apps powered by RAG.<p>What I learned from all this is how important it is for the models to have context about what you\u2019re doing on your computer, in order to get them to do what you want.<p>In the early days there was fine tuning but it was too much pain, then there was tool calling so that AI can access software you use but still kinda not autonomous enough. needing micro management. Then MCP came, but it felt too static, and non technical users struggled to build and use MCP. Then we got skills. Most recently we\u2019ve seen Karpathy\u2019s <em>LLM</em>-maintained wiki, Garry's GBrain, etc., where an agent incrementally maintains a persistent collection of Markdown pages. New sources update entity pages, strengthen or contradict existing claims, and improve a synthesis that compounds over time. I like this pattern, but it still begins with someone selecting and importing the sources. There is still no way AI can know what you and your company are doing every day, across apps, not just inside of apps.<p>Of course, not everyone wants this. But I do! I want AI to know what I'm doing and never lose memory ever again, and I want it to use the same software that humans do, without painful context switches.<p>I started building Screenpipe for myself in 2024 - a CLI to record your screen and plug this context into AI. An HN user posted it in 2024 (<a href=\"https://news.ycombinator.com/item?id=41695840\">https://news.ycombinator.com/item?id=41695840</a>) and that discussion influenced the product. The most useful criticism concerned recording consent, local security, CPU usage, signal-to-noise, and whether agents could act on top of the data.<p>The naive implementation started from continuously recording video and running OCR over every frame. But that creates duplicate data, consumes substantial resources (it basically turns your computer into a space heater!), and discards structure the operating system already knows. Screenpipe now instead listens for events such as app switches, clicks, typing pauses, scrolling, and idle fallbacks. When something meaningful changes, it pairs a screenshot with the operating system\u2019s accessibility tree at the same timestamp. OCR is used when structured accessibility data is unavailable. We also capture audio continuously, identify speakers and transcribe locally through Parakeet/Whisper or using cloud models.<p>Everything is indexed in a local SQLite database, mp4 files, and sometimes md files. An AI friendly API on port 3030 is open for agents, with authentication and a MCP and skills.<p>Once Screenpipe has been up and running for a while, you can use it through our built-in chat, Claude, ChatGPT, Hermes, Openclaw, or any agent, to do things like:<p>- adding context to your current chat, e.g. &quot;gather all context about task X&quot;, then requiring less prompts to achieve your goal<p>- retrieve information, e.g. &quot;retrieve the tasks i was working on from 8 am to 4 pm, make a list of what got done and what's left&quot;<p>- create and maintain a personal wiki / second brain for your agents: &quot;every 1h organize everything i do in projects, people, tasks, meetings in my Obsidian vault as markdown files and folders&quot;<p>- create automations: whenever i visit someone's profile on linkedin, update my crm<p>- find automation opportunities: look at everything my team has done this week and turn it into a list of automation opportunities<p>Screenpipe data is stored locally, though we also offer an enterprise plan to discover automation opportunities and for that the company decides where the data lives. We built our own AI PII model to redact sensitive information, it runs locally on Apple MLX or Windows DirectML, we also support cloud confidential inference for low end devices, although our local models are meant to use &lt;1% CPU and &lt;400 mb RAM. Users can set apps, windows, and urls to filter, in addition to browser incognito mode.<p>We also support recording schedules and other privacy features.<p>Most of our codebase is written in Rust, MLX, Onnx, we like cidre or direct C call for Apple APIs and windows-rs for Windows API. We also experimentally support Linux.<p>We have a desktop app (<a href=\"https://screenpipe.com/how-to-install\">https://screenpipe.com/how-to-install</a>) and a CLI:<p><pre><code>  npx screenpipe record\n</code></pre>\nYou can run that without creating an account. All the code is source-available at <a href=\"https://github.com/screenpipe/screenpipe\" rel=\"nofollow\">https://github.com/screenpipe/screenpipe</a>. We took the dreaded step of making our own Screenpipe Commercial License. I know HN strongly prefers OSI open source (MIT/Apache/etc.) but couldn\u2019t find a sustainable way to keep developing Screenpipe while companies were using it commercially for free. So now personal non-commercial, nonprofit, educational, and research use is free, but commercial use requires a license.<p>Versions released before the license change remain available under MIT. We have a free tier, and other plans, including Enterprise which helps companies find automation opportunities.<p>Would love to hear any feedback, things you've done with screenpipe, or features you'd want"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Launch HN: Screenpipe (YC S26) \u2013 Record how you work and turn that into agents"
+        }
+      },
+      "_tags": ["story", "author_louis030195", "story_49024620", "launch_hn"],
+      "author": "louis030195",
+      "children": [
+        49026609, 49024761, 49064231, 49031437, 49039177, 49025107, 49033472, 49031269, 49026319,
+        49027906, 49025034, 49028043, 49031697, 49028025, 49027845, 49026720, 49026624, 49027573,
+        49027325, 49029162, 49025378, 49025557, 49057039, 49025175, 49025291, 49031980, 49028111,
+        49029003, 49028083, 49028076, 49028119, 49028130, 49025704
+      ],
+      "created_at": "2026-07-23T16:48:38Z",
+      "created_at_i": 1784825318,
+      "num_comments": 63,
+      "objectID": "49024620",
+      "points": 85,
+      "story_id": 49024620,
+      "story_text": "Hi Hacker News, I&#x27;m Louis. I built Screenpipe (<a href=\"https:&#x2F;&#x2F;screenpipe.com\">https:&#x2F;&#x2F;screenpipe.com</a>), an app that records your screen and audio locally (only!), and gives AI agents a searchable memory of what you&#x27;ve seen, said, and heard. This makes it easier to automate your repetitive tasks, turn them into SOPs (Standard Operating Procedure) and so on.<p>I made a HN-style demo video at <a href=\"https:&#x2F;&#x2F;www.tella.tv&#x2F;video&#x2F;build-your-ai-second-brain-with-screenpipe-e1j7\" rel=\"nofollow\">https:&#x2F;&#x2F;www.tella.tv&#x2F;video&#x2F;build-your-ai-second-brain-with-s...</a> and there\u2019s a marketing video at <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=c1jV6E9pyug\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=c1jV6E9pyug</a>.<p>I\u2019ve been obsessed with this for a long time. I\u2019ve been maintaining a \u201csecond brain\u201d since 2020, in which I would store journals, handwritten notes, music I listen to, projects I&#x27;m working on, conversations I have with people, personal CRM etc. I experimented a lot of RAG in the early days with ParlAI, hundreds of fine-tuned GPT2 models, and GPT3 (<a href=\"https:&#x2F;&#x2F;forum.obsidian.md&#x2F;t&#x2F;fine-tuning-openai-api-gpt3-on-your-second-brain-obsidian&#x2F;21849&#x2F;4\" rel=\"nofollow\">https:&#x2F;&#x2F;forum.obsidian.md&#x2F;t&#x2F;fine-tuning-openai-api-gpt3-on-y...</a>). Later I built Ava, the first Obsidian AI plugin, which grew to a few thousands of users quickly. It then became Embedbase, an API to make it easier to build AI apps powered by RAG.<p>What I learned from all this is how important it is for the models to have context about what you\u2019re doing on your computer, in order to get them to do what you want.<p>In the early days there was fine tuning but it was too much pain, then there was tool calling so that AI can access software you use but still kinda not autonomous enough. needing micro management. Then MCP came, but it felt too static, and non technical users struggled to build and use MCP. Then we got skills. Most recently we\u2019ve seen Karpathy\u2019s LLM-maintained wiki, Garry&#x27;s GBrain, etc., where an agent incrementally maintains a persistent collection of Markdown pages. New sources update entity pages, strengthen or contradict existing claims, and improve a synthesis that compounds over time. I like this pattern, but it still begins with someone selecting and importing the sources. There is still no way AI can know what you and your company are doing every day, across apps, not just inside of apps.<p>Of course, not everyone wants this. But I do! I want AI to know what I&#x27;m doing and never lose memory ever again, and I want it to use the same software that humans do, without painful context switches.<p>I started building Screenpipe for myself in 2024 - a CLI to record your screen and plug this context into AI. An HN user posted it in 2024 (<a href=\"https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=41695840\">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=41695840</a>) and that discussion influenced the product. The most useful criticism concerned recording consent, local security, CPU usage, signal-to-noise, and whether agents could act on top of the data.<p>The naive implementation started from continuously recording video and running OCR over every frame. But that creates duplicate data, consumes substantial resources (it basically turns your computer into a space heater!), and discards structure the operating system already knows. Screenpipe now instead listens for events such as app switches, clicks, typing pauses, scrolling, and idle fallbacks. When something meaningful changes, it pairs a screenshot with the operating system\u2019s accessibility tree at the same timestamp. OCR is used when structured accessibility data is unavailable. We also capture audio continuously, identify speakers and transcribe locally through Parakeet&#x2F;Whisper or using cloud models.<p>Everything is indexed in a local SQLite database, mp4 files, and sometimes md files. An AI friendly API on port 3030 is open for agents, with authentication and a MCP and skills.<p>Once Screenpipe has been up and running for a while, you can use it through our built-in chat, Claude, ChatGPT, Hermes, Openclaw, or any agent, to do things like:<p>- adding context to your current chat, e.g. &quot;gather all context about task X&quot;, then requiring less prompts to achieve your goal<p>- retrieve information, e.g. &quot;retrieve the tasks i was working on from 8 am to 4 pm, make a list of what got done and what&#x27;s left&quot;<p>- create and maintain a personal wiki &#x2F; second brain for your agents: &quot;every 1h organize everything i do in projects, people, tasks, meetings in my Obsidian vault as markdown files and folders&quot;<p>- create automations: whenever i visit someone&#x27;s profile on linkedin, update my crm<p>- find automation opportunities: look at everything my team has done this week and turn it into a list of automation opportunities<p>Screenpipe data is stored locally, though we also offer an enterprise plan to discover automation opportunities and for that the company decides where the data lives. We built our own AI PII model to redact sensitive information, it runs locally on Apple MLX or Windows DirectML, we also support cloud confidential inference for low end devices, although our local models are meant to use &lt;1% CPU and &lt;400 mb RAM. Users can set apps, windows, and urls to filter, in addition to browser incognito mode.<p>We also support recording schedules and other privacy features.<p>Most of our codebase is written in Rust, MLX, Onnx, we like cidre or direct C call for Apple APIs and windows-rs for Windows API. We also experimentally support Linux.<p>We have a desktop app (<a href=\"https:&#x2F;&#x2F;screenpipe.com&#x2F;how-to-install\">https:&#x2F;&#x2F;screenpipe.com&#x2F;how-to-install</a>) and a CLI:<p><pre><code>  npx screenpipe record\n</code></pre>\nYou can run that without creating an account. All the code is source-available at <a href=\"https:&#x2F;&#x2F;github.com&#x2F;screenpipe&#x2F;screenpipe\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;screenpipe&#x2F;screenpipe</a>. We took the dreaded step of making our own Screenpipe Commercial License. I know HN strongly prefers OSI open source (MIT&#x2F;Apache&#x2F;etc.) but couldn\u2019t find a sustainable way to keep developing Screenpipe while companies were using it commercially for free. So now personal non-commercial, nonprofit, educational, and research use is free, but commercial use requires a license.<p>Versions released before the license change remain available under MIT. We have a free tier, and other plans, including Enterprise which helps companies find automation opportunities.<p>Would love to hear any feedback, things you&#x27;ve done with screenpipe, or features you&#x27;d want",
+      "title": "Launch HN: Screenpipe (YC S26) \u2013 Record how you work and turn that into agents",
+      "updated_at": "2026-07-27T08:11:30Z"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "jonbaer"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "PGSimCity - How PostgreSQL Works"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "https://nikolays.<em>git</em>hub.io/PGSimCity/"
+        }
+      },
+      "_tags": ["story", "author_jonbaer", "story_49063754", "front_page"],
+      "author": "jonbaer",
+      "children": [
+        49064136, 49067719, 49064172, 49065965, 49064171, 49064433, 49067185, 49065226, 49064116,
+        49065968, 49065441, 49066023, 49066158, 49064140, 49064895, 49066471, 49064484, 49064526,
+        49064469, 49065445, 49064271, 49064818, 49066113, 49065222, 49064280, 49065666, 49064311,
+        49064589, 49065279, 49064160, 49064326, 49064292, 49065898, 49067511, 49065412, 49065807,
+        49064799, 49066604, 49064860
+      ],
+      "created_at": "2026-07-27T00:19:04Z",
+      "created_at_i": 1785111544,
+      "num_comments": 63,
+      "objectID": "49063754",
+      "points": 658,
+      "story_id": 49063754,
+      "title": "PGSimCity - How PostgreSQL Works",
+      "updated_at": "2026-07-27T11:08:31Z",
+      "url": "https://nikolays.github.io/PGSimCity/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "octopoc"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "Hi HN,<p>Recently I wasted several hours wrangling my dev environment only to find out that the browser frontend was talking to the wrong version of the backend. This <em>got</em> me thinking--why on earth are we still using simple <i>numbers</i> to describe which process to connect to? Why not use <i>names</i> instead? I thought of all the times a program wouldn't start because of port conflicts. The more I thought about it, the crazier it seemed.<p>Modern operating systems already offer no-conflict ports: if you make your TCP server listen on port 0, the OS assigns you a random available port. But that only solves half the problem.<p>I built the other half: PortZero. It's a GPLv3 program that watches for processes (and docker containers!) with a special PZ_TUNNEL environment variable:<p><pre><code>  PZ_TUNNEL=myapp-{branch}.portzero.local:80 npm run dev\n</code></pre>\nWhen it sees such a process or container, PortZero does this:<p>1. Create a virtual NIC (if it hasn't already)<p>2. Create a new virtual IP address<p>3. Create a DNS record that substitutes things like {branch} based on the working directory of the process, and points at that virtual IP address<p>4. Start listening on that virtual IP address on the port of your choice (e.g. port 80 for http, port 443 for https, port 5432 for postgresql)<p>5. Forward any TCP connections to that virtual IP address / virtual port to the random, OS-assigned port that your process or container is actually listening on<p>The result is you don't have to think about ports anymore, you just have to think about subdomains. You can have multiple services available on port 80 without conflicts, as long as they have different portzero.local subdomains.<p>It does some other cool stuff like:<p>- Enable HTTPS on local HTTP services by creating a local CA and registering it on your machine<p>- Enable cloud tunnels so you can access your apps on other devices (paid feature)<p>Links:<p><a href=\"https://portzero.net/docs/\" rel=\"nofollow\">https://portzero.net/docs/</a><p><a href=\"https://github.com/PortZeroNetwork/portzero\" rel=\"nofollow\">https://github.com/PortZeroNetwork/portzero</a>"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Port Zero \u2013 how I learned to stop worrying and love PORT=0"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://portzero.net/"
+        }
+      },
+      "_tags": ["story", "author_octopoc", "story_49063648", "show_hn"],
+      "author": "octopoc",
+      "children": [49065014, 49064942, 49064596, 49064127, 49065206, 49064359],
+      "created_at": "2026-07-27T00:03:48Z",
+      "created_at_i": 1785110628,
+      "num_comments": 10,
+      "objectID": "49063648",
+      "points": 15,
+      "story_id": 49063648,
+      "story_text": "Hi HN,<p>Recently I wasted several hours wrangling my dev environment only to find out that the browser frontend was talking to the wrong version of the backend. This got me thinking--why on earth are we still using simple <i>numbers</i> to describe which process to connect to? Why not use <i>names</i> instead? I thought of all the times a program wouldn&#x27;t start because of port conflicts. The more I thought about it, the crazier it seemed.<p>Modern operating systems already offer no-conflict ports: if you make your TCP server listen on port 0, the OS assigns you a random available port. But that only solves half the problem.<p>I built the other half: PortZero. It&#x27;s a GPLv3 program that watches for processes (and docker containers!) with a special PZ_TUNNEL environment variable:<p><pre><code>  PZ_TUNNEL=myapp-{branch}.portzero.local:80 npm run dev\n</code></pre>\nWhen it sees such a process or container, PortZero does this:<p>1. Create a virtual NIC (if it hasn&#x27;t already)<p>2. Create a new virtual IP address<p>3. Create a DNS record that substitutes things like {branch} based on the working directory of the process, and points at that virtual IP address<p>4. Start listening on that virtual IP address on the port of your choice (e.g. port 80 for http, port 443 for https, port 5432 for postgresql)<p>5. Forward any TCP connections to that virtual IP address &#x2F; virtual port to the random, OS-assigned port that your process or container is actually listening on<p>The result is you don&#x27;t have to think about ports anymore, you just have to think about subdomains. You can have multiple services available on port 80 without conflicts, as long as they have different portzero.local subdomains.<p>It does some other cool stuff like:<p>- Enable HTTPS on local HTTP services by creating a local CA and registering it on your machine<p>- Enable cloud tunnels so you can access your apps on other devices (paid feature)<p>Links:<p><a href=\"https:&#x2F;&#x2F;portzero.net&#x2F;docs&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;portzero.net&#x2F;docs&#x2F;</a><p><a href=\"https:&#x2F;&#x2F;github.com&#x2F;PortZeroNetwork&#x2F;portzero\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;PortZeroNetwork&#x2F;portzero</a>",
+      "title": "Show HN: Port Zero \u2013 how I learned to stop worrying and love PORT=0",
+      "updated_at": "2026-07-27T11:06:46Z",
+      "url": "https://portzero.net/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "hakancan"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Cursor Bridge \u2013 Run Unlimited Claude Code on Your Cursor Subscription"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "https://<em>git</em>hub.com/hkc5/cursor-bridge"
+        }
+      },
+      "_tags": ["story", "author_hakancan", "story_49063186"],
+      "author": "hakancan",
+      "children": [
+        49063415, 49063408, 49063509, 49063554, 49063416, 49063688, 49063431, 49063582, 49063187
+      ],
+      "created_at": "2026-07-26T22:48:09Z",
+      "created_at_i": 1785106089,
+      "num_comments": 20,
+      "objectID": "49063186",
+      "points": 19,
+      "story_id": 49063186,
+      "title": "Cursor Bridge \u2013 Run Unlimited Claude Code on Your Cursor Subscription",
+      "updated_at": "2026-07-27T08:26:01Z",
+      "url": "https://github.com/hkc5/cursor-bridge"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "maxloh"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Scriptc by Vercel: TypeScript-to-Native compiler, no JavaScript engine in binary"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "https://<em>git</em>hub.com/vercel-labs/scriptc"
+        }
+      },
+      "_tags": ["story", "author_maxloh", "story_49063175", "front_page"],
+      "author": "maxloh",
+      "children": [
+        49066065, 49064594, 49067004, 49067792, 49064680, 49066236, 49067469, 49066220, 49066110,
+        49065397, 49064704, 49064557, 49067270, 49066941, 49066132, 49064521, 49065434, 49067359,
+        49064628, 49066392, 49066172, 49066169, 49064802, 49064829, 49065764, 49065133
+      ],
+      "created_at": "2026-07-26T22:46:10Z",
+      "created_at_i": 1785105970,
+      "num_comments": 103,
+      "objectID": "49063175",
+      "points": 203,
+      "story_id": 49063175,
+      "title": "Scriptc by Vercel: TypeScript-to-Native compiler, no JavaScript engine in binary",
+      "updated_at": "2026-07-27T11:07:46Z",
+      "url": "https://github.com/vercel-labs/scriptc"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "jonbaer"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "Your <em>GPS</em> Is Lying to You"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "https://medium.com/@rohitdastalks/your-<em>gps</em>-is-lying-to-you-and-thats-a-national-security-crisis-7959206f88a1"
+        }
+      },
+      "_tags": ["story", "author_jonbaer", "story_49063126"],
+      "author": "jonbaer",
+      "children": [49064167],
+      "created_at": "2026-07-26T22:36:06Z",
+      "created_at_i": 1785105366,
+      "num_comments": 1,
+      "objectID": "49063126",
+      "points": 10,
+      "story_id": 49063126,
+      "title": "Your GPS Is Lying to You",
+      "updated_at": "2026-07-27T08:15:46Z",
+      "url": "https://medium.com/@rohitdastalks/your-gps-is-lying-to-you-and-thats-a-national-security-crisis-7959206f88a1"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "epatel99"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Disclaimer, I have not yet placed the order. But JLCPCB have so far excepted all files and config so I have 1 more button to press. If anyone see some obvious mistake please send feedback.<p>This project grew out of curiosity. Loved the <a href=\"https://monster6502.com/\" rel=\"nofollow\">https://monster6502.com/</a> project but that is on another level. Here I tried to stay &quot;reasonable&quot; and added a Raspberry Pico 2 W on the back to drive it all. But also, was curious if Claude could pull this off. Guess I will have to place that order to call the cards."
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Discrete6502 \u2013 one thing led to another"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "https://epatel.<em>git</em>hub.io/discrete6502/"
+        }
+      },
+      "_tags": ["story", "author_epatel99", "story_49062863", "show_hn"],
+      "author": "epatel99",
+      "children": [49065722, 49062948, 49064325, 49065815],
+      "created_at": "2026-07-26T21:58:30Z",
+      "created_at_i": 1785103110,
+      "num_comments": 6,
+      "objectID": "49062863",
+      "points": 11,
+      "story_id": 49062863,
+      "story_text": "Disclaimer, I have not yet placed the order. But JLCPCB have so far excepted all files and config so I have 1 more button to press. If anyone see some obvious mistake please send feedback.<p>This project grew out of curiosity. Loved the <a href=\"https:&#x2F;&#x2F;monster6502.com&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;monster6502.com&#x2F;</a> project but that is on another level. Here I tried to stay &quot;reasonable&quot; and added a Raspberry Pico 2 W on the back to drive it all. But also, was curious if Claude could pull this off. Guess I will have to place that order to call the cards.",
+      "title": "Show HN: Discrete6502 \u2013 one thing led to another",
+      "updated_at": "2026-07-27T09:47:45Z",
+      "url": "https://epatel.github.io/discrete6502/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "xterminal"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Simulate cassette tape audio profiles using FFmpeg"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "https://<em>git</em>hub.com/AARomanov1985/Audio-Cassette-Simulation"
+        }
+      },
+      "_tags": ["story", "author_xterminal", "story_49061887", "front_page"],
+      "author": "xterminal",
+      "children": [
+        49066735, 49062881, 49062738, 49066805, 49063396, 49063854, 49062701, 49063650, 49062870,
+        49064766, 49063355, 49062108, 49064067, 49065320, 49062940, 49063438, 49063336, 49066139
+      ],
+      "created_at": "2026-07-26T20:02:15Z",
+      "created_at_i": 1785096135,
+      "num_comments": 58,
+      "objectID": "49061887",
+      "points": 138,
+      "story_id": 49061887,
+      "title": "Simulate cassette tape audio profiles using FFmpeg",
+      "updated_at": "2026-07-27T11:08:31Z",
+      "url": "https://github.com/AARomanov1985/Audio-Cassette-Simulation"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "impostervt"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "Had the idea forever, finally <em>got</em> it working."
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Infinite Jigsaw Game"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://infinitejigsaw.com"
+        }
+      },
+      "_tags": ["story", "author_impostervt", "story_49061879", "show_hn"],
+      "author": "impostervt",
+      "children": [
+        49064620, 49062374, 49063145, 49062407, 49062360, 49063224, 49062755, 49064117, 49062618,
+        49064250, 49064790, 49063048, 49063135, 49063153
+      ],
+      "created_at": "2026-07-26T20:01:27Z",
+      "created_at_i": 1785096087,
+      "num_comments": 21,
+      "objectID": "49061879",
+      "points": 24,
+      "story_id": 49061879,
+      "story_text": "Had the idea forever, finally got it working.",
+      "title": "Show HN: Infinite Jigsaw Game",
+      "updated_at": "2026-07-27T10:50:16Z",
+      "url": "https://infinitejigsaw.com"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "theorchid"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "What does <em>Git</em>Hub's security team even do?"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "https://orchidfiles.com/<em>git</em>hub-security-team/"
+        }
+      },
+      "_tags": ["story", "author_theorchid", "story_49061769"],
+      "author": "theorchid",
+      "children": [
+        49062076, 49062205, 49062151, 49062050, 49063157, 49062114, 49064282, 49062921, 49062149,
+        49062818, 49062227, 49062124, 49062470, 49063273, 49062104
+      ],
+      "created_at": "2026-07-26T19:51:05Z",
+      "created_at_i": 1785095465,
+      "num_comments": 30,
+      "objectID": "49061769",
+      "points": 110,
+      "story_id": 49061769,
+      "title": "What does GitHub's security team even do?",
+      "updated_at": "2026-07-27T10:59:33Z",
+      "url": "https://orchidfiles.com/github-security-team/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "morganw"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "The Occult Great <em>Gat</em>sby\nThe Great <em>Gat</em>sby Annotated for Esoteric Content:\nThe Fourth Way, Alchemy, Tarot, and Kabbalah<p>Author is my father, Jon Woodson.  I'm the web guy who wanted to bring this to a wider audience with a more interactive way to pop-up the notes about esoteric content.<p>Author's blurb from Amazon self-publishing page:<p>F. Scott Fitzgerald\u2019s novel, The Great <em>Gat</em>sby, is a manual for spiritual development. It is not a unique text, for many American modernist novels of canonical stature are similarly grounded in the occult. Fitzgerald was a follower of A. R. Orage who not only taught the Gurdjieff Work (the Fourth Way) but organized a vast literary network to further its goals.<p>The chief reason that this occult literary tendency has remained in the shadows is that the arbiter of the movement has been poorly understood and critically neglected.<p>The Great <em>Gat</em>sby belongs to a genre of the novel invented by Carl Van Vechten. Van Vechten\u2019s novel, The Blind Bow-Boy (1923) was the model for The Great <em>Gat</em>sby and for many other modern masterpieces. My annotated presentation of Fitzgerald\u2019s novel performs three functions. Since emblematic novels are all written using the same phonetic-syllabic code, the alchemical cabala, I have decoded the novel and presented a running account of the coded subtext in footnotes. The actual texts that have decrypted are presented in italics."
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "Show HN: The Occult <em>Gat</em>sby"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://occultgatsby.work"
+        }
+      },
+      "_tags": ["story", "author_morganw", "story_49060998", "show_hn"],
+      "author": "morganw",
+      "children": [49061336, 49061307],
+      "created_at": "2026-07-26T18:38:11Z",
+      "created_at_i": 1785091091,
+      "num_comments": 4,
+      "objectID": "49060998",
+      "points": 18,
+      "story_id": 49060998,
+      "story_text": "The Occult Great Gatsby\nThe Great Gatsby Annotated for Esoteric Content:\nThe Fourth Way, Alchemy, Tarot, and Kabbalah<p>Author is my father, Jon Woodson.  I&#x27;m the web guy who wanted to bring this to a wider audience with a more interactive way to pop-up the notes about esoteric content.<p>Author&#x27;s blurb from Amazon self-publishing page:<p>F. Scott Fitzgerald\u2019s novel, The Great Gatsby, is a manual for spiritual development. It is not a unique text, for many American modernist novels of canonical stature are similarly grounded in the occult. Fitzgerald was a follower of A. R. Orage who not only taught the Gurdjieff Work (the Fourth Way) but organized a vast literary network to further its goals.<p>The chief reason that this occult literary tendency has remained in the shadows is that the arbiter of the movement has been poorly understood and critically neglected.<p>The Great Gatsby belongs to a genre of the novel invented by Carl Van Vechten. Van Vechten\u2019s novel, The Blind Bow-Boy (1923) was the model for The Great Gatsby and for many other modern masterpieces. My annotated presentation of Fitzgerald\u2019s novel performs three functions. Since emblematic novels are all written using the same phonetic-syllabic code, the alchemical cabala, I have decoded the novel and presented a running account of the coded subtext in footnotes. The actual texts that have decrypted are presented in italics.",
+      "title": "Show HN: The Occult Gatsby",
+      "updated_at": "2026-07-27T02:01:45Z",
+      "url": "https://occultgatsby.work"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "zeldone"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: CheapSecurity \u2013 Lightweight, Self-Hosted CCTV for Linux SBCs"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "https://<em>git</em>hub.com/gmrandazzo/CheapSecurity"
+        }
+      },
+      "_tags": ["story", "author_zeldone", "story_49059398", "show_hn", "front_page"],
+      "author": "zeldone",
+      "children": [
+        49061843, 49064128, 49061500, 49061171, 49060335, 49061172, 49064366, 49060182, 49059799,
+        49062268
+      ],
+      "created_at": "2026-07-26T15:53:55Z",
+      "created_at_i": 1785081235,
+      "num_comments": 27,
+      "objectID": "49059398",
+      "points": 131,
+      "story_id": 49059398,
+      "title": "Show HN: CheapSecurity \u2013 Lightweight, Self-Hosted CCTV for Linux SBCs",
+      "updated_at": "2026-07-27T10:24:30Z",
+      "url": "https://github.com/gmrandazzo/CheapSecurity"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "thiagoas"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Weave is a React app that provides a multi-track timeline editor to perform basic video edits like trimming, stitching, transitions, audio tracks etc. which maps directly to an FFmpeg command to render the video.<p>I tried my best to have the React &quot;video&quot; preview closely replicate the FFmpeg lavfi filtergraph output, but naturally this is not perfect (especially replicating the `eq` filter using SVG filters is quite inaccurate).<p>I've built this as a prototype for another project I'm working on, so I don't plan to actively maintain it, but I thought it'd be cool to share it.<p>Try it live: <a href=\"https://weave.salviano.xyz/\" rel=\"nofollow\">https://weave.salviano.xyz/</a>"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: A browser-based video editor that renders videos directly with FFmpeg"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "https://<em>git</em>hub.com/thiagoalbrecht/weave"
+        }
+      },
+      "_tags": ["story", "author_thiagoas", "story_49058396", "show_hn"],
+      "author": "thiagoas",
+      "children": [49066618, 49058834, 49061582, 49060115],
+      "created_at": "2026-07-26T14:07:56Z",
+      "created_at_i": 1785074876,
+      "num_comments": 4,
+      "objectID": "49058396",
+      "points": 16,
+      "story_id": 49058396,
+      "story_text": "Weave is a React app that provides a multi-track timeline editor to perform basic video edits like trimming, stitching, transitions, audio tracks etc. which maps directly to an FFmpeg command to render the video.<p>I tried my best to have the React &quot;video&quot; preview closely replicate the FFmpeg lavfi filtergraph output, but naturally this is not perfect (especially replicating the `eq` filter using SVG filters is quite inaccurate).<p>I&#x27;ve built this as a prototype for another project I&#x27;m working on, so I don&#x27;t plan to actively maintain it, but I thought it&#x27;d be cool to share it.<p>Try it live: <a href=\"https:&#x2F;&#x2F;weave.salviano.xyz&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;weave.salviano.xyz&#x2F;</a>",
+      "title": "Show HN: A browser-based video editor that renders videos directly with FFmpeg",
+      "updated_at": "2026-07-27T09:49:00Z",
+      "url": "https://github.com/thiagoalbrecht/weave"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "r2ob"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Managing on-premise servers without Kubernetes"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["gpt"],
+          "value": "https://<em>git</em>hub.com/ricardoborges/Nautilus"
+        }
+      },
+      "_tags": ["story", "author_r2ob", "story_49057985", "show_hn"],
+      "author": "r2ob",
+      "children": [49059813, 49061114, 49059714, 49059607, 49060657, 49057989],
+      "created_at": "2026-07-26T13:25:17Z",
+      "created_at_i": 1785072317,
+      "num_comments": 11,
+      "objectID": "49057985",
+      "points": 18,
+      "story_id": 49057985,
+      "title": "Show HN: Managing on-premise servers without Kubernetes",
+      "updated_at": "2026-07-27T07:52:30Z",
+      "url": "https://github.com/ricardoborges/Nautilus"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "nathanamin"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["transformer"],
+          "value": "<em>Transform</em> your fund into something you can talk to"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://www.angellist.com/blog/introducing-angellist-link"
+        }
+      },
+      "_tags": ["story", "author_nathanamin", "story_49023421"],
+      "author": "nathanamin",
+      "children": [
+        49025088, 49027559, 49024843, 49025183, 49028822, 49031354, 49025260, 49024648, 49024856,
+        49024632, 49029156, 49026002, 49025086, 49025314, 49027232, 49024945, 49024867, 49025284,
+        49025296, 49024687, 49025502, 49024795, 49027202, 49024578, 49027761, 49025095, 49025637,
+        49025128, 49024236, 49026443, 49025385, 49025117, 49025093, 49025426, 49030369, 49024460
+      ],
+      "created_at": "2026-07-23T15:42:13Z",
+      "created_at_i": 1784821333,
+      "num_comments": 36,
+      "objectID": "49023421",
+      "points": 84,
+      "story_id": 49023421,
+      "title": "Transform your fund into something you can talk to",
+      "updated_at": "2026-07-27T02:30:30Z",
+      "url": "https://www.angellist.com/blog/introducing-angellist-link"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "funfruit"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["transformer"],
+          "value": "It makes it easy to hit API's, web scrape, do text-to-speech via online services etc in order to build rich flash cards in an automated way.<p>This has grown organically over a couple of years while learning French and German with some friends and thought some of you guys might find it useful.<p>An example pipeline I built with Hanky:<p>- Use CV to grab highlighted words and their context off of a page of printed text (extract)<p>- translate the highlighted word via an API (<em>transform</em>)<p>- generate audio with a tts service (<em>transform</em>)<p>Then load all that into anki as flash cards (load)<p>Keen to hear any feedback and hope you find it useful."
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Hanky \u2013 ETL style framework for loading flash cards into Anki"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/Haeata-Ash/hanky"
+        }
+      },
+      "_tags": ["story", "author_funfruit", "story_49021667", "show_hn"],
+      "author": "funfruit",
+      "created_at": "2026-07-23T13:55:56Z",
+      "created_at_i": 1784814956,
+      "num_comments": 0,
+      "objectID": "49021667",
+      "points": 10,
+      "story_id": 49021667,
+      "story_text": "It makes it easy to hit API&#x27;s, web scrape, do text-to-speech via online services etc in order to build rich flash cards in an automated way.<p>This has grown organically over a couple of years while learning French and German with some friends and thought some of you guys might find it useful.<p>An example pipeline I built with Hanky:<p>- Use CV to grab highlighted words and their context off of a page of printed text (extract)<p>- translate the highlighted word via an API (transform)<p>- generate audio with a tts service (transform)<p>Then load all that into anki as flash cards (load)<p>Keen to hear any feedback and hope you find it useful.",
+      "title": "Show HN: Hanky \u2013 ETL style framework for loading flash cards into Anki",
+      "updated_at": "2026-07-23T21:53:19Z",
+      "url": "https://github.com/Haeata-Ash/hanky"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "HenryNdubuaku"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["transformer"],
+          "value": "Hey HN, Henry &amp; Roman here from Cactus.<p>A small, on-device model is fast and private, but sometimes wrong, but frontier models are getting expensive pretty fast. So, we post-trained Gemma 4 E2B post-trained to know when it's wrong. Every response comes with a confidence score between 0 and 1. Developers can accept the on-device when it's high, hand off to a bigger cloud model when it's low. By routing only 15-35% of queries to Gemini 3.1 Flash-Lite, Gemma-4-E2B matches Gemini 3.1 Flash-Lite on most benchmarks.<p>- ChartQA: 15-20%<p>- LibriSpeech: 25-30%<p>- MMBench, GigaSpeech, MMAU: 30-35%<p>- MMLU-Pro: 45-55%<p>We were always frustrated by the routing signals hybrid apps rely on: asking the model to rate itself in text (unreliable, and you're parsing prose), or token entropy heuristics (barely better than a coin flip in our tests). So we did mechanistic studies on small models, Gemma 4 particularly, and found the hidden state for different layers carry meaningful self-awareness signal for various situations.<p>SO we extended the model with a 68k params probe layer (LayerNorm, low-rank projection, attention pooling, small MLP head) reads one intermediate layer during decoding and predicts p(wrong); confidence = 1 - p(wrong), returned as structured data, never parsed out of the answer text.<p>Across 12 hold-out benchmarks spanning text, vision and audio, the probe averages 0.814 AUROC vs 0.549 for token entropy. The result that convinced us this is real: the probe was trained on zero audio data, yet scores 0.79-0.88 AUROC on four audio benchmarks where entropy is near-random or worse (0.32-0.52). It's reading a modality-independent correctness signal from the hidden state, not memorizing patterns from its training data.<p>We published all weights on HuggingFace and provide copy-pase codes to run it on <em>Transformer</em>s, MLX, Llama.cpp or Cactus. With Ollama, vLLM, SGLang etc in the works. For llama.cpp we ship a patch series you compile in once (upstreaming is planned). The code is MIT licensed; Gemma model use remains subject to the Gemma terms.<p>GitHub: <a href=\"https://github.com/cactus-compute/cactus-hybrid\" rel=\"nofollow\">https://github.com/cactus-compute/cactus-hybrid</a><p>Weights: <a href=\"https://huggingface.co/collections/Cactus-Compute/cactus-hybrid-6a60da4551074db058e8bb64\" rel=\"nofollow\">https://huggingface.co/collections/Cactus-Compute/cactus-hyb...</a><p>Some caveats:<p>- The probe scores single-sequence decoding only, up to the first 1024 generated tokens.<p>- Handoff works best when routing per task in a multi-step process, not per step.<p>- Hierarchical routing is still in the works: try on-device, then DeepSeek v4 Flash, before Fable/GPT5.5/Gemini/Muse/Grok.<p>- The technique is boutique for each model, we will share each weights as they roll out.<p>These issues are currently being tackled at Cactus and updated weights will be shipped directly into the HuggingFace collection and GitHub repository straight up. Please let us know your thoughts, it helps us find ways to improve the design progressively.<p>Thanks a million!"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Cactus Hybrid: We taught Gemma 4 to know when it's wrong"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/cactus-compute/cactus-hybrid"
+        }
+      },
+      "_tags": ["story", "author_HenryNdubuaku", "story_49010782", "show_hn"],
+      "author": "HenryNdubuaku",
+      "children": [
+        49015694, 49019286, 49015640, 49014892, 49011476, 49015646, 49015274, 49019984, 49018377,
+        49027579, 49015777, 49046044, 49048870, 49020816, 49023018, 49018808, 49016689, 49019611,
+        49019400, 49015412
+      ],
+      "created_at": "2026-07-22T17:56:29Z",
+      "created_at_i": 1784742989,
+      "num_comments": 44,
+      "objectID": "49010782",
+      "points": 185,
+      "story_id": 49010782,
+      "story_text": "Hey HN, Henry &amp; Roman here from Cactus.<p>A small, on-device model is fast and private, but sometimes wrong, but frontier models are getting expensive pretty fast. So, we post-trained Gemma 4 E2B post-trained to know when it&#x27;s wrong. Every response comes with a confidence score between 0 and 1. Developers can accept the on-device when it&#x27;s high, hand off to a bigger cloud model when it&#x27;s low. By routing only 15-35% of queries to Gemini 3.1 Flash-Lite, Gemma-4-E2B matches Gemini 3.1 Flash-Lite on most benchmarks.<p>- ChartQA: 15-20%<p>- LibriSpeech: 25-30%<p>- MMBench, GigaSpeech, MMAU: 30-35%<p>- MMLU-Pro: 45-55%<p>We were always frustrated by the routing signals hybrid apps rely on: asking the model to rate itself in text (unreliable, and you&#x27;re parsing prose), or token entropy heuristics (barely better than a coin flip in our tests). So we did mechanistic studies on small models, Gemma 4 particularly, and found the hidden state for different layers carry meaningful self-awareness signal for various situations.<p>SO we extended the model with a 68k params probe layer (LayerNorm, low-rank projection, attention pooling, small MLP head) reads one intermediate layer during decoding and predicts p(wrong); confidence = 1 - p(wrong), returned as structured data, never parsed out of the answer text.<p>Across 12 hold-out benchmarks spanning text, vision and audio, the probe averages 0.814 AUROC vs 0.549 for token entropy. The result that convinced us this is real: the probe was trained on zero audio data, yet scores 0.79-0.88 AUROC on four audio benchmarks where entropy is near-random or worse (0.32-0.52). It&#x27;s reading a modality-independent correctness signal from the hidden state, not memorizing patterns from its training data.<p>We published all weights on HuggingFace and provide copy-pase codes to run it on Transformers, MLX, Llama.cpp or Cactus. With Ollama, vLLM, SGLang etc in the works. For llama.cpp we ship a patch series you compile in once (upstreaming is planned). The code is MIT licensed; Gemma model use remains subject to the Gemma terms.<p>GitHub: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;cactus-compute&#x2F;cactus-hybrid\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;cactus-compute&#x2F;cactus-hybrid</a><p>Weights: <a href=\"https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;Cactus-Compute&#x2F;cactus-hybrid-6a60da4551074db058e8bb64\" rel=\"nofollow\">https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;Cactus-Compute&#x2F;cactus-hyb...</a><p>Some caveats:<p>- The probe scores single-sequence decoding only, up to the first 1024 generated tokens.<p>- Handoff works best when routing per task in a multi-step process, not per step.<p>- Hierarchical routing is still in the works: try on-device, then DeepSeek v4 Flash, before Fable&#x2F;GPT5.5&#x2F;Gemini&#x2F;Muse&#x2F;Grok.<p>- The technique is boutique for each model, we will share each weights as they roll out.<p>These issues are currently being tackled at Cactus and updated weights will be shipped directly into the HuggingFace collection and GitHub repository straight up. Please let us know your thoughts, it helps us find ways to improve the design progressively.<p>Thanks a million!",
+      "title": "Show HN: Cactus Hybrid: We taught Gemma 4 to know when it's wrong",
+      "updated_at": "2026-07-26T03:50:12Z",
+      "url": "https://github.com/cactus-compute/cactus-hybrid"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "starfallg"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["transformer"],
+          "value": "Over the past few months, our team has been building more and more slidedecks using web frontend technologies with coding harnesses like Claude Code, but a common complaint is to make even small edits we need to edit the code either manually or via the harness.<p>To avoid this loop, I ended up creating Bento, a single HTML file with everything you need in a slide tool including animations and shared editing. There's no install or cloud login, everything works offline. The default deck is around 560 KB and it doesn't need to fetch anything once you got it.<p>Open it in a browser and then you can edit, present, print and save. Share it via email or via Airdrop and all they need is a browser to edit, present and also do live collab on the slides. Drop it in to Claude or ChatGPT to <em>transform</em> existing pptx files into Bento slides. There is no cloud involved, only an encrypted blind relay to allow for shared editing. The relay doesn't see any of the data.<p>Check it out at <a href=\"https://bento.page/slides/\" rel=\"nofollow\">https://bento.page/slides/</a> which takes you straight to the editor.<p>Go to <a href=\"https://bento.page/guestbook/\" rel=\"nofollow\">https://bento.page/guestbook/</a> to try out the live guestbook to experience share editing / collab.<p>There is also a gallery with some sample decks on the website - <a href=\"https://bento.page/\" rel=\"nofollow\">https://bento.page/</a><p>All the code is MIT licensed and you can find it here - <a href=\"https://github.com/nyblnet/bento\" rel=\"nofollow\">https://github.com/nyblnet/bento</a> . I used reveal.js with several other libraries (including some homegrown ones), and Claude Code."
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Bento - An entire PowerPoint in one HTML file (edit+view+data+collab)"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://bento.page/slides/"
+        }
+      },
+      "_tags": ["story", "author_starfallg", "story_49008211", "show_hn"],
+      "author": "starfallg",
+      "children": [
+        49008445, 49010031, 49008848, 49012101, 49010128, 49012415, 49018008, 49019280, 49009915,
+        49013309, 49009788, 49016333, 49014665, 49017300, 49010256, 49012022, 49009451, 49017282,
+        49009811, 49009967, 49045329, 49016505, 49009325, 49013043, 49020677, 49009407, 49010386,
+        49018800, 49016706, 49008664, 49011702, 49012331, 49020243, 49026614, 49018017, 49015316,
+        49009790, 49020902, 49009354, 49009110, 49046552, 49010040, 49009114, 49013647, 49014100,
+        49009551, 49013307, 49017108, 49022980, 49021378, 49008617, 49029134, 49029238, 49015498,
+        49010177, 49022879, 49009853, 49026685, 49016731, 49012533, 49009850, 49017341, 49012975,
+        49014292, 49015300, 49013767, 49027634, 49016721, 49008841, 49011895, 49018271, 49024467,
+        49012402, 49010198, 49015100, 49012257, 49009819, 49019575, 49020118, 49021326, 49017871,
+        49011628, 49009393, 49009384, 49023317, 49019613, 49009252, 49018988, 49010260, 49015610,
+        49018711, 49015908, 49021111, 49017829, 49061972, 49011074, 49021148, 49015526, 49013541,
+        49015731, 49015002, 49016450, 49009431, 49009194
+      ],
+      "created_at": "2026-07-22T15:19:23Z",
+      "created_at_i": 1784733563,
+      "num_comments": 238,
+      "objectID": "49008211",
+      "points": 1023,
+      "story_id": 49008211,
+      "story_text": "Over the past few months, our team has been building more and more slidedecks using web frontend technologies with coding harnesses like Claude Code, but a common complaint is to make even small edits we need to edit the code either manually or via the harness.<p>To avoid this loop, I ended up creating Bento, a single HTML file with everything you need in a slide tool including animations and shared editing. There&#x27;s no install or cloud login, everything works offline. The default deck is around 560 KB and it doesn&#x27;t need to fetch anything once you got it.<p>Open it in a browser and then you can edit, present, print and save. Share it via email or via Airdrop and all they need is a browser to edit, present and also do live collab on the slides. Drop it in to Claude or ChatGPT to transform existing pptx files into Bento slides. There is no cloud involved, only an encrypted blind relay to allow for shared editing. The relay doesn&#x27;t see any of the data.<p>Check it out at <a href=\"https:&#x2F;&#x2F;bento.page&#x2F;slides&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;bento.page&#x2F;slides&#x2F;</a> which takes you straight to the editor.<p>Go to <a href=\"https:&#x2F;&#x2F;bento.page&#x2F;guestbook&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;bento.page&#x2F;guestbook&#x2F;</a> to try out the live guestbook to experience share editing &#x2F; collab.<p>There is also a gallery with some sample decks on the website - <a href=\"https:&#x2F;&#x2F;bento.page&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;bento.page&#x2F;</a><p>All the code is MIT licensed and you can find it here - <a href=\"https:&#x2F;&#x2F;github.com&#x2F;nyblnet&#x2F;bento\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;nyblnet&#x2F;bento</a> . I used reveal.js with several other libraries (including some homegrown ones), and Claude Code.",
+      "title": "Show HN: Bento - An entire PowerPoint in one HTML file (edit+view+data+collab)",
+      "updated_at": "2026-07-27T09:26:30Z",
+      "url": "https://bento.page/slides/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "alexsouthmayd"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["transformer"],
+          "value": "Hi HN, I\u2019m Alex Southmayd, the founder of Bloomy (<a href=\"https://bloomylearning.com\">https://bloomylearning.com</a>) \u2013 an AI-powered mastery-learning platform for K-12 students. Bloomy provides students with an AI tutor alongside adaptive curriculum (right now Math, English Language Arts, and Writing).<p>How it works: we diagnose students\u2019 skill gaps, place them on personalized learning paths, and give them standards-aligned lessons and a Socratic AI tutor that scaffolds their learning without just giving away the answer.<p>The goal is to solve the Bloom 2-sigma problem (<a href=\"https://en.wikipedia.org/wiki/Bloom%27s_2_sigma_problem\" rel=\"nofollow\">https://en.wikipedia.org/wiki/Bloom%27s_2_sigma_problem</a>) with AI.<p>Short launch video: <a href=\"https://tinyurl.com/bloomylearning\" rel=\"nofollow\">https://tinyurl.com/bloomylearning</a><p>Longer product demo: <a href=\"https://youtu.be/XHvoKt6qMeo\" rel=\"nofollow\">https://youtu.be/XHvoKt6qMeo</a><p>Families access for Bloomy: <a href=\"https://bloomylearning.com/families\">https://bloomylearning.com/families</a><p>I started as a teacher. I taught 7th-grade English and writing with Teach For America, and every day I struggled to deliver differentiated instruction to 30 students with 30 different sets of needs. Some students needed remediation, some needed acceleration, and many needed a tutor sitting next to them helping them reason through the next step.\nBenjamin Bloom\u2019s two-sigma result\u2014that one-on-one tutoring can produce much better outcomes than conventional classroom instruction\u2014always felt intuitively true to me. The hard part was making that kind of attention affordable and available to every child.<p>Then AI changed the cost curve. When I saw schools such as Alpha organize academics around mastery rather than seat time, the model clicked. If you\u2019ve heard of Alpha School, that is directionally the kind of learning model that inspired us. But I kept thinking about the families and schools that already exist: homeschool families, microschools, hybrid schools, and regular classrooms where most children are today.<p>Most students and teachers see learning gaps at the wrong resolution. They get a grade, percentile, benchmark score, or broad standard\u2014not \u201cthis is the next skill this student should learn.\u201d Existing personalized-learning products often feel like digital worksheets: they provide plenty of practice, but not much diagnosis or teaching. Very few have AI tutors providing the core instruction.\nBloomy starts with a diagnostic\u2014we integrate with third-party assessments and provide our own\u2014and creates a learning path for each student. Students work one skill at a time, receive a short lesson, practice at an adaptive difficulty, and only move forward after demonstrating at least 90% mastery. The learning path updates as the student works, based on their performance and our knowledge graph of skill prerequisites (built in collaboration with Learning Commons / Chan Zuckerberg Initiative).<p>Each skill has three stages. Base Camp teaches the concept with worked examples. Climb provides guided practice and Socratic support. Summit is an independent ten-question mastery assessment with no hints or AI assistance. Students need to achieve 90% on the Summit to advance. If they struggle too much, they\u2019ll be routed to a different skill better suited for their level.<p>BloomyBot is not a blank chat window but rather a live, interactive, and observant digital tutor. During practice, it receives the active passage or problem, the question, the student\u2019s attempt, an authored explanation, and relevant misconception context. It follows a scaffolded tutoring ladder: first asking what the student tried, then pointing toward the concept, suggesting a strategy, working through one step together, and only providing heavier scaffolding after the student has struggled, adapting to and learning from the student along the way. Students can interrupt it, and we\u2019ve begun to roll out multilingual support for Spanish, French, and a few other more niche languages that customers have asked for.<p>We currently use a variety of Anthropic and OpenAI models for BloomyBot. The tutor is restricted to the current lesson, redirects unrelated questions, limits conversation length, and is unavailable during mastery assessments. The language model does not choose the curriculum or decide whether a student has mastered a skill.<p>That separation is important. A conventionally \u201chelpful\u201d AI response can be a bad tutoring response: if it gives away the answer, the student completes the task but may not learn anything. Our goal is not to build a homework-answering chatbot. It is to put AI inside a structured loop of diagnosis, instruction, practice, feedback, and independent mastery.<p>LLMs can still be wrong, and we do not claim our constraints eliminate that. We reduce the surface area by grounding BloomyBot in authored lesson content, keeping it on topic, logging conversations, and removing it from assessments. Teachers and parents can review tutoring activity, students can report problems, and safety signals trigger human alerts and a backup audit.\nWe also do not see Bloomy as a replacement for teachers, parents, or human tutors. A good human tutor is better. The narrower question we are testing is whether, during a bounded learning session a student would already be doing, a context-aware tutor can provide better help than static \u201ccorrect/incorrect\u201d feedback. Longer term, the question becomes more whether a student would perform better with one-on-one AI tutoring (at least in certain aspects of the curriculum) than with many-to-one instruction in a medium- or large-sized classroom.<p>Bloomy is now being used across several settings: traditional districts, charter schools, hybrid schools, microschools, homeschools, and families looking for additional academic support. In an early pilot at a charter school in Massachusetts serving ~150 students in grades 6 through 8, students averaged roughly 1.8 times the expected winter-to-spring NWEA MAP growth. This was an observational pilot, not a randomized study, so we treat it as an encouraging signal rather than proof that Bloomy caused the difference.<p>Parents and teachers can see what a student has mastered, what is in progress, and where support may be needed. We have found that adults generally do not want another generic score; they want to know which small number of skills deserve attention this week.<p>Bloomy makes money through family subscriptions and school licensing. ELA costs $39/month or $279/year per learner, and Writing Studio costs $19/month or $139/year. Math is scheduled to launch July 31 at the same price as ELA. Schools and microschools pay per student, with pricing varying by subject coverage, enrollment, rostering, and implementation needs.<p>Because children use Bloomy, we collect learning responses, progress data, and tutoring conversations. We do not sell personal information, use child data for behavioral advertising, or permit model providers to train general-purpose models on identifiable child data sent by Bloomy. We have Zero Data Retention agreements with both Anthropic and OpenAI. Parents and schools can request access, export, correction, or deletion under the applicable account or school agreement.<p>More background on me: after Teach For America, I taught and designed GMAT and GRE curriculum for Manhattan Prep / Kaplan, led the driver acquisition team for Lyft\u2019s New England markets, completed an MBA at Stanford, and led AI <em>transformat</em>ion projects at McKinsey (so when models finally became good enough this past January to achieve the kinds of things I am pursuing with Bloomy, I was in the right place at the right time to begin building). Bloomy brings together the different parts of my career that I care most about: educational outcomes, learning design, building products, and getting useful technology into people\u2019s hands.<p>I\u2019d especially value feedback from parents, teachers, engineers working on child-facing AI, and people who have built tutoring, assessment, or adaptive-learning systems. Does the separation between guided AI help and independent mastery make sense? Where do you see the greatest potential with AI in education? Where are our safeguards insufficient? What evidence or product behavior would you need to trust something like this with a student?<p>Certainly there are many dangers and pitfalls we must beware of, too, but I believe we can really move the needle in K-12 (for the first time in a long time) if we use AI responsibly and intelligently."
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Launch HN: Bloomy (YC S26) \u2013 AI-powered mastery learning for K-12"
+        }
+      },
+      "_tags": ["story", "author_alexsouthmayd", "story_48981136", "launch_hn"],
+      "author": "alexsouthmayd",
+      "children": [
+        48982894, 48988864, 48992902, 48984520, 48984769, 48992912, 48983323, 48990006, 48988375,
+        49012793, 48982554, 48982734, 48987201, 48988338, 48981405, 48983239, 49017646, 48982555,
+        48984947, 48983512, 48988633, 48984967, 48988397, 48988345, 48990385, 48981468, 48981705,
+        48984624, 48981843, 48991004, 48981267, 48981492
+      ],
+      "created_at": "2026-07-20T16:32:10Z",
+      "created_at_i": 1784565130,
+      "num_comments": 107,
+      "objectID": "48981136",
+      "points": 100,
+      "story_id": 48981136,
+      "story_text": "Hi HN, I\u2019m Alex Southmayd, the founder of Bloomy (<a href=\"https:&#x2F;&#x2F;bloomylearning.com\">https:&#x2F;&#x2F;bloomylearning.com</a>) \u2013 an AI-powered mastery-learning platform for K-12 students. Bloomy provides students with an AI tutor alongside adaptive curriculum (right now Math, English Language Arts, and Writing).<p>How it works: we diagnose students\u2019 skill gaps, place them on personalized learning paths, and give them standards-aligned lessons and a Socratic AI tutor that scaffolds their learning without just giving away the answer.<p>The goal is to solve the Bloom 2-sigma problem (<a href=\"https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Bloom%27s_2_sigma_problem\" rel=\"nofollow\">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Bloom%27s_2_sigma_problem</a>) with AI.<p>Short launch video: <a href=\"https:&#x2F;&#x2F;tinyurl.com&#x2F;bloomylearning\" rel=\"nofollow\">https:&#x2F;&#x2F;tinyurl.com&#x2F;bloomylearning</a><p>Longer product demo: <a href=\"https:&#x2F;&#x2F;youtu.be&#x2F;XHvoKt6qMeo\" rel=\"nofollow\">https:&#x2F;&#x2F;youtu.be&#x2F;XHvoKt6qMeo</a><p>Families access for Bloomy: <a href=\"https:&#x2F;&#x2F;bloomylearning.com&#x2F;families\">https:&#x2F;&#x2F;bloomylearning.com&#x2F;families</a><p>I started as a teacher. I taught 7th-grade English and writing with Teach For America, and every day I struggled to deliver differentiated instruction to 30 students with 30 different sets of needs. Some students needed remediation, some needed acceleration, and many needed a tutor sitting next to them helping them reason through the next step.\nBenjamin Bloom\u2019s two-sigma result\u2014that one-on-one tutoring can produce much better outcomes than conventional classroom instruction\u2014always felt intuitively true to me. The hard part was making that kind of attention affordable and available to every child.<p>Then AI changed the cost curve. When I saw schools such as Alpha organize academics around mastery rather than seat time, the model clicked. If you\u2019ve heard of Alpha School, that is directionally the kind of learning model that inspired us. But I kept thinking about the families and schools that already exist: homeschool families, microschools, hybrid schools, and regular classrooms where most children are today.<p>Most students and teachers see learning gaps at the wrong resolution. They get a grade, percentile, benchmark score, or broad standard\u2014not \u201cthis is the next skill this student should learn.\u201d Existing personalized-learning products often feel like digital worksheets: they provide plenty of practice, but not much diagnosis or teaching. Very few have AI tutors providing the core instruction.\nBloomy starts with a diagnostic\u2014we integrate with third-party assessments and provide our own\u2014and creates a learning path for each student. Students work one skill at a time, receive a short lesson, practice at an adaptive difficulty, and only move forward after demonstrating at least 90% mastery. The learning path updates as the student works, based on their performance and our knowledge graph of skill prerequisites (built in collaboration with Learning Commons &#x2F; Chan Zuckerberg Initiative).<p>Each skill has three stages. Base Camp teaches the concept with worked examples. Climb provides guided practice and Socratic support. Summit is an independent ten-question mastery assessment with no hints or AI assistance. Students need to achieve 90% on the Summit to advance. If they struggle too much, they\u2019ll be routed to a different skill better suited for their level.<p>BloomyBot is not a blank chat window but rather a live, interactive, and observant digital tutor. During practice, it receives the active passage or problem, the question, the student\u2019s attempt, an authored explanation, and relevant misconception context. It follows a scaffolded tutoring ladder: first asking what the student tried, then pointing toward the concept, suggesting a strategy, working through one step together, and only providing heavier scaffolding after the student has struggled, adapting to and learning from the student along the way. Students can interrupt it, and we\u2019ve begun to roll out multilingual support for Spanish, French, and a few other more niche languages that customers have asked for.<p>We currently use a variety of Anthropic and OpenAI models for BloomyBot. The tutor is restricted to the current lesson, redirects unrelated questions, limits conversation length, and is unavailable during mastery assessments. The language model does not choose the curriculum or decide whether a student has mastered a skill.<p>That separation is important. A conventionally \u201chelpful\u201d AI response can be a bad tutoring response: if it gives away the answer, the student completes the task but may not learn anything. Our goal is not to build a homework-answering chatbot. It is to put AI inside a structured loop of diagnosis, instruction, practice, feedback, and independent mastery.<p>LLMs can still be wrong, and we do not claim our constraints eliminate that. We reduce the surface area by grounding BloomyBot in authored lesson content, keeping it on topic, logging conversations, and removing it from assessments. Teachers and parents can review tutoring activity, students can report problems, and safety signals trigger human alerts and a backup audit.\nWe also do not see Bloomy as a replacement for teachers, parents, or human tutors. A good human tutor is better. The narrower question we are testing is whether, during a bounded learning session a student would already be doing, a context-aware tutor can provide better help than static \u201ccorrect&#x2F;incorrect\u201d feedback. Longer term, the question becomes more whether a student would perform better with one-on-one AI tutoring (at least in certain aspects of the curriculum) than with many-to-one instruction in a medium- or large-sized classroom.<p>Bloomy is now being used across several settings: traditional districts, charter schools, hybrid schools, microschools, homeschools, and families looking for additional academic support. In an early pilot at a charter school in Massachusetts serving ~150 students in grades 6 through 8, students averaged roughly 1.8 times the expected winter-to-spring NWEA MAP growth. This was an observational pilot, not a randomized study, so we treat it as an encouraging signal rather than proof that Bloomy caused the difference.<p>Parents and teachers can see what a student has mastered, what is in progress, and where support may be needed. We have found that adults generally do not want another generic score; they want to know which small number of skills deserve attention this week.<p>Bloomy makes money through family subscriptions and school licensing. ELA costs $39&#x2F;month or $279&#x2F;year per learner, and Writing Studio costs $19&#x2F;month or $139&#x2F;year. Math is scheduled to launch July 31 at the same price as ELA. Schools and microschools pay per student, with pricing varying by subject coverage, enrollment, rostering, and implementation needs.<p>Because children use Bloomy, we collect learning responses, progress data, and tutoring conversations. We do not sell personal information, use child data for behavioral advertising, or permit model providers to train general-purpose models on identifiable child data sent by Bloomy. We have Zero Data Retention agreements with both Anthropic and OpenAI. Parents and schools can request access, export, correction, or deletion under the applicable account or school agreement.<p>More background on me: after Teach For America, I taught and designed GMAT and GRE curriculum for Manhattan Prep &#x2F; Kaplan, led the driver acquisition team for Lyft\u2019s New England markets, completed an MBA at Stanford, and led AI transformation projects at McKinsey (so when models finally became good enough this past January to achieve the kinds of things I am pursuing with Bloomy, I was in the right place at the right time to begin building). Bloomy brings together the different parts of my career that I care most about: educational outcomes, learning design, building products, and getting useful technology into people\u2019s hands.<p>I\u2019d especially value feedback from parents, teachers, engineers working on child-facing AI, and people who have built tutoring, assessment, or adaptive-learning systems. Does the separation between guided AI help and independent mastery make sense? Where do you see the greatest potential with AI in education? Where are our safeguards insufficient? What evidence or product behavior would you need to trust something like this with a student?<p>Certainly there are many dangers and pitfalls we must beware of, too, but I believe we can really move the needle in K-12 (for the first time in a long time) if we use AI responsibly and intelligently.",
+      "title": "Launch HN: Bloomy (YC S26) \u2013 AI-powered mastery learning for K-12",
+      "updated_at": "2026-07-27T09:06:31Z"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "speckx"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["transformer"],
+          "value": "There are no lossless <em>transformat</em>ions of natural-language text"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["transformer"],
+          "value": "https://sophiebits.com/2026/06/25/there-are-no-lossless-<em>transformat</em>ions-of-natural-language-text"
+        }
+      },
+      "_tags": ["story", "author_speckx", "story_48980425"],
+      "author": "speckx",
+      "children": [48984083, 48985391, 48989250, 48984044, 48989106, 48984546, 48999974],
+      "created_at": "2026-07-20T15:41:34Z",
+      "created_at_i": 1784562094,
+      "num_comments": 11,
+      "objectID": "48980425",
+      "points": 31,
+      "story_id": 48980425,
+      "title": "There are no lossless transformations of natural-language text",
+      "updated_at": "2026-07-25T02:03:23Z",
+      "url": "https://sophiebits.com/2026/06/25/there-are-no-lossless-transformations-of-natural-language-text"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "soaringmonchi"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["transformer"],
+          "value": "Hi HN, I am co-founder of Kickstage, a software company specializing in solutions for the electrical industry and lately grid operators.<p>We are hiring engineers from different backgrounds, a lot of them software developers with limited experience in the sectors. Deep domain knowledge is key in our industry however, so we are constantly teaching the basics of power flow analysis, active vs reactive power, transmission line properties etc.<p>With Jupyter notebooks and the Python console only, that's a tedious task and hardly ever led to a deep understanding of the topics.<p>So we built BambooGrid: a web-based editor on top of pandapower, a popular simulation library in our industry. You drag elements like buses, lines, loads generators and <em>transformer</em>s onto a canvas, wire them up, set parameters and run power flow. It will print results directly on the canvas, color buses according to their voltages, even allows you to see an interactive admittance matrix.<p>You can try it out without installing anything on <a href=\"https://bamboo.kickstage.com\" rel=\"nofollow\">https://bamboo.kickstage.com</a> (thanks to our friends at Hostzero who sponsored hosting). Start with one of the included samples or draw your own. Just don't forget to add a slack element.<p>Built on a Python backend (driven by the choice of pandapower mainly) and a React frontend. Fully MIT licensed, so feel free to use and modify to your liking.\nEven better: Give us feedback - we're extremely open to suggestions how to improve the tool and are glad about every user who learns a bit more about power systems through it.<p>\u0160ime, who built most of this, is also in the thread. We are both happy to answer anything about the implementation or power systems in general."
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: BambooGrid \u2013 Open-source web UI for power grid modeling and power flow"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://bamboo.kickstage.com"
+        }
+      },
+      "_tags": ["story", "author_soaringmonchi", "story_48936271", "show_hn"],
+      "author": "soaringmonchi",
+      "children": [48942469, 48946753, 48955132, 48941224, 48941700, 48941287, 48940632, 48947002],
+      "created_at": "2026-07-16T15:55:47Z",
+      "created_at_i": 1784217347,
+      "num_comments": 13,
+      "objectID": "48936271",
+      "points": 37,
+      "story_id": 48936271,
+      "story_text": "Hi HN, I am co-founder of Kickstage, a software company specializing in solutions for the electrical industry and lately grid operators.<p>We are hiring engineers from different backgrounds, a lot of them software developers with limited experience in the sectors. Deep domain knowledge is key in our industry however, so we are constantly teaching the basics of power flow analysis, active vs reactive power, transmission line properties etc.<p>With Jupyter notebooks and the Python console only, that&#x27;s a tedious task and hardly ever led to a deep understanding of the topics.<p>So we built BambooGrid: a web-based editor on top of pandapower, a popular simulation library in our industry. You drag elements like buses, lines, loads generators and transformers onto a canvas, wire them up, set parameters and run power flow. It will print results directly on the canvas, color buses according to their voltages, even allows you to see an interactive admittance matrix.<p>You can try it out without installing anything on <a href=\"https:&#x2F;&#x2F;bamboo.kickstage.com\" rel=\"nofollow\">https:&#x2F;&#x2F;bamboo.kickstage.com</a> (thanks to our friends at Hostzero who sponsored hosting). Start with one of the included samples or draw your own. Just don&#x27;t forget to add a slack element.<p>Built on a Python backend (driven by the choice of pandapower mainly) and a React frontend. Fully MIT licensed, so feel free to use and modify to your liking.\nEven better: Give us feedback - we&#x27;re extremely open to suggestions how to improve the tool and are glad about every user who learns a bit more about power systems through it.<p>\u0160ime, who built most of this, is also in the thread. We are both happy to answer anything about the implementation or power systems in general.",
+      "title": "Show HN: BambooGrid \u2013 Open-source web UI for power grid modeling and power flow",
+      "updated_at": "2026-07-26T08:38:57Z",
+      "url": "https://bamboo.kickstage.com"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "benanam"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["transformer"],
+          "value": "Hey HN, we're Ben and Caoimhe, cofounders of Anam. We build interactive avatars and just shipped our latest model, cara-4.\nThis is the first avatar model which can naturally shift emotions and expressions during the conversation; a feature we\u2019re calling \u201cDirector Notes\u201d. The way it works is relatively simple: we have an LLM provide cues such as [laughter], [sad], [warm] interleaved with the speech, which we then condition our animation model with. \nTo test it out, we commissioned a blind study from Mabyduck.com with 200 participants, 1,600 rated live interactions across six criteria. Cara-4 ranked first overall and was preferred head-to-head over each competitor on overall experience, lip-sync, visual quality and \u201cnaturalness\u201d.\nOn latency, measured across a full week of live traffic, end of user-speech to first video frame is ~1.2s median. The avatar model's own share is just ~100ms; most of the rest is waiting on STT, LLM, TTS or various forms of buffering (an unsung latency killer).\nHow the model works: cara-4 has a two-stage design, a diffusion <em>transformer</em> turns audio+text into motion embeddings (head pose, gaze, lip shape, expression), and a rendering model applies those to a reference image, so new faces works without finetuning.\nWhy faces at all: they carry emotional signal that text and voice don't, and they're a more accessible medium. Anam started in part from Ben watching his gran struggle with her iPad and thinking there should be a face she could just talk to.\nIf you\u2019d like to test it for free go to anam.ai"
+        },
+        "title": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Show HN: Real-time avatars that change emotions as you talk"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://anam.ai/"
+        }
+      },
+      "_tags": ["story", "author_benanam", "story_48907348", "show_hn"],
+      "author": "benanam",
+      "children": [
+        48907640, 48907565, 48907533, 48907566, 48907492, 48907487, 48907595, 48907454, 48907388,
+        48907458, 48907416, 49017872, 48907386
+      ],
+      "created_at": "2026-07-14T14:20:53Z",
+      "created_at_i": 1784038853,
+      "num_comments": 10,
+      "objectID": "48907348",
+      "points": 12,
+      "story_id": 48907348,
+      "story_text": "Hey HN, we&#x27;re Ben and Caoimhe, cofounders of Anam. We build interactive avatars and just shipped our latest model, cara-4.\nThis is the first avatar model which can naturally shift emotions and expressions during the conversation; a feature we\u2019re calling \u201cDirector Notes\u201d. The way it works is relatively simple: we have an LLM provide cues such as [laughter], [sad], [warm] interleaved with the speech, which we then condition our animation model with. \nTo test it out, we commissioned a blind study from Mabyduck.com with 200 participants, 1,600 rated live interactions across six criteria. Cara-4 ranked first overall and was preferred head-to-head over each competitor on overall experience, lip-sync, visual quality and \u201cnaturalness\u201d.\nOn latency, measured across a full week of live traffic, end of user-speech to first video frame is ~1.2s median. The avatar model&#x27;s own share is just ~100ms; most of the rest is waiting on STT, LLM, TTS or various forms of buffering (an unsung latency killer).\nHow the model works: cara-4 has a two-stage design, a diffusion transformer turns audio+text into motion embeddings (head pose, gaze, lip shape, expression), and a rendering model applies those to a reference image, so new faces works without finetuning.\nWhy faces at all: they carry emotional signal that text and voice don&#x27;t, and they&#x27;re a more accessible medium. Anam started in part from Ben watching his gran struggle with her iPad and thinking there should be a face she could just talk to.\nIf you\u2019d like to test it for free go to anam.ai",
+      "title": "Show HN: Real-time avatars that change emotions as you talk",
+      "updated_at": "2026-07-24T00:26:35Z",
+      "url": "https://anam.ai/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "gmays"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["transformer"],
+          "value": "Mawlynnong, India, <em>transformed</em> by tourism, bans visitors on Sundays"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://www.bbc.com/travel/article/20260625-why-asias-cleanest-village-bans-tourists-on-sundays"
+        }
+      },
+      "_tags": ["story", "author_gmays", "story_48899672"],
+      "author": "gmays",
+      "children": [
+        48901154, 48900250, 48900174, 48900510, 48900495, 48900115, 48900344, 48900801, 48900606,
+        48900395, 48900543, 48900583, 48901370
+      ],
+      "created_at": "2026-07-13T22:19:16Z",
+      "created_at_i": 1783981156,
+      "num_comments": 105,
+      "objectID": "48899672",
+      "points": 79,
+      "story_id": 48899672,
+      "title": "Mawlynnong, India, transformed by tourism, bans visitors on Sundays",
+      "updated_at": "2026-07-25T15:06:55Z",
+      "url": "https://www.bbc.com/travel/article/20260625-why-asias-cleanest-village-bans-tourists-on-sundays"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "tevlon"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["transformer"],
+          "value": "We Must Act Now \u2013 A Statement on AI's <em>Transformat</em>ion of the Economy"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://www.wemustactnow.ai"
+        }
+      },
+      "_tags": ["story", "author_tevlon", "story_48894640"],
+      "author": "tevlon",
+      "children": [48896390],
+      "created_at": "2026-07-13T15:56:38Z",
+      "created_at_i": 1783958198,
+      "num_comments": 2,
+      "objectID": "48894640",
+      "points": 10,
+      "story_id": 48894640,
+      "title": "We Must Act Now \u2013 A Statement on AI's Transformation of the Economy",
+      "updated_at": "2026-07-15T17:22:09Z",
+      "url": "https://www.wemustactnow.ai"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "alxmrs"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["neural", "network"],
+          "value": "Two weeks ago I was on my babymoon in Corfu, Greece. While in transit, I was overseeing a GSoC intern submit an important feature to my array database library, Xarray-SQL. He added `to_dataset()`, which completed the roundtrip between thinking of array data in a tabular model simultaneously as gridded rasters (the premise of the project is that every Nd array can be mapped to 2d, where orthogonal dims of the Nd array are just primary keys of a tabular representation). We discussed in chat, now that this feature existed, what demos could we make that would prove this data model works?<p>With down time on a warm beach during a heatwave, cool salty water giving me fresh ideas, I had an idea: what if we used Coiled's Geospatial benchmark discussion as a comprehensive overview of geo and climate queries. Are all of these common operations secretly relational, just with the wrong data model? Using Claude Code on the beach, I can confirm that this seemed to be the case: Claude and I publish a benchmark that illustrated how every common operation in geo and climate sciences (at the 100 TB range) were actually secretly relational operations: <a href=\"https://github.com/xqlsystems/xarray-sql/blob/main/docs/geospatial.md\" rel=\"nofollow\">https://github.com/xqlsystems/xarray-sql/blob/main/docs/geos...</a>.<p>Most surprisingly of all, from these examples was that a core operation, regridding, was just a sparse matrix-vector product. Claude had pointed out to me that in this data model, matmul was just a `SUM(val * val) ... JOIN .. GROUP BY`. This has a direct parallel to einsum notation, but can be expressed in (arguably) elegant SQL syntax! This capability seemed to be greater than the sum of it's parts.<p>Back in the cool water of the Ionian, I thought about the implications of this more deeply. I reflected that, all of the Coiled benchmarks did, deep down, was _post process_ simulations that happen in numerical/array code. Why couldn't these physics calculations be push down into the database also, if we could so matmul in SQL? Then it hit me: maybe they could, if in addition to linear algebra, if SQL could do calculus! <a href=\"https://bsky.app/profile/al.merose.com/post/3mpbods7wts2y\" rel=\"nofollow\">https://bsky.app/profile/al.merose.com/post/3mpbods7wts2y</a><p>Later on, I implemented autograd on top of DataFusion's visitor pattern based on JAX's implementation. In my simplified array model, it turns out that we only care about partial differentiation on the diagonal of the Jacobian, meaning that `grad()`, `jvp` and `vjp` are just row-wise operations! I then implemented a common physics calculation from the coiled benchmark that required gradients. From here, I realized if I can autograd in the database, why can't I create a <em>neural</em> <em>network</em>?<p>As I came back home, I created some slides, and presented this work to DataFusion's inaugural showcase: <a href=\"https://www.youtube.com/watch?t=1511&amp;v=5o-4hL8vGPw&amp;feature=youtu.be\" rel=\"nofollow\">https://www.youtube.com/watch?t=1511&amp;v=5o-4hL8vGPw&amp;feature=y...</a> I realized in this synthesis that SQL is not necessarily a toy language for writing <em>neural</em> networks, but in fact, may be highly desirable in the future due to the fundamental principles of relational databases: the logical layer should be independent from the physical layer. If that property holds, and a <em>neural</em> <em>network</em> is a series of relations, could we create a SOTA distributed system for training more easily? For example, if we had one global logical plan of dataflow, could we better distribute work on 1000+ GPUs?<p>Several scientists and engineers and I are working together to explore this weird world of relational arrays at <a href=\"https://xql.systems\" rel=\"nofollow\">https://xql.systems</a> (discord link at the bottom if you want to get involved)."
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["neural", "network"],
+          "value": "Show HN: I implemented a <em>neural</em> <em>network</em> in SQL"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/xqlsystems/xarray-sql/blob/claude/xarray-sql-mnist-demo/benchmarks/nn.py"
+        }
+      },
+      "_tags": ["story", "author_alxmrs", "story_48897975", "show_hn"],
+      "author": "alxmrs",
+      "children": [
+        48902416, 48899974, 48898839, 48900376, 48899520, 48902172, 48899016, 48898538, 48902366,
+        48899865, 48898793, 48903550, 48901357, 48907556, 48954364, 48898472, 48899533, 48899089
+      ],
+      "created_at": "2026-07-13T20:00:10Z",
+      "created_at_i": 1783972810,
+      "num_comments": 20,
+      "objectID": "48897975",
+      "points": 121,
+      "story_id": 48897975,
+      "story_text": "Two weeks ago I was on my babymoon in Corfu, Greece. While in transit, I was overseeing a GSoC intern submit an important feature to my array database library, Xarray-SQL. He added `to_dataset()`, which completed the roundtrip between thinking of array data in a tabular model simultaneously as gridded rasters (the premise of the project is that every Nd array can be mapped to 2d, where orthogonal dims of the Nd array are just primary keys of a tabular representation). We discussed in chat, now that this feature existed, what demos could we make that would prove this data model works?<p>With down time on a warm beach during a heatwave, cool salty water giving me fresh ideas, I had an idea: what if we used Coiled&#x27;s Geospatial benchmark discussion as a comprehensive overview of geo and climate queries. Are all of these common operations secretly relational, just with the wrong data model? Using Claude Code on the beach, I can confirm that this seemed to be the case: Claude and I publish a benchmark that illustrated how every common operation in geo and climate sciences (at the 100 TB range) were actually secretly relational operations: <a href=\"https:&#x2F;&#x2F;github.com&#x2F;xqlsystems&#x2F;xarray-sql&#x2F;blob&#x2F;main&#x2F;docs&#x2F;geospatial.md\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;xqlsystems&#x2F;xarray-sql&#x2F;blob&#x2F;main&#x2F;docs&#x2F;geos...</a>.<p>Most surprisingly of all, from these examples was that a core operation, regridding, was just a sparse matrix-vector product. Claude had pointed out to me that in this data model, matmul was just a `SUM(val * val) ... JOIN .. GROUP BY`. This has a direct parallel to einsum notation, but can be expressed in (arguably) elegant SQL syntax! This capability seemed to be greater than the sum of it&#x27;s parts.<p>Back in the cool water of the Ionian, I thought about the implications of this more deeply. I reflected that, all of the Coiled benchmarks did, deep down, was _post process_ simulations that happen in numerical&#x2F;array code. Why couldn&#x27;t these physics calculations be push down into the database also, if we could so matmul in SQL? Then it hit me: maybe they could, if in addition to linear algebra, if SQL could do calculus! <a href=\"https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;al.merose.com&#x2F;post&#x2F;3mpbods7wts2y\" rel=\"nofollow\">https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;al.merose.com&#x2F;post&#x2F;3mpbods7wts2y</a><p>Later on, I implemented autograd on top of DataFusion&#x27;s visitor pattern based on JAX&#x27;s implementation. In my simplified array model, it turns out that we only care about partial differentiation on the diagonal of the Jacobian, meaning that `grad()`, `jvp` and `vjp` are just row-wise operations! I then implemented a common physics calculation from the coiled benchmark that required gradients. From here, I realized if I can autograd in the database, why can&#x27;t I create a neural network?<p>As I came back home, I created some slides, and presented this work to DataFusion&#x27;s inaugural showcase: <a href=\"https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?t=1511&amp;v=5o-4hL8vGPw&amp;feature=youtu.be\" rel=\"nofollow\">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?t=1511&amp;v=5o-4hL8vGPw&amp;feature=y...</a> I realized in this synthesis that SQL is not necessarily a toy language for writing neural networks, but in fact, may be highly desirable in the future due to the fundamental principles of relational databases: the logical layer should be independent from the physical layer. If that property holds, and a neural network is a series of relations, could we create a SOTA distributed system for training more easily? For example, if we had one global logical plan of dataflow, could we better distribute work on 1000+ GPUs?<p>Several scientists and engineers and I are working together to explore this weird world of relational arrays at <a href=\"https:&#x2F;&#x2F;xql.systems\" rel=\"nofollow\">https:&#x2F;&#x2F;xql.systems</a> (discord link at the bottom if you want to get involved).",
+      "title": "Show HN: I implemented a neural network in SQL",
+      "updated_at": "2026-07-25T07:33:39Z",
+      "url": "https://github.com/xqlsystems/xarray-sql/blob/claude/xarray-sql-mnist-demo/benchmarks/nn.py"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "zhinit"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "partial",
+          "matchedWords": ["model"],
+          "value": "How to Train a Gen AI Kick Drum <em>Model</em> on Your Old Linux Desktop with 6GB VRAM"
+        },
+        "url": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": ["diffusion", "model"],
+          "value": "https://www.zhinit.dev/blog/training-a-kick-drum-<em>diffusion</em>-<em>model</em>"
+        }
+      },
+      "_tags": ["story", "author_zhinit", "story_48935687"],
+      "author": "zhinit",
+      "children": [
+        48937696, 48939273, 48945738, 48947206, 48939144, 48937327, 48938991, 48956088, 48936380,
+        48937629, 48947496, 48938085, 48946504, 48936452, 48954683, 48946111, 48937265, 48936431,
+        48939824, 48938157, 48943888, 48936716, 48945466, 48939023, 48936762
+      ],
+      "created_at": "2026-07-16T15:13:00Z",
+      "created_at_i": 1784214780,
+      "num_comments": 86,
+      "objectID": "48935687",
+      "points": 165,
+      "story_id": 48935687,
+      "title": "How to Train a Gen AI Kick Drum Model on Your Old Linux Desktop with 6GB VRAM",
+      "updated_at": "2026-07-22T14:43:30Z",
+      "url": "https://www.zhinit.dev/blog/training-a-kick-drum-diffusion-model"
+    }
+  ]
+}

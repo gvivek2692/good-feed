@@ -78,9 +78,10 @@ Scaffold (T1) ──→ Schema (T2)
 
 ### Phase 1: Foundation
 
-- [ ] **Task 1:** Scaffold Next.js + TypeScript + Tailwind, tooling, git init
-- [ ] **Task 2:** Prisma schema and first migration
-- [ ] **Task 3:** Source adapters (arXiv, HN) + recorded fixtures
+- [x] **Task 1:** Scaffold Next.js + TypeScript + Tailwind, tooling, git init
+- [x] **Task 2:** Prisma schema and first migration
+- [x] **Task 3:** Source adapters (arXiv, HN) + recorded fixtures
+- [ ] **Task 3b:** HuggingFace Papers adapter + 14-day fixtures *(added after ADR 001)*
 
 **Checkpoint A:** Repo builds, tests run, migrations apply, fixtures captured.
 
@@ -127,7 +128,9 @@ populates a rankable feed in the database.
 
 | Risk | Impact | Mitigation |
 |---|---|---|
+| **Cross-cluster ordering is arbitrary** | **High** — the two clusters have no commensurable units | Open problem named in the spec with three candidate approaches. Must be decided before T9 and judged at Checkpoint B. Discovered by measurement (ADR 001), not left to surface in production. |
 | **Signal ranking produces arbitrary-feeling order** | **High** — kills the product thesis | Checkpoint B is an explicit human review of real ranked output before any UI investment. Failure here means phase-2 reranking moves into v1 scope, not that we ship and hope. |
+| **HF is a curated funnel, not comprehensive** | Med | ~17 papers/day vs arXiv's ~143. HF absence is *not* evidence of unimportance; never treat it as a negative signal. |
 | **Takes assert things the source doesn't claim** | **High** — kills credibility | Claim validation (T7) is built and tested before the UI can render a take. Enforced in code, not prompt. |
 | Gemini rate limits throttle ingest | Med | Backoff + resumable batches from T5/T10. Affects cadence, not architecture. |
 | Vercel execution limit on full batch | Med | Chunked resumable runs (T10). Worst case: ingestion moves to a separate worker. |

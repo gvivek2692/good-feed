@@ -47,8 +47,13 @@ wrongly claiming something "supersedes X" is worse than no summary at all.
 | Testing | Vitest (unit/integration), Playwright (e2e) | Standard, fast |
 | Hosting | Vercel + Neon Postgres | Cheapest path to a real URL |
 
-**Sources v1:** arXiv API, Hacker News (Algolia API). Both free, no scraping, no auth.
-X/Twitter and individual blogs are explicitly deferred — X costs money, blogs need per-site parsers.
+**Sources v1:** arXiv API, HuggingFace Papers (`/api/daily_papers`), Hacker News (Algolia API).
+All free, no scraping, no auth. X/Twitter and individual blogs are explicitly deferred — X costs
+money, blogs need per-site parsers. Papers with Code was evaluated and is **dead** — its API
+redirects to HuggingFace, which absorbed it.
+
+HuggingFace Papers was added after measurement showed arXiv and HN share **zero** items in common.
+See [ADR 001](../adr/001-source-selection-and-cross-source-joins.md).
 
 **LLM access:** Google's `@google/genai` SDK. The key is read from `GEMINI_API_KEY` in the
 environment and must never appear in source, spec, or committed config. `.env*` is gitignored;
@@ -98,10 +103,10 @@ src/
       cron/ingest/      → Scheduled ingestion entrypoint
   components/           → React components
   lib/
-    sources/            → One adapter per source (arxiv.ts, hackernews.ts)
+    sources/            → One adapter per source (arxiv.ts, huggingface.ts, hackernews.ts)
     pipeline/           → Ingest → dedupe → score → summarize stages
     ranking/            → Signal scoring; comparative reranker (phase 2)
-    llm/                → Claude client, prompts, response schemas
+    llm/                → Gemini client, prompts, response schemas
     db/                 → Prisma client, queries
 tests/                  → Unit and integration tests (mirrors src/)
 e2e/                    → Playwright end-to-end tests
@@ -118,7 +123,7 @@ prisma/                 → schema.prisma, migrations
 ## Data Model (core entities)
 
 ```
-Source        id, kind (arxiv|hackernews), externalId, url, rawPayload, fetchedAt
+Source        id, kind (arxiv|huggingface|hackernews), externalId, url, rawPayload, fetchedAt
 Item          id, sourceId, title, authors, publishedAt, canonicalUrl,
               summary, whyItMatters, embedding(vector), importanceScore,
               signalSnapshot(jsonb), clusterId
@@ -130,8 +135,12 @@ UserTopic     userId, topicId
 Interaction   userId, itemId, kind (seen|dismissed|opened|deepened), at
 ```
 
-`clusterId` groups items that cover the same underlying development (a paper + its HN thread +
-its GitHub repo) — cross-source coverage count is a ranking signal and prevents duplicate feed slots.
+`clusterId` groups items covering the same underlying development — cross-source coverage count is a
+ranking signal and prevents duplicate feed slots.
+
+**Clustering only occurs within the research cluster** (arXiv ↔ HuggingFace Papers, joined on arXiv
+ID: 91 pairs / 37% measured). HN items never cluster with papers — measured zero pairs against both
+arXiv and HF corpora. See [ADR 001](../adr/001-source-selection-and-cross-source-joins.md).
 
 ---
 
@@ -144,23 +153,60 @@ It gets built in two phases, and **phase 1 ships alone**.
 
 Ordering is computed from observable evidence only. No LLM involvement in the ordering.
 
+Signals are **per-source**, not universal. Measurement established that the corpus forms two
+clusters that share no items (ADR 001), so a single formula would compare quantities that are not
+commensurable.
+
+**Research cluster** — arXiv + HuggingFace Papers:
+
 | Signal | Source | Notes |
 |---|---|---|
-| Cross-source coverage | Count of distinct sources in cluster | Strongest signal available |
-| HN points + comment velocity | HN API | Normalized against trailing 30-day distribution |
-| GitHub stars velocity | GH API, when repo linked | Delta, not absolute |
-| arXiv listing prominence | arXiv | Weak; used as tiebreak |
-| Author prior prominence | Derived from historical items | Deferred if it gets complicated |
+| Cross-source coverage | Distinct sources in cluster | Strongest signal *within this cluster* (37% of HF papers join to arXiv) |
+| HF upvotes | HF API | Present on 100% of HF papers; range 1–298 |
+| GitHub stars | HF API | Present on 56% of HF papers; range 0–1262 |
+| HF discussion comments | HF API | Weaker than upvotes |
+| arXiv category breadth | arXiv | Weak; used as tiebreak |
 | Recency decay | Computed | Multiplier, not a primary term |
+
+**Discussion cluster** — Hacker News:
+
+| Signal | Source | Notes |
+|---|---|---|
+| Points velocity | HN API | Normalized against trailing 30-day distribution |
+| Comment velocity | HN API | Engagement distinct from approval |
+| Absolute points | HN API | Floor filter at 10 |
+| Recency decay | Computed | Multiplier, not a primary term |
+
+HN items **never** carry a cross-source coverage signal. Any formula weighting that signal heavily
+would systematically bury HN regardless of merit.
 
 Every score is stored in `signalSnapshot` so any ordering can be explained after the fact.
 **Requirement: the feed can always answer "why is this item here?" with numbers.**
 
+#### Cross-cluster comparability — open problem
+
+A 200-upvote paper and a 500-point HN story are not comparable in raw units, and no principled
+conversion exists. Candidate approaches, none yet chosen:
+
+1. **Percentile normalization** — score each item against its own source's trailing distribution,
+   then compare percentiles. Preferred starting point: it is signal-only and needs no hand-tuned
+   weights.
+2. **Fixed-ratio interleaving** — rank each cluster separately, then interleave (e.g. 2 research : 1
+   discussion). Honest, but the ratio is an arbitrary editorial choice.
+3. **Separate feed sections** — decline to compare, present the two clusters distinctly.
+
+**This must be decided before Task 9 and verified at Checkpoint B.** Whichever is chosen, the
+`signalSnapshot` must record which cluster an item was ranked in and its within-cluster position.
+
 ### Phase 2 — Comparative reranking (deferred, not v1)
 
-Signals produce a shortlist; Claude orders the shortlist *comparatively* (pairwise/listwise within a
+Signals produce a shortlist; Gemini orders the shortlist *comparatively* (pairwise/listwise within a
 batch), never by absolute score. Absolute 1–10 scoring is explicitly rejected: it produces confident,
 unfalsifiable numbers that cluster at 6–8 and make ranking arbitrary while looking principled.
+
+Comparative reranking is also the natural answer to cross-cluster comparability, since a model can
+compare two items directly without needing commensurable units. That is a reason to expect phase 2
+to be needed — not a reason to pull it into v1 before phase 1 has shown where it fails.
 
 Phase 2 only begins once phase 1 has run long enough to show where it fails.
 

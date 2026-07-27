@@ -61,10 +61,37 @@ and normalizing to a common shape behind a Zod schema. Capture a real response f
 
 ---
 
+---
+
+### Task 3b: HuggingFace Papers adapter *(added after ADR 001)*
+
+**Description:** Adapter for `https://huggingface.co/api/daily_papers`, normalizing to
+`NormalizedItem` like the other two. This source exists to supply the cross-source join that arXiv
+and HN cannot form with each other — see
+[ADR 001](../docs/adr/001-source-selection-and-cross-source-joins.md).
+
+Each entry carries `paper.id` (the arXiv ID), `githubRepo`, `githubStars`, `upvotes`, and
+`numComments` — the arXiv ID is the join key, the rest are ranking signals.
+
+**Acceptance criteria:**
+- [ ] Returns `Result<NormalizedItem[], SourceError>`; malformed entries dropped, not thrown
+- [ ] `signals` carries `upvotes`, `githubStars`, `comments`, `repoUrl`, `arxivId`
+- [ ] Paginates by date (`?date=YYYY-MM-DD`), since the API is day-scoped
+- [ ] 14-day fixture committed (~245 entries measured)
+- [ ] Test asserts the arXiv-ID join against the arXiv fixture finds pairs
+
+**Verification:** `npm test -- huggingface`
+
+**Dependencies:** T3 · **Scope:** M
+
+**Note:** Papers with Code is dead — `/api/v1/papers/` 302s to HuggingFace. Do not add it.
+
+---
+
 ### ✅ Checkpoint A
 - [ ] Build, tests, lint, typecheck all green
 - [ ] Migration applies to a fresh DB
-- [ ] Fixtures captured and committed
+- [ ] Fixtures captured and committed for all three sources
 - [ ] Human review before Phase 2
 
 ---
@@ -73,24 +100,31 @@ and normalizing to a common shape behind a Zod schema. Capture a real response f
 
 > Built and tested **before any UI**. If ranking or grounding fails, it fails cheaply here.
 
-### Task 4: Clustering and dedupe
+### Task 4: Clustering and dedupe *(revised after ADR 001)*
 
-**Description:** Group items covering the same underlying development (paper + HN thread + repo) into
-a `clusterId`. Start with lexical matching — normalized title similarity, shared canonical URLs,
-arXiv ID extracted from HN links. Measure precision against hand-labeled fixtures.
+**Description:** Group items covering the same underlying development into a `clusterId`.
+
+**Clustering happens only within the research cluster** (arXiv ↔ HuggingFace Papers), joined on
+**arXiv ID** — the measured join is 91 pairs / 37% of HF papers. HN items do not cluster with papers:
+measured zero pairs against both the arXiv and HF corpora, via three independent strategies.
+
+The original criterion "an arXiv paper and its HN submission land in one cluster" was **removed as
+unachievable** — see [ADR 001](../docs/adr/001-source-selection-and-cross-source-joins.md).
 
 **Acceptance criteria:**
-- [ ] An arXiv paper and its HN submission land in one cluster
+- [ ] An arXiv paper and its HuggingFace Papers entry land in one cluster, joined on arXiv ID
+- [ ] Version suffixes normalize — `2607.22534v1` and `2607.22534v2` are the same paper
 - [ ] Distinct papers by the same authors stay separate
-- [ ] Hand-labeled fixture set (≥20 known pairs) with asserted cluster assignments
+- [ ] HN items are never merged into a research cluster
+- [ ] Asserted against the ≥91 real pairs present in the committed fixtures
 - [ ] Precision favored over recall — a bad merge hides an item, a missed dupe only costs a slot
 
 **Verification:** `npm test -- clustering`
 
-**Dependencies:** T3 · **Scope:** M
+**Dependencies:** T3b · **Scope:** M
 
-**Note:** If lexical precision is poor, this gains a dependency on T11 (embeddings) and both move
-earlier. Decide by measurement.
+**Note:** The arXiv-ID join is exact, so embeddings are not required for clustering. Title-similarity
+fallback is optional and should only be added if the exact join proves insufficient.
 
 ---
 
@@ -171,20 +205,30 @@ to `ItemTopic`. Multi-label — an item may carry several topics.
 
 ---
 
-### Task 9: Signal-based ranking ⚠️ product-critical
+### Task 9: Signal-based ranking ⚠️ product-critical *(revised after ADR 001)*
 
-**Description:** Compute `importanceScore` from observable signals only — cross-source coverage, HN
-points/comment velocity normalized against a trailing 30-day distribution, GitHub stars delta,
-recency decay with a 14-day half-life. Persist the full `signalSnapshot` behind every score.
-**No LLM involvement.**
+**Description:** Compute `importanceScore` from observable signals only. **No LLM involvement.**
+
+Signals are **per-cluster**, since the two clusters share no items and their units are not
+commensurable:
+
+- **Research** (arXiv + HF): cross-source coverage, HF upvotes, GitHub stars, HF comments,
+  category breadth
+- **Discussion** (HN): points velocity, comment velocity, absolute points
+
+**Decide cross-cluster comparability before writing the formula.** The spec lists three candidates;
+percentile normalization against each source's own trailing distribution is the preferred starting
+point because it needs no hand-tuned weights. Whichever is chosen, record the decision in an ADR.
 
 **Acceptance criteria:**
 - [ ] Score is a pure function of stored signals — same input, same output
-- [ ] `signalSnapshot` records every input and its weight
+- [ ] `signalSnapshot` records every input, its weight, **and which cluster the item ranked in**
 - [ ] Fixture items produce an asserted, stable ordering
-- [ ] An item covered by three sources outranks an equivalent item covered by one
-- [ ] Recency is a multiplier, never a primary term — a two-week-old high-signal item can outrank
-      today's low-signal item
+- [ ] Within the research cluster, an item covered by two sources outranks an equivalent item
+      covered by one
+- [ ] HN items are not systematically buried by their structural inability to carry a cross-source
+      coverage signal — verified by asserting a high-signal HN item outranks a low-signal paper
+- [ ] Recency is a multiplier, never a primary term
 - [ ] Cutoff is a tunable constant, not a hardcoded item count
 
 **Verification:** `npm test -- ranking`
@@ -197,8 +241,10 @@ recency decay with a 14-day half-life. Persist the full `signalSnapshot` behind 
 - [ ] `npm test` green, ranking and claim suites included
 - [ ] Run ranking over the full fixture corpus and print the top 25 with signal breakdowns
 - [ ] **Human reads that ordering and judges whether it is defensible**
+- [ ] **Judge cross-cluster interleaving specifically** — do papers and HN stories sit sensibly in
+      one list, or does one cluster dominate for structural rather than merit reasons?
 - [ ] If the ordering feels arbitrary: phase-2 comparative reranking enters v1 scope. Do not proceed
-      to UI and hope.
+      to UI and hope. Comparative reranking is also the natural fix for cross-cluster comparability.
 
 ---
 

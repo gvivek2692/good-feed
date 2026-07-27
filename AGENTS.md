@@ -107,6 +107,26 @@ Established by live calls during Task 3:
 - Fixtures live in `tests/fixtures/`. The unit suite runs entirely offline against them; live checks
   go in `scripts/check-sources.mts`, which is not part of `npm test`.
 
+## Gemini API behaviors
+
+Verified by live call on 2026-07-27 during Task 5. Model ids are pinned in `src/lib/llm/models.ts`.
+
+- **Gemini 3.x flash cannot disable thinking.** `thinkingBudget: 0` is rejected as an invalid
+  argument. Measured: an unconstrained 5-token prompt spent **263** thinking tokens; at
+  `thinkingBudget: 128` it spends ~54. Always set the budget explicitly for per-item pipeline calls —
+  at feed volume this is the dominant cost.
+- **`thinkingLevel: "high"` exists** but exhausted the free-tier quota immediately. Use
+  `thinkingBudget` instead.
+- **Free-tier quota on `gemini-3.6-flash` is easily exhausted** by a handful of calls.
+  `gemini-3.5-flash-lite` has more headroom, which is why live check scripts use it.
+- **Structured output works** via `responseMimeType: "application/json"` + `responseSchema`, and
+  combines with `thinkingConfig`. Validate with Zod anyway — the API constraint is not a guarantee
+  against truncated or empty responses.
+- **`gemini-embedding-001` honours `outputDimensionality: 1536`**, down from its 3072 default.
+  Required: pgvector's HNSW/IVFFlat indexes cap at 2000 dimensions.
+- **`*-latest` aliases are deliberately unused.** A model changing underneath the pipeline would
+  silently change summaries and takes, which the trust constraint cannot tolerate.
+
 ## Verified environment facts
 
 Confirmed by live API call on 2026-07-27, not assumed:

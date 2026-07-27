@@ -183,20 +183,28 @@ would systematically bury HN regardless of merit.
 Every score is stored in `signalSnapshot` so any ordering can be explained after the fact.
 **Requirement: the feed can always answer "why is this item here?" with numbers.**
 
-#### Cross-cluster comparability — open problem
+#### Cross-cluster comparability — decided
 
-A 200-upvote paper and a 500-point HN story are not comparable in raw units, and no principled
-conversion exists. Candidate approaches, none yet chosen:
+A 200-upvote paper and a 500-point HN story are not comparable in raw units. Resolved in
+[ADR 002](../adr/002-cross-cluster-ranking.md): **percentile normalization for ordering, plus an
+absolute floor for inclusion.**
 
-1. **Percentile normalization** — score each item against its own source's trailing distribution,
-   then compare percentiles. Preferred starting point: it is signal-only and needs no hand-tuned
-   weights.
-2. **Fixed-ratio interleaving** — rank each cluster separately, then interleave (e.g. 2 research : 1
-   discussion). Honest, but the ratio is an arbitrary editorial choice.
-3. **Separate feed sections** — decline to compare, present the two clusters distinctly.
+- **Ordering** — each item's signals are converted to percentile ranks against that source's own
+  trailing 30-day distribution, per signal. No cross-source weights are invented.
+- **Inclusion** — an item must *also* clear a raw absolute minimum. Percentiles discard magnitude,
+  so on a quiet week the best-of-a-weak-field would otherwise be promoted. The floor is what makes
+  "nothing important happened this week" representable, and is what enforces the anti-padding rule.
 
-**This must be decided before Task 9 and verified at Checkpoint B.** Whichever is chosen, the
-`signalSnapshot` must record which cluster an item was ranked in and its within-cluster position.
+**Cold start:** no trailing history exists at launch. v1 seeds the distribution from the committed
+14-day fixture corpus and replaces it with real history as it accumulates. `signalSnapshot` records
+which distribution was used, so early rankings are not mistaken for history-calibrated ones.
+
+`signalSnapshot` must record: raw signal values, the percentile each mapped to, the distribution
+used (seeded vs. historical), the cluster the item ranked in, and its within-cluster position.
+
+Verified at Checkpoint B. If the interleaved ordering still reads as arbitrary, that is evidence for
+pulling phase-2 comparative reranking into v1 — a model comparing items directly does not need
+commensurable units.
 
 ### Phase 2 — Comparative reranking (deferred, not v1)
 

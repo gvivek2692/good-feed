@@ -216,18 +216,24 @@ commensurable:
   category breadth
 - **Discussion** (HN): points velocity, comment velocity, absolute points
 
-**Decide cross-cluster comparability before writing the formula.** The spec lists three candidates;
-percentile normalization against each source's own trailing distribution is the preferred starting
-point because it needs no hand-tuned weights. Whichever is chosen, record the decision in an ADR.
+**Cross-cluster comparability is decided** — [ADR 002](../docs/adr/002-cross-cluster-ranking.md):
+percentile normalization against each source's own trailing 30-day distribution for *ordering*, plus
+an absolute floor for *inclusion*.
 
 **Acceptance criteria:**
 - [ ] Score is a pure function of stored signals — same input, same output
-- [ ] `signalSnapshot` records every input, its weight, **and which cluster the item ranked in**
+- [ ] Percentiles are computed **per signal**, not per item — points and comment velocity have
+      different distributions
+- [ ] `signalSnapshot` records raw values, each percentile, the distribution used (seeded vs.
+      historical), the cluster, and within-cluster position
 - [ ] Fixture items produce an asserted, stable ordering
 - [ ] Within the research cluster, an item covered by two sources outranks an equivalent item
       covered by one
 - [ ] HN items are not systematically buried by their structural inability to carry a cross-source
       coverage signal — verified by asserting a high-signal HN item outranks a low-signal paper
+- [ ] **A weak week does not promote weak items** — assert that a corpus where nothing clears the
+      absolute floor yields an empty feed, not a feed of 99th-percentile noise
+- [ ] Cold-start path works with the seeded fixture-derived distribution and is labelled as such
 - [ ] Recency is a multiplier, never a primary term
 - [ ] Cutoff is a tunable constant, not a hardcoded item count
 

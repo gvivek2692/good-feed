@@ -231,23 +231,27 @@ percentile normalization against each source's own trailing 30-day distribution 
 an absolute floor for *inclusion*.
 
 **Acceptance criteria:**
-- [ ] Score is a pure function of stored signals — same input, same output
-- [ ] Percentiles are computed **per signal**, not per item — points and comment velocity have
+- [x] Score is a pure function of stored signals — same input, same output
+- [x] Percentiles are computed **per signal**, not per item — points and comment velocity have
       different distributions
-- [ ] `signalSnapshot` records raw values, each percentile, the distribution used (seeded vs.
+- [x] `signalSnapshot` records raw values, each percentile, the distribution used (seeded vs.
       historical), the cluster, and within-cluster position
-- [ ] Fixture items produce an asserted, stable ordering
-- [ ] Within the research cluster, an item covered by two sources outranks an equivalent item
+- [x] Fixture items produce an asserted, stable ordering
+- [x] Within the research cluster, an item covered by two sources outranks an equivalent item
       covered by one
-- [ ] HN items are not systematically buried by their structural inability to carry a cross-source
+- [x] HN items are not systematically buried by their structural inability to carry a cross-source
       coverage signal — verified by asserting a high-signal HN item outranks a low-signal paper
-- [ ] **A weak week does not promote weak items** — assert that a corpus where nothing clears the
+- [x] **A weak week does not promote weak items** — assert that a corpus where nothing clears the
       absolute floor yields an empty feed, not a feed of 99th-percentile noise
-- [ ] Cold-start path works with the seeded fixture-derived distribution and is labelled as such
-- [ ] Recency is a multiplier, never a primary term
-- [ ] Cutoff is a tunable constant, not a hardcoded item count
+- [x] Cold-start path works with the seeded fixture-derived distribution and is labelled as such
+- [x] Recency is a multiplier, never a primary term
+- [x] Cutoff is a tunable constant, not a hardcoded item count
 
 **Verification:** `npm test -- ranking`
+
+**Status:** Done — 27 tests. Full-corpus run found absolute recency decay dominating cross-cluster
+ordering (18/25 top slots to HN); fixed by normalizing recency against each cluster's median age
+(now 12 papers / 13 HN). See ADR 002 amendment.
 
 **Dependencies:** T4 · **Scope:** M
 

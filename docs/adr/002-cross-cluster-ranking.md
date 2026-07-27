@@ -59,6 +59,38 @@ percentile threshold and a raw minimum to reach the feed.
   to, which distribution was used (seeded vs. historical), the cluster the item ranked in, and its
   within-cluster position.
 
+### Amendment (2026-07-27, Task 9): recency is normalized per cluster too
+
+Implementing this ADR surfaced a case it did not anticipate. Percentile-normalizing the *signals*
+while applying **absolute** exponential decay for recency reintroduced exactly the incomparability
+the ADR exists to remove.
+
+Measured over the full 609-cluster fixture corpus:
+
+| | median age | median recency multiplier |
+|---|---|---|
+| Discussion (HN) | 0.9 days | 0.86 |
+| Research (papers) | 3.6 days | 0.40 |
+
+The 2.1× gap is an artifact of how the sources work — Algolia returns what is trending *now*, while
+arXiv returns a 14-day window — not evidence that papers matter less. It put **18 of the top 25 in
+one cluster**, with HN holding positions 1–14 unbroken. An HN story with the corpus maximum (1023
+points, p100) ranked *below* three papers, which shows the ordering was driven by age rather than
+signal.
+
+Recency is therefore measured against **the cluster's own median age**, so it expresses "fresh for
+its kind" rather than "recently published". The multiplier is clamped to [0.6, 1.4], keeping it a
+multiplier rather than a primary term. Within-cluster ordering is unchanged by this.
+
+After the change: **12 papers / 13 HN in the top 25**, with HN at positions 1, 2, 3, 4, 6, 7, 9, 10,
+12, 13, 15, 16, 25.
+
+**Still unresolved, for Checkpoint B:** HN items carry 4 signals each while papers average 1.96 of
+3 (only 128/245 HuggingFace papers report GitHub stars, and arXiv-only items report neither upvotes
+nor stars). An HN score is a robust four-signal average; many paper scores rest on a single noisy
+one. This was left in place rather than fixed alongside recency, so the effect of each change stays
+separable.
+
 ## Consequences
 
 **Positive**

@@ -12,9 +12,12 @@ const SOURCE =
   "We propose FlashLite, which reduces memory use by 40% versus FlashAttention-2. " +
   "Training converges in 3 hours on a single node.";
 
-function validation(overrides: Partial<Parameters<typeof validateClaims>[0]> = {}): ClaimValidation {
+function validation(
+  overrides: Partial<Parameters<typeof validateClaims>[0]> = {},
+): ClaimValidation {
   return validateClaims({
-    whyItMatters: "It cuts memory use by 40% versus FlashAttention-2, which matters at long context.",
+    whyItMatters:
+      "It cuts memory use by 40% versus FlashAttention-2, which matters at long context.",
     claims: [
       {
         text: "cuts memory use by 40% versus FlashAttention-2",
@@ -41,7 +44,8 @@ describe("isQuoteGrounded", () => {
    * is genuinely grounded.
    */
   it("matches across a line break in the source", () => {
-    const wrapped = "We propose FlashLite, which reduces memory\nuse by 40% versus FlashAttention-2.";
+    const wrapped =
+      "We propose FlashLite, which reduces memory\nuse by 40% versus FlashAttention-2.";
     expect(isQuoteGrounded("reduces memory use by 40%", wrapped)).toBe(true);
   });
 
@@ -58,7 +62,9 @@ describe("isQuoteGrounded", () => {
   });
 
   it("rejects a quote whose numbers were altered", () => {
-    expect(isQuoteGrounded("reduces memory use by 60% versus FlashAttention-2", SOURCE)).toBe(false);
+    expect(isQuoteGrounded("reduces memory use by 60% versus FlashAttention-2", SOURCE)).toBe(
+      false,
+    );
   });
 
   /**
@@ -74,9 +80,9 @@ describe("isQuoteGrounded", () => {
 
   it("matches across LaTeX formatting commands in the source", () => {
     const latex = "\\textsc{DataFlow-Harness} achieves a 93.3\\% observed end-to-end pass rate.";
-    expect(isQuoteGrounded("DataFlow-Harness achieves a 93.3% observed end-to-end pass rate", latex)).toBe(
-      true,
-    );
+    expect(
+      isQuoteGrounded("DataFlow-Harness achieves a 93.3% observed end-to-end pass rate", latex),
+    ).toBe(true);
   });
 
   it("still rejects a wording change in LaTeX-escaped source", () => {
@@ -95,9 +101,9 @@ describe("isQuoteGrounded", () => {
 
 describe("findComparativeSentences", () => {
   it("flags an explicit comparison", () => {
-    expect(findComparativeSentences("It outperforms FlashAttention-2 on long context.")).toHaveLength(
-      1,
-    );
+    expect(
+      findComparativeSentences("It outperforms FlashAttention-2 on long context."),
+    ).toHaveLength(1);
   });
 
   it("flags superlatives", () => {
@@ -180,9 +186,7 @@ describe("validateClaims", () => {
   it("records a reason for every rejection, for the run log", () => {
     const result = validateClaims({
       whyItMatters: "It outperforms every prior method.",
-      claims: [
-        { text: "outperforms every prior method", quotedFrom: "not in the source at all" },
-      ],
+      claims: [{ text: "outperforms every prior method", quotedFrom: "not in the source at all" }],
       quotableSource: SOURCE,
     });
 

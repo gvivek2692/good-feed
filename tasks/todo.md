@@ -257,20 +257,26 @@ ordering (18/25 top slots to HN); fixed by normalizing recency against each clus
 
 ---
 
-### ⚠️ Checkpoint B — GO/NO-GO ON THE PRODUCT THESIS
-- [ ] `npm test` green, ranking and claim suites included
-- [ ] Run ranking over the full fixture corpus and print the top 25 with signal breakdowns
-- [ ] **Human reads that ordering and judges whether it is defensible**
-- [ ] **Judge cross-cluster interleaving specifically** — do papers and HN stories sit sensibly in
-      one list, or does one cluster dominate for structural rather than merit reasons?
-- [ ] If the ordering feels arbitrary: phase-2 comparative reranking enters v1 scope. Do not proceed
-      to UI and hope. Comparative reranking is also the natural fix for cross-cluster comparability.
+### ⚠️ Checkpoint B — GO/NO-GO ON THE PRODUCT THESIS — **GO** (2026-07-27)
+- [x] `npm test` green, ranking and claim suites included — 161 tests
+- [x] Run ranking over the full fixture corpus and print the top 25 with signal breakdowns —
+      `npx tsx scripts/check-ranking.mts`, 609 clusters
+- [x] **Human reads that ordering and judges whether it is defensible** — judged defensible
+- [x] **Judge cross-cluster interleaving specifically** — 12 papers / 13 HN in the top 25, HN at
+      positions 1,2,3,4,6,7,9,10,12,13,15,16,25. The first run failed this (7/18, HN holding 1-14
+      unbroken); cause was absolute recency decay encoding a 2.1x penalty on papers, fixed by
+      normalizing recency per cluster. See the ADR 002 amendment.
+- [x] Phase-2 comparative reranking **stays deferred** — the ordering did not read as arbitrary.
+
+**Carried forward as the open risk:** HN items carry 4 signals while papers average 1.96 of 3, so
+an HN score is a robust average where many paper scores rest on one noisy value. Revisit at
+Checkpoint C against live data, where the fixture's collection bias no longer applies.
 
 ---
 
 ## Phase 3: Pipeline
 
-### Task 10: Resumable pipeline runner
+### Task 10: Resumable pipeline runner *(split — L, per the task's own guidance)*
 
 **Description:** Orchestrate fetch → dedupe → cluster → summarize → validate → classify → rank →
 persist. Idempotent and resumable: per-item stage state, so a run interrupted mid-batch resumes
@@ -278,15 +284,29 @@ without duplicating work. Every run writes a structured log including *why* each
 dropped.
 
 **Acceptance criteria:**
-- [ ] Re-running over the same window creates no duplicate items
-- [ ] A run killed mid-batch resumes and completes on the next invocation
-- [ ] Run log records counts fetched/clustered/summarized/published/dropped
-- [ ] Every drop carries a reason (dupe, validation failure, below cutoff)
-- [ ] One failing item does not abort the batch
+- [x] Re-running over the same window creates no duplicate items — *10a*
+- [ ] A run killed mid-batch resumes and completes on the next invocation — *10b*
+- [ ] Run log records counts fetched/clustered/summarized/published/dropped — *10b*
+- [ ] Every drop carries a reason (dupe, validation failure, below cutoff) — *10b*
+- [ ] One failing item does not abort the batch — *10b*
 
 **Verification:** `npm test -- pipeline`; integration test kills a run mid-batch and resumes it.
 
 **Dependencies:** T7, T8, T9 · **Scope:** L — *split if it exceeds 5 files*
+
+#### Task 10a: Idempotent persistence ✅ done
+
+Maps a scored cluster into Source/Item/Claim/ItemTopic in one transaction, keyed on the natural
+`(kind, externalId)` unique constraint. Claims and topics are replaced wholesale on re-persist, so a
+stale claim can never cite an assertion the current take no longer makes.
+
+`src/lib/pipeline/persist.ts` · 10 tests against real Postgres · verified idempotent over 3
+consecutive runs (counts flat at 2 sources / 1 item / 1 claim / 1 topic).
+
+#### Task 10b: Run orchestration and resumability — next
+
+Stage sequencing, `PipelineRun`/`DroppedItem` logging, per-item error isolation, and mid-batch
+resume.
 
 ---
 

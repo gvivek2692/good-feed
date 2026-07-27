@@ -42,12 +42,12 @@ function main(): void {
   const hf = parseDailyPapers(
     JSON.parse(readFileSync("tests/fixtures/hf-daily-papers.json", "utf-8")),
   );
-  const hn = parseSearchResponse(JSON.parse(readFileSync("tests/fixtures/hn-recent.json", "utf-8")));
+  const hn = parseSearchResponse(
+    JSON.parse(readFileSync("tests/fixtures/hn-recent.json", "utf-8")),
+  );
   if (!arxiv.ok || !hf.ok || !hn.ok) throw new Error("fixtures failed to parse");
 
-  const clusters = clusterItems(
-    dedupeWithinSource([...arxiv.value, ...hf.value, ...hn.value]),
-  );
+  const clusters = clusterItems(dedupeWithinSource([...arxiv.value, ...hf.value, ...hn.value]));
 
   // Fixtures are dated; rank as of the newest item so recency is meaningful.
   const now = new Date(Math.max(...clusters.map((c) => c.primary.publishedAt.getTime())));

@@ -43,20 +43,25 @@ export function isTopicSlug(value: string): value is TopicSlug {
  * agents. Stating the boundary is cheaper than correcting the drift later.
  */
 export const TOPIC_DESCRIPTIONS: Record<TopicSlug, string> = {
-  "llm-training": "pretraining, fine-tuning, RLHF/RLAIF, optimizers, scaling laws, training recipes",
+  "llm-training":
+    "pretraining, fine-tuning, RLHF/RLAIF, optimizers, scaling laws, training recipes",
   "inference-optimization":
     "serving throughput and latency, quantization, KV-cache, speculative decoding, distillation for speed",
   agents: "tool-using and autonomous systems, planning, multi-agent orchestration, computer use",
   rag: "retrieval-augmented generation, embeddings, vector search, context construction",
-  evaluation: "benchmarks, evals, leaderboards, measurement methodology, red-teaming for capability",
+  evaluation:
+    "benchmarks, evals, leaderboards, measurement methodology, red-teaming for capability",
   multimodal: "models spanning two or more of text, image, video, audio",
   reasoning: "chain-of-thought, math and code reasoning, test-time compute, verification",
   "alignment-safety": "alignment, interpretability, jailbreaks, misuse, policy, model welfare",
-  "hardware-systems": "GPUs and accelerators, kernels, distributed training systems, memory and networking",
+  "hardware-systems":
+    "GPUs and accelerators, kernels, distributed training systems, memory and networking",
   "open-models": "open-weight model releases and their licenses",
   robotics: "embodied agents, manipulation, navigation, vision-language-action models, simulation",
   "speech-audio": "ASR, TTS, music and audio generation, speech models",
-  vision: "image and video understanding or generation, segmentation, detection, diffusion for images",
+  vision:
+    "image and video understanding or generation, segmentation, detection, diffusion for images",
   "data-curation": "datasets, synthetic data, filtering, deduplication, data quality",
-  "tooling-infra": "developer frameworks, libraries, orchestration, observability, deployment platforms",
+  "tooling-infra":
+    "developer frameworks, libraries, orchestration, observability, deployment platforms",
 };

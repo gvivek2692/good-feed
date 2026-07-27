@@ -187,9 +187,7 @@ describe("scoreCluster", () => {
   /** Recency is a multiplier, never a primary term. */
   it("prefers the newer of two otherwise identical items", () => {
     const fresh = cluster([hf(40)]);
-    const stale = cluster([
-      hf(40, {}),
-    ]);
+    const stale = cluster([hf(40, {})]);
     stale.items[0] = { ...stale.items[0], publishedAt: new Date("2026-07-01T12:00:00Z") };
     stale.primary = stale.items[0];
 
@@ -240,9 +238,7 @@ describe("scoreCluster", () => {
   });
 
   it("keeps the recency multiplier bounded so it can never dominate the score", () => {
-    const ancient = cluster([
-      { ...hf(40), publishedAt: new Date("2020-01-01T00:00:00Z") },
-    ]);
+    const ancient = cluster([{ ...hf(40), publishedAt: new Date("2020-01-01T00:00:00Z") }]);
     const { snapshot } = scoreCluster(ancient, distributions, NOW);
 
     expect(snapshot.recencyMultiplier).toBeGreaterThanOrEqual(0.6);
@@ -268,12 +264,7 @@ describe("rankClusters", () => {
   });
 
   it("interleaves both clusters rather than emitting one and then the other", () => {
-    const input = [
-      cluster([hf(250)]),
-      cluster([hn(900)]),
-      cluster([hf(150)]),
-      cluster([hn(500)]),
-    ];
+    const input = [cluster([hf(250)]), cluster([hn(900)]), cluster([hf(150)]), cluster([hn(500)])];
     const kinds = rankClusters(input, distributions, NOW).map((r) => r.snapshot.cluster);
 
     expect(new Set(kinds).size).toBe(2);

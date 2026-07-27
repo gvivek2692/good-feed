@@ -97,12 +97,7 @@ function buildClassificationPrompt(cluster: Cluster): string {
   const { primary } = cluster;
   const text = primary.text?.trim();
 
-  const parts = [
-    "TAXONOMY:",
-    TAXONOMY_BLOCK,
-    "",
-    `TITLE: ${primary.title}`,
-  ];
+  const parts = ["TAXONOMY:", TAXONOMY_BLOCK, "", `TITLE: ${primary.title}`];
 
   if (text) {
     parts.push("", "TEXT:", text.slice(0, 4000));

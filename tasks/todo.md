@@ -112,12 +112,15 @@ The original criterion "an arXiv paper and its HN submission land in one cluster
 unachievable** — see [ADR 001](../docs/adr/001-source-selection-and-cross-source-joins.md).
 
 **Acceptance criteria:**
-- [ ] An arXiv paper and its HuggingFace Papers entry land in one cluster, joined on arXiv ID
-- [ ] Version suffixes normalize — `2607.22534v1` and `2607.22534v2` are the same paper
-- [ ] Distinct papers by the same authors stay separate
-- [ ] HN items are never merged into a research cluster
-- [ ] Asserted against the ≥91 real pairs present in the committed fixtures
-- [ ] Precision favored over recall — a bad merge hides an item, a missed dupe only costs a slot
+- [x] An arXiv paper and its HuggingFace Papers entry land in one cluster, joined on arXiv ID
+- [x] Version suffixes normalize — `2607.22534v1` and `2607.22534v2` are the same paper
+- [x] Distinct papers by the same authors stay separate
+- [x] HN items are never merged into a research cluster
+- [x] Asserted against the ≥91 real pairs present in the committed fixtures
+- [x] Precision favored over recall — a bad merge hides an item, a missed dupe only costs a slot
+
+**Result:** 700 fixture items → 609 clusters, **exactly 91 multi-source**, all ARXIV+HUGGINGFACE.
+Matches the ADR 001 measurement. No item is lost or double-counted.
 
 **Verification:** `npm test -- clustering`
 

@@ -128,6 +128,10 @@ Verified by live call on 2026-07-27 during Task 5. Model ids are pinned in `src/
   against truncated or empty responses.
 - **`gemini-embedding-001` honours `outputDimensionality: 1536`**, down from its 3072 default.
   Required: pgvector's HNSW/IVFFlat indexes cap at 2000 dimensions.
+- **Self-reported confidence is not calibrated.** Measured over 37 topic assignments: 7 distinct
+  values on a 0.05 grid, min 0.60, 34/37 at ≥0.80. A confidence threshold filters nothing at these
+  values — treat it as a floor against explicit low-confidence output, not as a probability, and do
+  not tune it upward just to make it reject something.
 - **`*-latest` aliases are deliberately unused.** A model changing underneath the pipeline would
   silently change summaries and takes, which the trust constraint cannot tolerate.
 

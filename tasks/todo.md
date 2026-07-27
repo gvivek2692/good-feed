@@ -200,12 +200,16 @@ summary only.
 to `ItemTopic`. Multi-label — an item may carry several topics.
 
 **Acceptance criteria:**
-- [ ] Only slugs from the fixed taxonomy are accepted; unknown labels rejected
-- [ ] Confidence stored per assignment
-- [ ] Items matching no topic above threshold are stored unclassified rather than force-fit
-- [ ] Tested against fixtures with expected topic assignments
+- [x] Only slugs from the fixed taxonomy are accepted; unknown labels rejected
+- [x] Confidence stored per assignment
+- [x] Items matching no topic above threshold are stored unclassified rather than force-fit
+- [x] Tested against fixtures with expected topic assignments
 
 **Verification:** `npm test -- topics`
+
+**Status:** Done — 18 tests. Live check on 20 real clusters: 0 invented slugs, 0 unclassified,
+37 assignments across 11/15 slugs. Confidence measured uncalibrated (7 distinct values, min 0.60);
+threshold left at 0.55 rather than tuned to look effective.
 
 **Dependencies:** T5 · **Scope:** S
 

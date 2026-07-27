@@ -178,14 +178,17 @@ source text. Unmatched assertions are removed; if that empties the take, the ite
 summary only.
 
 **Acceptance criteria:**
-- [ ] A take asserting "outperforms X" with no matching claim has that assertion stripped
-- [ ] A take whose claims all verify passes through unmodified
-- [ ] `quotedFrom` not present in source text → claim rejected
-- [ ] Stripping is logged with a reason, visible in run logs
-- [ ] **This task's tests are written before its implementation** (spec: trust constraint gets tests
+- [x] A take asserting "outperforms X" with no matching claim has that assertion stripped
+- [x] A take whose claims all verify passes through unmodified
+- [x] `quotedFrom` not present in source text → claim rejected
+- [x] Stripping is logged with a reason, visible in run logs
+- [x] **This task's tests are written before its implementation** (spec: trust constraint gets tests
       before it gets a UI)
 
 **Verification:** `npm test -- claims` — must include a false-assertion case that is provably stripped
+
+**Status:** Done — 27 tests. Live check on 5 real clusters: 1 genuine strip (fabricated
+"single-task"/"contact points" comparison), 0 false positives after LaTeX normalization.
 
 **Dependencies:** T6 · **Scope:** M
 

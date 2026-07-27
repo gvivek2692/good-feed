@@ -104,6 +104,10 @@ Established by live calls during Task 3:
 - **arXiv has no server-side date filter.** Sort by `submittedDate` descending and trim client-side.
 - **fast-xml-parser collapses single repeated elements to objects.** A one-author paper yields
   `author: {name}`, not `author: [{name}]`. Always normalize through `toArray`.
+- **arXiv abstracts are raw LaTeX.** They contain `\%`, `\textsc{...}`, and `$...$`. An LLM quoting
+  an abstract quotes the *rendered* form (`72.5%`), so verbatim quote matching must unwrap LaTeX
+  escaping or it rejects genuinely grounded claims — measured, not hypothetical. See
+  `normalize()` in `src/lib/pipeline/claims.ts`.
 - Fixtures live in `tests/fixtures/`. The unit suite runs entirely offline against them; live checks
   go in `scripts/check-sources.mts`, which is not part of `npm test`.
 

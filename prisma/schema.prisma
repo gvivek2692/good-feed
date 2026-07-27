@@ -1,0 +1,237 @@
+// good-feed data model. See docs/spec/good-feed-v1.md.
+
+generator client {
+  provider        = "prisma-client"
+  output          = "../src/generated/prisma"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  extensions = [vector]
+}
+
+// ---------------------------------------------------------------------------
+// Content
+// ---------------------------------------------------------------------------
+
+enum SourceKind {
+  ARXIV
+  HACKERNEWS
+}
+
+/// A raw fetched record from one source. Retained verbatim so summaries and
+/// ranking can be recomputed without re-fetching.
+model Source {
+  id         String     @id @default(cuid())
+  kind       SourceKind
+  externalId String
+  url        String
+  rawPayload Json
+  fetchedAt  DateTime   @default(now())
+
+  items Item[]
+
+  // Prevents the same source record being ingested twice.
+  @@unique([kind, externalId])
+  @@index([kind, fetchedAt])
+}
+
+/// One development, as presented in the feed. Several Sources may describe the
+/// same development (a paper, its HN thread, its repo); those share a clusterId
+/// and only the primary Item is published.
+model Item {
+  id           String   @id @default(cuid())
+  sourceId     String
+  title        String
+  authors      String[]
+  publishedAt  DateTime
+  canonicalUrl String
+
+  /// Null until the summarization stage runs.
+  summary      String?
+  whyItMatters String?
+
+  /// Gemini embedding. Dimension is set in the migration, not here — Prisma has
+  /// no native vector type. Queried via raw SQL for similarity search.
+  embedding Unsupported("vector")?
+
+  /// Ranking output. Null until the ranking stage runs.
+  importanceScore Float?
+
+  /// Every signal and weight behind importanceScore, so any ordering can be
+  /// explained after the fact. Spec requirement: the feed can always answer
+  /// "why is this item here?" with numbers.
+  signalSnapshot Json?
+
+  /// Groups Sources covering the same underlying development.
+  clusterId String?
+
+  /// False until summarized, validated, and ranked.
+  published       Boolean   @default(false)
+  publishedAtFeed DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  source       Source        @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  claims       Claim[]
+  topics       ItemTopic[]
+  interactions Interaction[]
+  deepDive     DeepDive?
+
+  @@index([clusterId])
+  @@index([published, importanceScore(sort: Desc)])
+  @@index([publishedAt])
+}
+
+/// Grounding for an assertion made in whyItMatters. Every comparative or
+/// superlative claim in a take must map to one of these, carrying text quoted
+/// from the source. Unmatched assertions are stripped before publication.
+model Claim {
+  id         String @id @default(cuid())
+  itemId     String
+  /// The assertion as it appears in the take.
+  text       String
+  /// Verbatim text from the source that supports it.
+  quotedFrom String
+  /// Where a reader can verify the quote.
+  sourceUrl  String
+
+  createdAt DateTime @default(now())
+
+  item Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@index([itemId])
+}
+
+/// On-demand longer explanation, generated on first request and cached.
+model DeepDive {
+  id          String   @id @default(cuid())
+  itemId      String   @unique
+  content     String
+  generatedAt DateTime @default(now())
+
+  item Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+}
+
+// ---------------------------------------------------------------------------
+// Topics
+// ---------------------------------------------------------------------------
+
+/// Fixed curated taxonomy — 15 topics, seeded. Not derived from clustering.
+model Topic {
+  id    String @id @default(cuid())
+  slug  String @unique
+  label String
+
+  items ItemTopic[]
+  users UserTopic[]
+}
+
+model ItemTopic {
+  itemId     String
+  topicId    String
+  /// Classifier confidence. Items below threshold are left unclassified
+  /// rather than force-fit into a topic.
+  confidence Float
+
+  item  Item  @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  topic Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@id([itemId, topicId])
+  @@index([topicId])
+}
+
+// ---------------------------------------------------------------------------
+// Users
+// ---------------------------------------------------------------------------
+
+model User {
+  id       String  @id @default(cuid())
+  email    String? @unique
+  name     String?
+  image    String?
+  githubId String? @unique
+
+  /// Drives the "since last visit" feed window.
+  lastVisitedAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  topics       UserTopic[]
+  interactions Interaction[]
+}
+
+model UserTopic {
+  userId  String
+  topicId String
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@id([userId, topicId])
+  @@index([topicId])
+}
+
+enum InteractionKind {
+  SEEN
+  DISMISSED
+  OPENED
+  DEEPENED
+}
+
+model Interaction {
+  id     String          @id @default(cuid())
+  userId String
+  itemId String
+  kind   InteractionKind
+  at     DateTime        @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  item Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  // One row per user/item/kind — dismissing twice is not two dismissals.
+  @@unique([userId, itemId, kind])
+  @@index([userId, kind])
+}
+
+// ---------------------------------------------------------------------------
+// Pipeline observability
+// ---------------------------------------------------------------------------
+
+enum RunStatus {
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+/// One pipeline execution. Renders at /admin/runs.
+model PipelineRun {
+  id          String    @id @default(cuid())
+  status      RunStatus @default(RUNNING)
+  startedAt   DateTime  @default(now())
+  finishedAt  DateTime?
+  /// Per-stage counts: fetched, clustered, summarized, published, dropped.
+  stageCounts Json?
+  error       String?
+
+  drops DroppedItem[]
+
+  @@index([startedAt(sort: Desc)])
+}
+
+/// Why an item did not reach the feed. Every drop records a reason.
+model DroppedItem {
+  id         String   @id @default(cuid())
+  runId      String
+  stage      String
+  reason     String
+  externalId String?
+  detail     Json?
+  at         DateTime @default(now())
+
+  run PipelineRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId])
+}

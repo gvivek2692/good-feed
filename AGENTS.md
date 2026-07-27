@@ -16,12 +16,30 @@ recalling conventions.
 ## Commands
 
 ```
+docker compose up -d              start local Postgres (port 5433)
 npm run dev          npm test            npm run lint
 npm run build        npm run test:e2e    npm run typecheck
 npm run format       npm run format:check
+npx prisma migrate dev            apply migrations
+npx prisma generate               regenerate client (not automatic on migrate)
+npx tsx prisma/seed.ts            seed topics (idempotent)
 ```
 
 Before any commit: `npm test && npm run typecheck && npm run lint`.
+
+## Database
+
+Local Postgres runs on **5433**, not 5432 — that port belongs to an unrelated
+`smartmoney-postgres` container on this machine.
+
+Prisma 7 differs from earlier versions in ways that matter:
+
+- `PrismaClient` requires an explicit **driver adapter** (`@prisma/adapter-pg`); it no longer
+  reads `DATABASE_URL` itself. Always import the shared client from `src/lib/db/client.ts`.
+- Seeding is configured in `prisma.config.ts`, not `package.json`.
+- `prisma migrate dev` does **not** regenerate the client — run `prisma generate` separately.
+- Vitest 4 removed `environmentMatchGlobs`. Server-side tests declare
+  `@vitest-environment node` in a file-level docblock instead.
 
 ## Code style
 

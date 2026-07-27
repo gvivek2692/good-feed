@@ -1,0 +1,31 @@
+# Local Postgres for good-feed development.
+#
+# Port 5433, not the default 5432 — that port belongs to an unrelated container
+# (smartmoney-postgres) on this machine. Keeping good-feed on its own port means
+# neither project can disturb the other.
+#
+#   docker compose up -d      start
+#   docker compose down       stop, keeping data
+#   docker compose down -v    stop and DELETE all data
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: goodfeed-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: goodfeed
+      POSTGRES_PASSWORD: goodfeed_dev
+      POSTGRES_DB: goodfeed
+    ports:
+      - "5433:5432"
+    volumes:
+      - goodfeed_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U goodfeed -d goodfeed"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  goodfeed_pgdata:

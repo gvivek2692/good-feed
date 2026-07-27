@@ -44,3 +44,5 @@ yarn-error.log*
 
 # TypeScript
 *.tsbuildinfo
+
+/src/generated/prisma

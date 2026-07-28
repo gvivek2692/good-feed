@@ -1,6 +1,13 @@
 import { prisma } from "@/lib/db/client";
 import { generateDeepDive } from "@/lib/pipeline/deep-dive";
 import { err, ok, type Result } from "@/lib/result";
+import { fetchArticleText } from "@/lib/sources/article";
+
+/**
+ * Below this much text, an item is treated as having no usable body and the
+ * linked page is fetched. Matches the deep-dive generator's own threshold.
+ */
+const THIN_SOURCE_CHARS = 600;
 
 export interface ItemDeepDive {
   content: string;
@@ -35,12 +42,26 @@ export async function getOrCreateDeepDive(
   // The raw payload is retained at ingest precisely so the quotable text can be
   // reconstructed here, rather than re-fetching from the source API.
   const raw = item.source.rawPayload as Record<string, unknown>;
-  const quotableSource =
+  let quotableSource =
     (raw.summary as string) ??
     (raw.abstract as string) ??
     (raw.story_text as string) ??
     (raw.text as string) ??
     "";
+
+  // A Hacker News link post carries a URL and no body, so the pipeline only
+  // ever saw a title — which produced a 40-word deep dive that explained
+  // nothing. The linked page is the actual source material. Fetched here rather
+  // than at ingest because most items are never opened, and this is the point
+  // where the text is genuinely needed.
+  if (quotableSource.length < THIN_SOURCE_CHARS && item.canonicalUrl) {
+    const article = await fetchArticleText(item.canonicalUrl);
+    // A failed fetch degrades to the title-only path rather than failing the
+    // page: a thin explainer still beats an error.
+    if (article.ok && article.value.length > quotableSource.length) {
+      quotableSource = article.value;
+    }
+  }
 
   const generated = await generateDeepDive({
     title: item.title,

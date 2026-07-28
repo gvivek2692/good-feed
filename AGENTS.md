@@ -103,6 +103,12 @@ Established by live calls during Task 3:
 - **Algolia (HN) does not support boolean `OR` in `query`.** It treats `"AI OR LLM"` as a phrase and
   matches titles literally containing "AI or LLM" — near-zero results. Each term must be a separate
   request, merged and deduped by `objectID`. `src/lib/sources/hackernews.ts` does this.
+- **HN link posts have no body text.** `story_text` is empty for anything that is a link rather than
+  an Ask/Show post — the real content is at `url`. Without fetching it the pipeline sees only a
+  title, which produced a 40-word deep dive that explained nothing.
+  `src/lib/sources/article.ts` fetches that one page on demand.
+- **A GitHub blob URL returns 396KB of page chrome; the `raw.githubusercontent.com` rewrite returns
+  24KB of clean markdown.** Measured on the same post. Always rewrite before fetching.
 - **arXiv requires HTTPS.** `http://export.arxiv.org` returns an empty body rather than redirecting.
 - **arXiv has no server-side date filter.** Sort by `submittedDate` descending and trim client-side.
 - **fast-xml-parser collapses single repeated elements to objects.** A one-author paper yields

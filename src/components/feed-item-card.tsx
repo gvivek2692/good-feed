@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { type FeedItem } from "@/lib/db/feed";
 
 const SOURCE_LABELS: Record<string, string> = {
@@ -48,15 +50,16 @@ export function FeedItemCard({ item }: { item: FeedItem }): React.ReactElement {
         ))}
       </div>
 
+      {/*
+        The headline links to the deep dive rather than the source. The spec's
+        three exits are all still present, but the generated explanation is the
+        one the headline promised — sending a reader who clicked a plain-language
+        headline straight to a LaTeX abstract is a bait and switch.
+      */}
       <h2 className="text-xl font-bold leading-snug tracking-tight text-zinc-900 dark:text-zinc-50">
-        <a
-          href={item.canonicalUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline"
-        >
+        <Link href={`/item/${item.id}`} className="hover:underline">
           {headline}
-        </a>
+        </Link>
       </h2>
 
       {item.whyItMatters ? (
@@ -90,13 +93,20 @@ export function FeedItemCard({ item }: { item: FeedItem }): React.ReactElement {
       ) : null}
 
       <div className="mt-4 flex flex-wrap items-center gap-4 text-sm">
+        <Link
+          href={`/item/${item.id}`}
+          className="font-medium text-emerald-700 hover:underline dark:text-emerald-500"
+        >
+          Dig deeper →
+        </Link>
+
         <a
           href={item.canonicalUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-medium text-emerald-700 hover:underline dark:text-emerald-500"
+          className="text-zinc-500 hover:underline dark:text-zinc-400"
         >
-          Read the source →
+          Source
         </a>
 
         {/*

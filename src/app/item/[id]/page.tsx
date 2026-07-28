@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { ItemActions } from "@/components/item-actions";
 import { Markdown } from "@/components/markdown";
+import { getSessionUserId } from "@/lib/auth/session";
 import { getOrCreateDeepDive } from "@/lib/db/deep-dive";
 import { getFeedItem } from "@/lib/db/feed";
+import { EMPTY_INTERACTIONS, getItemInteractions } from "@/lib/db/interactions";
 
 const SOURCE_LABELS: Record<string, string> = {
   ARXIV: "arXiv",
@@ -34,7 +37,11 @@ export default async function ItemPage({
 
   if (!item) notFound();
 
-  const deepDive = await getOrCreateDeepDive(id);
+  const [deepDive, userId] = await Promise.all([getOrCreateDeepDive(id), getSessionUserId()]);
+
+  // This is where a reader most plausibly finishes an item, so the same
+  // controls belong here rather than only in the feed.
+  const interactions = userId ? await getItemInteractions(userId, [id]) : EMPTY_INTERACTIONS;
 
   return (
     <div className="min-h-full bg-white dark:bg-zinc-950">
@@ -110,14 +117,24 @@ export default async function ItemPage({
         ) : null}
 
         <footer className="mt-10 border-t border-zinc-200 pt-6 dark:border-zinc-800">
-          <a
-            href={item.canonicalUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-emerald-700 hover:underline dark:text-emerald-500"
-          >
-            Read the original →
-          </a>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <a
+              href={item.canonicalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-emerald-700 hover:underline dark:text-emerald-500"
+            >
+              Read the original →
+            </a>
+            <div className="flex items-center gap-1">
+              <ItemActions
+                itemId={item.id}
+                isRead={interactions.read.has(item.id)}
+                isSaved={interactions.saved.has(item.id)}
+                signedIn={userId !== null}
+              />
+            </div>
+          </div>
           <p className="mt-4 text-xs text-zinc-400 dark:text-zinc-600">
             Original title: <span className="italic">{item.title}</span>
             {item.authors.length > 0 ? <> · {item.authors.slice(0, 4).join(", ")}</> : null}

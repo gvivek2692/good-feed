@@ -98,7 +98,7 @@ Ingest (manual): npm run ingest
 ```
 src/
   app/                  → Next.js App Router pages and API routes
-    (feed)/             → Authenticated feed UI
+    (feed)/             → Feed UI (public; per-user state requires sign-in)
     api/
       cron/ingest/      → Scheduled ingestion entrypoint
   components/           → React components
@@ -368,6 +368,21 @@ No interaction-history personalization in v1.
 *Why:* Signal ranking is user-independent by construction, so a new user's feed is exactly as good as
 an established user's. Personalization from behavior is a phase-2 concern that needs data this
 product does not yet have.
+
+### 2b. The feed is public; only per-user state requires an account
+
+Anyone can read the feed. Signing in is required for marking items read and saving them, and
+clicking either control while signed out opens a prompt explaining why rather than a disabled
+button.
+
+*Why:* The content is not the private part — per-user state is. A login wall in front of a feed of
+public papers costs a first-time reader the entire product before they can judge it. Amended from
+the original criterion ("unauthenticated access to /feed redirects to sign-in") by explicit decision
+on 2026-07-28, after the gating question was raised directly.
+
+*Cost, stated plainly:* the signed-out feed is ranked globally rather than by selected topics, so it
+is a weaker view of the product than a signed-in one, and it is a second code path that has to keep
+working.
 
 ### 3. Feed cadence: "since last visit", 7-day fallback, 30-day ceiling
 

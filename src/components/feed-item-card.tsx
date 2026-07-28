@@ -39,6 +39,7 @@ export function FeedItemCard({
   item: FeedItem;
   isRead?: boolean;
   isSaved?: boolean;
+  /** Signed-out readers still get live controls; they prompt for sign-in. */
   signedIn?: boolean;
 }): React.ReactElement {
   const headline = item.headline ?? item.title;

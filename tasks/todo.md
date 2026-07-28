@@ -359,11 +359,11 @@ items (those are the same story, not related ones).
 **Acceptance criteria:**
 - [x] Sign in / sign out works
 - [x] `User` created on first sign-in, not duplicated on subsequent ones
-- [x] Unauthenticated access to `/saved` redirects to sign-in. The feed itself stays public —
-  the content is not the private part, per-user state is.
+- [x] ~~Unauthenticated access to `/feed` redirects to sign-in~~ — **amended 2026-07-28 by explicit
+  decision**: the feed is public, `/saved` redirects. See spec decision 2b for the reasoning and the
+  cost. The original criterion is struck rather than deleted so the change stays visible.
+- [x] Signed-out clicks on read/save open a prompt explaining that an account is needed
 - [x] Session available server-side in App Router via `src/lib/auth/session.ts`
-
-**Note:** GitHub OAuth credentials still need to be created; `AUTH_SECRET` is generated.
 
 **Verification:** `npm test -- auth` + manual sign-in
 

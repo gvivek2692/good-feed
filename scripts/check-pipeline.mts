@@ -13,7 +13,7 @@ import { runPipeline } from "@/lib/pipeline/runner";
  * measurement of Gemini rate limits at ingest volume (spec open question 1).
  *
  * Not part of `npm test` — it writes to the database and spends quota.
- * Run with: npx tsx scripts/check-pipeline.mts [days] [limit]
+ * Run with: npx tsx scripts/check-pipeline.mts [days] [limit] [maxItems]
  */
 async function main(): Promise<void> {
   const days = Number(process.argv[2] ?? 2);
@@ -23,7 +23,8 @@ async function main(): Promise<void> {
   console.log(`fetching since ${since.toISOString()} (limit ${limit} per source)\n`);
 
   const started = Date.now();
-  const result = await runPipeline(prisma, liveDeps({ since, limit }));
+  const maxItems = process.argv[4] ? Number(process.argv[4]) : undefined;
+  const result = await runPipeline(prisma, liveDeps({ since, limit, maxItems }));
   const elapsed = ((Date.now() - started) / 1000).toFixed(1);
 
   if (!result.ok) {

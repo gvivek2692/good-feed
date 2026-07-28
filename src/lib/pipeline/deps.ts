@@ -9,6 +9,9 @@ export interface LiveDepsOptions {
   /** How far back to fetch. Defaults to 3 days. */
   since?: Date;
   limit?: number;
+  /** Pause between items. Defaults to 6s, which the free tier tolerates. */
+  itemDelayMs?: number;
+  maxItems?: number;
 }
 
 /**
@@ -33,5 +36,7 @@ export function liveDeps(options: LiveDepsOptions = {}): PipelineDeps {
     summarize: (cluster) => summarizeCluster(cluster),
     classify: (cluster) => classifyCluster(cluster),
     now: () => new Date(),
+    itemDelayMs: options.itemDelayMs ?? 6_000,
+    maxItems: options.maxItems,
   };
 }

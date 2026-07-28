@@ -21,6 +21,17 @@ export interface PipelineDeps {
   summarize: (cluster: Cluster) => Promise<Result<SummarizedCluster, LlmError>>;
   classify: (cluster: Cluster) => Promise<Result<ClassifiedCluster, LlmError>>;
   now: () => Date;
+  /**
+   * Pause between items, in milliseconds.
+   *
+   * Retry-with-backoff handles a rate limit already hit; this avoids hitting it.
+   * Measured on the free tier: firing calls back to back failed 8 of 11
+   * summarizations, so throughput was bounded by quota rather than by latency.
+   * Defaults to 0 — tests should not sleep.
+   */
+  itemDelayMs?: number;
+  /** Stop after this many published items. Unlimited when absent. */
+  maxItems?: number;
 }
 
 export interface RunSummary {
@@ -44,6 +55,8 @@ export interface RunSummary {
 
 export type RunError =
   { kind: "all-sources-failed"; message: string } | { kind: "crashed"; message: string };
+
+const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
 interface Drop {
   stage: string;
@@ -185,9 +198,18 @@ export async function runPipeline(
     );
 
     // --- per item ----------------------------------------------------------
+    let processed = 0;
+
     for (const entry of pending) {
+      if (deps.maxItems !== undefined && counts.published >= deps.maxItems) break;
+
       const { cluster } = entry;
       const externalId = cluster.primary.externalId;
+
+      // Paced rather than parallel: the constraint is quota per minute, not
+      // latency. The first item goes immediately.
+      if (deps.itemDelayMs && processed > 0) await sleep(deps.itemDelayMs);
+      processed += 1;
 
       const summarized = await deps.summarize(cluster);
       if (!summarized.ok) {

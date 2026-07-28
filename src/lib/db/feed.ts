@@ -1,0 +1,123 @@
+import { prisma } from "@/lib/db/client";
+import { type SignalSnapshot } from "@/lib/ranking/score";
+
+export interface FeedClaim {
+  id: string;
+  text: string;
+  quotedFrom: string;
+  sourceUrl: string;
+}
+
+export interface FeedItem {
+  id: string;
+  title: string;
+  authors: string[];
+  publishedAt: Date;
+  canonicalUrl: string;
+  summary: string | null;
+  whyItMatters: string | null;
+  importanceScore: number | null;
+  sourceKind: string;
+  topics: Array<{ slug: string; label: string; confidence: number }>;
+  claims: FeedClaim[];
+  snapshot: SignalSnapshot | null;
+}
+
+export interface FeedQuery {
+  /** Restrict to these topic slugs. Empty or absent means all topics. */
+  topics?: string[];
+  limit?: number;
+}
+
+/**
+ * Reads the ranked feed.
+ *
+ * Ordering is `importanceScore` descending — the ranking stage already decided
+ * this, and the spec forbids the UI reordering by recency or anything else.
+ * Only published items appear: unclassified and below-floor items were dropped
+ * at ingest and must not resurface here.
+ */
+export async function getFeedItems(query: FeedQuery = {}): Promise<FeedItem[]> {
+  const { topics, limit = 50 } = query;
+
+  const rows = await prisma.item.findMany({
+    where: {
+      published: true,
+      ...(topics && topics.length > 0
+        ? { topics: { some: { topic: { slug: { in: topics } } } } }
+        : {}),
+    },
+    orderBy: { importanceScore: "desc" },
+    take: limit,
+    include: {
+      claims: true,
+      source: { select: { kind: true } },
+      topics: { include: { topic: true } },
+    },
+  });
+
+  return rows.map((row) => ({
+    id: row.id,
+    title: row.title,
+    authors: row.authors,
+    publishedAt: row.publishedAt,
+    canonicalUrl: row.canonicalUrl,
+    summary: row.summary,
+    whyItMatters: row.whyItMatters,
+    importanceScore: row.importanceScore,
+    sourceKind: row.source.kind,
+    topics: row.topics.map((entry) => ({
+      slug: entry.topic.slug,
+      label: entry.topic.label,
+      confidence: entry.confidence,
+    })),
+    claims: row.claims.map((claim) => ({
+      id: claim.id,
+      text: claim.text,
+      quotedFrom: claim.quotedFrom,
+      sourceUrl: claim.sourceUrl,
+    })),
+    snapshot: (row.signalSnapshot as SignalSnapshot | null) ?? null,
+  }));
+}
+
+/** Topics that actually have published items, with counts, for the filter bar. */
+export async function getTopicsWithCounts(): Promise<
+  Array<{ slug: string; label: string; count: number }>
+> {
+  const topics = await prisma.topic.findMany({
+    include: {
+      _count: { select: { items: { where: { item: { published: true } } } } },
+    },
+  });
+
+  return topics
+    .map((topic) => ({ slug: topic.slug, label: topic.label, count: topic._count.items }))
+    .filter((topic) => topic.count > 0)
+    .sort((a, b) => b.count - a.count);
+}
+
+export interface FeedStats {
+  published: number;
+  lastRunAt: Date | null;
+  droppedLastRun: number;
+}
+
+/** Headline numbers, so the feed can say where its contents came from. */
+export async function getFeedStats(): Promise<FeedStats> {
+  const [published, lastRun] = await Promise.all([
+    prisma.item.count({ where: { published: true } }),
+    prisma.pipelineRun.findFirst({
+      where: { status: "COMPLETED" },
+      orderBy: { startedAt: "desc" },
+    }),
+  ]);
+
+  const counts = (lastRun?.stageCounts ?? {}) as Record<string, number>;
+
+  return {
+    published,
+    lastRunAt: lastRun?.finishedAt ?? null,
+    droppedLastRun: counts.dropped ?? 0,
+  };
+}

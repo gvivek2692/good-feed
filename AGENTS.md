@@ -128,6 +128,11 @@ Verified by live call on 2026-07-27 during Task 5. Model ids are pinned in `src/
   against truncated or empty responses.
 - **`gemini-embedding-001` honours `outputDimensionality: 1536`**, down from its 3072 default.
   Required: pgvector's HNSW/IVFFlat indexes cap at 2000 dimensions.
+- **Free-tier quota does not survive an ingest run.** First live end-to-end run (2026-07-27, 22
+  items fetched, 11 clearing the floor): **8 of 11 summarization calls failed with `rateLimit`**,
+  3 published, in 48s. This is spec open question 1 — the free tier cannot sustain even a
+  single-digit batch. Real ingest needs a paid tier, batching with delays, or both. Retry with
+  backoff is necessary but not sufficient at this quota.
 - **Self-reported confidence is not calibrated.** Measured over 37 topic assignments: 7 distinct
   values on a 0.05 grid, min 0.60, 34/37 at ≥0.80. A confidence threshold filters nothing at these
   values — treat it as a floor against explicit low-confidence output, not as a probability, and do

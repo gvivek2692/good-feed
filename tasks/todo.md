@@ -285,10 +285,10 @@ dropped.
 
 **Acceptance criteria:**
 - [x] Re-running over the same window creates no duplicate items — *10a*
-- [ ] A run killed mid-batch resumes and completes on the next invocation — *10b*
-- [ ] Run log records counts fetched/clustered/summarized/published/dropped — *10b*
-- [ ] Every drop carries a reason (dupe, validation failure, below cutoff) — *10b*
-- [ ] One failing item does not abort the batch — *10b*
+- [x] A run killed mid-batch resumes and completes on the next invocation — *10b*
+- [x] Run log records counts fetched/clustered/summarized/published/dropped — *10b*
+- [x] Every drop carries a reason (dupe, validation failure, below cutoff) — *10b*
+- [x] One failing item does not abort the batch — *10b*
 
 **Verification:** `npm test -- pipeline`; integration test kills a run mid-batch and resumes it.
 
@@ -303,10 +303,24 @@ stale claim can never cite an assertion the current take no longer makes.
 `src/lib/pipeline/persist.ts` · 10 tests against real Postgres · verified idempotent over 3
 consecutive runs (counts flat at 2 sources / 1 item / 1 claim / 1 topic).
 
-#### Task 10b: Run orchestration and resumability — next
+#### Task 10b: Run orchestration and resumability ✅ done
 
-Stage sequencing, `PipelineRun`/`DroppedItem` logging, per-item error isolation, and mid-batch
-resume.
+`src/lib/pipeline/runner.ts` + `deps.ts` · 13 tests against real Postgres.
+
+Resume needs no schema change: persistence is idempotent on `(kind, externalId)`, so an interrupted
+run leaves finished items in place and the next pass skips what is already published. Ranking runs
+*before* summarization so quota is never spent on items that cannot clear the floor.
+
+Two bugs found by running it, not by the tests:
+- Stripped assertions were counted as dropped items, reporting `dropped: 3` on a run that published
+  all 3. A dropped item is absent from the feed; a stripped assertion is a published item with a
+  trimmed take. Now counted separately, both still logged.
+- An **unclassified item was published and ranked #2** on the first live run. The feed filters by
+  user-selected topics, so a topicless item is unreachable for every user while occupying a slot.
+  Unclassified items are now dropped with a reason.
+
+**Measured, answering spec open question 1:** 8 of 11 summarization calls failed with `rateLimit` on
+the free tier. See AGENTS.md — real ingest needs a paid tier and/or pacing.
 
 ---
 

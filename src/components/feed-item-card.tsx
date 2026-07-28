@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ItemActions } from "@/components/item-actions";
 import { type FeedItem } from "@/lib/db/feed";
 
 const SOURCE_LABELS: Record<string, string> = {
@@ -21,20 +22,36 @@ function relativeDay(date: Date): string {
  *
  * The headline is generated, not the paper's title, because paper titles are
  * written to be precise for reviewers rather than legible in a feed. The
- * original title stays visible underneath so the item is always identifiable
- * and the substitution is never a disguise.
+ * original title stays visible as the label on the source link, so the item is
+ * always identifiable and the substitution is never a disguise.
  *
  * `whyItMatters` sits directly under the headline as a subheading: it is the
  * reason to keep reading, and burying it under the summary made the reader do
  * the triage themselves. It is styled distinctly because it carries a different
  * warranty — the summary describes, the take judges.
  */
-export function FeedItemCard({ item }: { item: FeedItem }): React.ReactElement {
+export function FeedItemCard({
+  item,
+  isRead = false,
+  isSaved = false,
+  signedIn = false,
+}: {
+  item: FeedItem;
+  isRead?: boolean;
+  isSaved?: boolean;
+  signedIn?: boolean;
+}): React.ReactElement {
   const headline = item.headline ?? item.title;
   const showOriginalTitle = item.headline !== null && item.headline !== item.title;
 
   return (
-    <article className="border-b border-zinc-200 py-8 dark:border-zinc-800">
+    <article
+      className={`border-b border-zinc-200 py-8 transition-opacity dark:border-zinc-800 ${
+        // Read items dim rather than disappear: the reader chose "done", not
+        // "wrong", and a vanishing item makes the feed feel unstable.
+        isRead ? "opacity-55" : ""
+      }`}
+    >
       <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-zinc-500 dark:text-zinc-400">
         <span className="font-medium text-zinc-700 dark:text-zinc-300">
           {SOURCE_LABELS[item.sourceKind] ?? item.sourceKind}
@@ -93,20 +110,25 @@ export function FeedItemCard({ item }: { item: FeedItem }): React.ReactElement {
       ) : null}
 
       <div className="mt-4 flex flex-wrap items-center gap-4 text-sm">
-        <Link
-          href={`/item/${item.id}`}
-          className="font-medium text-emerald-700 hover:underline dark:text-emerald-500"
-        >
-          Dig deeper →
-        </Link>
-
+        {/*
+          The source link carries the original title rather than the word
+          "Source". A reader needs the title to identify the item anyway, and it
+          is the same destination — two elements saying the same thing in
+          different words was one more than the card needed.
+        */}
         <a
           href={item.canonicalUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-zinc-500 hover:underline dark:text-zinc-400"
         >
-          Source
+          {showOriginalTitle ? (
+            <>
+              Source: <span className="italic">{item.title}</span>
+            </>
+          ) : (
+            "Source"
+          )}
         </a>
 
         {/*
@@ -136,13 +158,11 @@ export function FeedItemCard({ item }: { item: FeedItem }): React.ReactElement {
             </dl>
           </details>
         ) : null}
-      </div>
 
-      {showOriginalTitle ? (
-        <p className="mt-3 text-xs text-zinc-400 dark:text-zinc-600">
-          Original title: <span className="italic">{item.title}</span>
-        </p>
-      ) : null}
+        <div className="ml-auto flex items-center gap-1">
+          <ItemActions itemId={item.id} isRead={isRead} isSaved={isSaved} signedIn={signedIn} />
+        </div>
+      </div>
     </article>
   );
 }

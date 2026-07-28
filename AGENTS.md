@@ -41,6 +41,25 @@ Prisma 7 differs from earlier versions in ways that matter:
 - Vitest 4 removed `environmentMatchGlobs`. Server-side tests declare
   `@vitest-environment node` in a file-level docblock instead.
 
+## Auth and per-user state
+
+Auth.js v5 (`next-auth@beta`) with GitHub OAuth, database sessions via
+`@auth/prisma-adapter`. Requires `AUTH_SECRET`, `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`.
+
+- **Next 16 renamed `middleware` to `proxy`.** `middleware.ts` is deprecated; the file is
+  `proxy.ts` and the named export is `proxy`. The `edge` runtime is not supported there.
+- **Authorization belongs in the data access layer, not proxy.** Proxy runs on every request
+  including prefetches, so a DB check there is slow and — a cookie can exist without a valid
+  session — not trustworthy alone. `src/lib/auth/session.ts` wraps the session lookup in React's
+  `cache()` so several Server Components share one lookup per render.
+- **Server actions are public HTTP endpoints.** The user id always comes from the session, never
+  from an argument — a `userId` parameter would let any caller write rows for any user. Verified by
+  a mutation test: removing the guard in `src/app/actions/interactions.ts` fails 2 tests.
+- **`Interaction` is idempotent by constraint**, `@@unique([userId, itemId, kind])`. Clearing an
+  absent interaction uses `deleteMany` — the requested end state, not a failure.
+- **Postgres timestamps can collide.** Two consecutive inserts measurably share a millisecond, so
+  ordering tests set `at` explicitly rather than relying on insertion order.
+
 ## Code style
 
 - Named exports only, except Next.js pages/layouts where the framework requires default.

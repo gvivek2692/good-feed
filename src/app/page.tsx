@@ -1,7 +1,10 @@
 import Link from "next/link";
 
+import { AuthNav } from "@/components/auth-nav";
 import { FeedItemCard } from "@/components/feed-item-card";
+import { getSessionUserId } from "@/lib/auth/session";
 import { getFeedItems, getFeedStats, getTopicsWithCounts } from "@/lib/db/feed";
+import { EMPTY_INTERACTIONS, getItemInteractions } from "@/lib/db/interactions";
 
 /**
  * The feed.
@@ -18,19 +21,32 @@ export default async function Home({
   const { topic } = await searchParams;
   const selected = topic ? [topic] : undefined;
 
-  const [items, topics, stats] = await Promise.all([
+  const [items, topics, stats, userId] = await Promise.all([
     getFeedItems({ topics: selected }),
     getTopicsWithCounts(),
     getFeedStats(),
+    getSessionUserId(),
   ]);
+
+  // Read/saved state needs the item ids, so it is a second query rather than
+  // part of the batch above.
+  const interactions = userId
+    ? await getItemInteractions(
+        userId,
+        items.map((item) => item.id),
+      )
+    : EMPTY_INTERACTIONS;
 
   return (
     <div className="min-h-full bg-white dark:bg-zinc-950">
       <header className="border-b border-zinc-200 dark:border-zinc-800">
         <div className="mx-auto max-w-3xl px-6 py-8">
-          <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            good-feed
-          </h1>
+          <div className="flex items-start justify-between gap-4">
+            <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+              good-feed
+            </h1>
+            <AuthNav />
+          </div>
           <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
             What happened in AI research and engineering — and why it matters.
           </p>
@@ -83,7 +99,15 @@ export default async function Home({
             Nothing cleared the bar{topic ? " for this topic" : ""} yet.
           </p>
         ) : (
-          items.map((item) => <FeedItemCard key={item.id} item={item} />)
+          items.map((item) => (
+            <FeedItemCard
+              key={item.id}
+              item={item}
+              isRead={interactions.read.has(item.id)}
+              isSaved={interactions.saved.has(item.id)}
+              signedIn={userId !== null}
+            />
+          ))
         )}
       </main>
 

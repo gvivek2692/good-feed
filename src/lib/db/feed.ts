@@ -31,6 +31,50 @@ export interface FeedQuery {
   limit?: number;
 }
 
+/** The shape every feed query selects, so one mapper serves all of them. */
+type ItemRow = {
+  id: string;
+  headline: string | null;
+  title: string;
+  authors: string[];
+  publishedAt: Date;
+  canonicalUrl: string;
+  summary: string | null;
+  whyItMatters: string | null;
+  importanceScore: number | null;
+  signalSnapshot: unknown;
+  source: { kind: string };
+  topics: Array<{ confidence: number; topic: { slug: string; label: string } }>;
+  claims: Array<{ id: string; text: string; quotedFrom: string; sourceUrl: string }>;
+};
+
+function toFeedItem(row: ItemRow): FeedItem {
+  return {
+    id: row.id,
+    headline: row.headline,
+    title: row.title,
+    authors: row.authors,
+    publishedAt: row.publishedAt,
+    canonicalUrl: row.canonicalUrl,
+    summary: row.summary,
+    whyItMatters: row.whyItMatters,
+    importanceScore: row.importanceScore,
+    sourceKind: row.source.kind,
+    topics: row.topics.map((entry) => ({
+      slug: entry.topic.slug,
+      label: entry.topic.label,
+      confidence: entry.confidence,
+    })),
+    claims: row.claims.map((claim) => ({
+      id: claim.id,
+      text: claim.text,
+      quotedFrom: claim.quotedFrom,
+      sourceUrl: claim.sourceUrl,
+    })),
+    snapshot: (row.signalSnapshot as SignalSnapshot | null) ?? null,
+  };
+}
+
 /**
  * Reads the ranked feed.
  *
@@ -58,30 +102,30 @@ export async function getFeedItems(query: FeedQuery = {}): Promise<FeedItem[]> {
     },
   });
 
-  return rows.map((row) => ({
-    id: row.id,
-    headline: row.headline,
-    title: row.title,
-    authors: row.authors,
-    publishedAt: row.publishedAt,
-    canonicalUrl: row.canonicalUrl,
-    summary: row.summary,
-    whyItMatters: row.whyItMatters,
-    importanceScore: row.importanceScore,
-    sourceKind: row.source.kind,
-    topics: row.topics.map((entry) => ({
-      slug: entry.topic.slug,
-      label: entry.topic.label,
-      confidence: entry.confidence,
-    })),
-    claims: row.claims.map((claim) => ({
-      id: claim.id,
-      text: claim.text,
-      quotedFrom: claim.quotedFrom,
-      sourceUrl: claim.sourceUrl,
-    })),
-    snapshot: (row.signalSnapshot as SignalSnapshot | null) ?? null,
-  }));
+  return rows.map(toFeedItem);
+}
+
+/**
+ * Published items for the given ids, in the order the ids were given.
+ *
+ * The caller's order is preserved rather than re-sorted by importance: the
+ * saved list is the user's own selection, and reordering it by our score would
+ * override the judgment they just made.
+ */
+export async function getFeedItemsByIds(ids: string[]): Promise<FeedItem[]> {
+  if (ids.length === 0) return [];
+
+  const rows = await prisma.item.findMany({
+    where: { id: { in: ids }, published: true },
+    include: {
+      claims: true,
+      source: { select: { kind: true } },
+      topics: { include: { topic: true } },
+    },
+  });
+
+  const byId = new Map(rows.map((row) => [row.id, toFeedItem(row)]));
+  return ids.map((id) => byId.get(id)).filter((item): item is FeedItem => item !== undefined);
 }
 
 /** One published item with everything the deep-dive page needs. */
@@ -97,30 +141,7 @@ export async function getFeedItem(id: string): Promise<FeedItem | null> {
 
   if (!row) return null;
 
-  return {
-    id: row.id,
-    headline: row.headline,
-    title: row.title,
-    authors: row.authors,
-    publishedAt: row.publishedAt,
-    canonicalUrl: row.canonicalUrl,
-    summary: row.summary,
-    whyItMatters: row.whyItMatters,
-    importanceScore: row.importanceScore,
-    sourceKind: row.source.kind,
-    topics: row.topics.map((entry) => ({
-      slug: entry.topic.slug,
-      label: entry.topic.label,
-      confidence: entry.confidence,
-    })),
-    claims: row.claims.map((claim) => ({
-      id: claim.id,
-      text: claim.text,
-      quotedFrom: claim.quotedFrom,
-      sourceUrl: claim.sourceUrl,
-    })),
-    snapshot: (row.signalSnapshot as SignalSnapshot | null) ?? null,
-  };
+  return toFeedItem(row);
 }
 
 /** Topics that actually have published items, with counts, for the filter bar. */

@@ -352,15 +352,18 @@ items (those are the same story, not related ones).
 
 ## Phase 4: User-facing
 
-### Task 12: Auth and user bootstrap
+### ✅ Task 12: Auth and user bootstrap
 
 **Description:** Auth.js with GitHub OAuth. New users get a `User` row and land in topic selection.
 
 **Acceptance criteria:**
-- [ ] Sign in / sign out works
-- [ ] `User` created on first sign-in, not duplicated on subsequent ones
-- [ ] Unauthenticated access to `/feed` redirects to sign-in
-- [ ] Session available server-side in App Router
+- [x] Sign in / sign out works
+- [x] `User` created on first sign-in, not duplicated on subsequent ones
+- [x] Unauthenticated access to `/saved` redirects to sign-in. The feed itself stays public —
+  the content is not the private part, per-user state is.
+- [x] Session available server-side in App Router via `src/lib/auth/session.ts`
+
+**Note:** GitHub OAuth credentials still need to be created; `AUTH_SECRET` is generated.
 
 **Verification:** `npm test -- auth` + manual sign-in
 

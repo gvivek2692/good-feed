@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "@/lib/env";
 import { readFileSync } from "node:fs";
 
 import { clusterItems, dedupeWithinSource } from "@/lib/pipeline/clustering";

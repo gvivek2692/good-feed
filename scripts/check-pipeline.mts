@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "@/lib/env";
 
 import { prisma } from "@/lib/db/client";
 import { liveDeps } from "@/lib/pipeline/deps";

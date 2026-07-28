@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "@/lib/env";
 
 import * as arxiv from "@/lib/sources/arxiv";
 import * as hf from "@/lib/sources/huggingface";

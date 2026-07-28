@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "../src/lib/env";
 
 import { prisma } from "../src/lib/db/client";
 import { TOPICS } from "../src/lib/topics/taxonomy";

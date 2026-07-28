@@ -65,7 +65,10 @@ e2e/                Playwright
 These come from the spec's Boundaries section. They are not stylistic.
 
 **Never:**
-- Commit secrets. Keys live in `.env` (gitignored); `.env.example` names variables only.
+- Commit secrets. Keys live in `.env.local` (gitignored); `.env.example` names variables only.
+  Scripts, Prisma, and Vitest reach it through `src/lib/env.ts` — `dotenv/config` alone reads only
+  `.env`, and without `DATABASE_URL` the integration tests skip themselves while the suite still
+  reports green.
 - Let an unsupported assertion reach the UI — every comparative claim maps to quoted source text.
 - Use absolute LLM scoring for ranking (produces confident, unfalsifiable numbers).
 - Rank purely by recency.

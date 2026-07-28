@@ -41,6 +41,7 @@ function deps(overrides: Partial<PipelineDeps> = {}): PipelineDeps {
     summarize: async (cluster) =>
       ok({
         clusterId: cluster.id,
+        headline: "Attention method cuts serving memory by 40%",
         summary: "A method that reduces attention memory.",
         whyItMatters: "It reduces memory use by 40% versus FlashAttention-2.",
         claims: [
@@ -181,6 +182,7 @@ describeDb("runPipeline", () => {
         summarize: async (cluster) =>
           ok({
             clusterId: cluster.id,
+            headline: "A method for long-context attention",
             summary: "A method for attention.",
             whyItMatters: "It reduces memory use. It outperforms every prior method.",
             claims: [],
@@ -240,6 +242,7 @@ describeDb("runPipeline", () => {
         summarize: async (cluster) =>
           ok({
             clusterId: cluster.id,
+            headline: "A method for long-context attention",
             summary: "A method for attention.",
             whyItMatters: "It reduces memory use. It outperforms every prior method.",
             claims: [],

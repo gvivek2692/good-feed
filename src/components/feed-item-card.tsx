@@ -14,14 +14,23 @@ function relativeDay(date: Date): string {
 }
 
 /**
- * One feed item.
+ * One feed item, in the order a reader actually consumes it:
+ * headline → why it matters → summary → source.
  *
- * The take is visually separated from the summary because they carry different
- * warranties: the summary describes the item, while `whyItMatters` is judgment.
- * Claims render as visible citations on the take — the spec requires every
- * comparative assertion to show the source text it rests on.
+ * The headline is generated, not the paper's title, because paper titles are
+ * written to be precise for reviewers rather than legible in a feed. The
+ * original title stays visible underneath so the item is always identifiable
+ * and the substitution is never a disguise.
+ *
+ * `whyItMatters` sits directly under the headline as a subheading: it is the
+ * reason to keep reading, and burying it under the summary made the reader do
+ * the triage themselves. It is styled distinctly because it carries a different
+ * warranty — the summary describes, the take judges.
  */
 export function FeedItemCard({ item }: { item: FeedItem }): React.ReactElement {
+  const headline = item.headline ?? item.title;
+  const showOriginalTitle = item.headline !== null && item.headline !== item.title;
+
   return (
     <article className="border-b border-zinc-200 py-8 dark:border-zinc-800">
       <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-zinc-500 dark:text-zinc-400">
@@ -39,56 +48,48 @@ export function FeedItemCard({ item }: { item: FeedItem }): React.ReactElement {
         ))}
       </div>
 
-      <h2 className="mb-3 text-lg font-semibold leading-snug text-zinc-900 dark:text-zinc-50">
+      <h2 className="text-xl font-bold leading-snug tracking-tight text-zinc-900 dark:text-zinc-50">
         <a
           href={item.canonicalUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"
         >
-          {item.title}
+          {headline}
         </a>
       </h2>
 
+      {item.whyItMatters ? (
+        <p className="mt-2 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+          {item.whyItMatters}
+        </p>
+      ) : null}
+
       {item.summary ? (
-        <p className="mb-4 text-[15px] leading-relaxed text-zinc-700 dark:text-zinc-300">
+        <p className="mt-4 text-sm leading-relaxed text-zinc-500 dark:text-zinc-500">
           {item.summary}
         </p>
       ) : null}
 
-      {item.whyItMatters ? (
-        <div className="mb-4 border-l-2 border-emerald-500 pl-4">
-          <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-500">
-            Why it matters
-          </div>
-          <p className="text-[15px] leading-relaxed text-zinc-700 dark:text-zinc-300">
-            {item.whyItMatters}
-          </p>
-
-          {item.claims.length > 0 ? (
-            <ul className="mt-3 space-y-2">
-              {item.claims.map((claim) => (
-                <li
-                  key={claim.id}
-                  className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400"
-                >
-                  <span className="font-medium">{claim.text}</span> —{" "}
-                  <a
-                    href={claim.sourceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="italic underline decoration-dotted underline-offset-2"
-                  >
-                    &ldquo;{claim.quotedFrom}&rdquo;
-                  </a>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-        </div>
+      {item.claims.length > 0 ? (
+        <ul className="mt-4 space-y-1.5 border-l-2 border-zinc-200 pl-3 dark:border-zinc-800">
+          {item.claims.map((claim) => (
+            <li key={claim.id} className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+              <span className="font-medium">{claim.text}</span> —{" "}
+              <a
+                href={claim.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="italic underline decoration-dotted underline-offset-2"
+              >
+                &ldquo;{claim.quotedFrom}&rdquo;
+              </a>
+            </li>
+          ))}
+        </ul>
       ) : null}
 
-      <div className="flex flex-wrap items-center gap-4 text-sm">
+      <div className="mt-4 flex flex-wrap items-center gap-4 text-sm">
         <a
           href={item.canonicalUrl}
           target="_blank"
@@ -126,6 +127,12 @@ export function FeedItemCard({ item }: { item: FeedItem }): React.ReactElement {
           </details>
         ) : null}
       </div>
+
+      {showOriginalTitle ? (
+        <p className="mt-3 text-xs text-zinc-400 dark:text-zinc-600">
+          Original title: <span className="italic">{item.title}</span>
+        </p>
+      ) : null}
     </article>
   );
 }

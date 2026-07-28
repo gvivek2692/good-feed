@@ -9,6 +9,8 @@ import { isTopicSlug } from "@/lib/topics/taxonomy";
 /** Everything the pipeline produces for one cluster, ready to write. */
 export interface PersistableCluster {
   cluster: Cluster;
+  /** Null when the generated headline failed validation; UI falls back to title. */
+  headline: string | null;
   summary: string;
   /** May be empty — a take stripped by claim validation still publishes. */
   whyItMatters: string;
@@ -43,7 +45,7 @@ export async function persistCluster(
   prisma: PrismaClient,
   input: PersistableCluster,
 ): Promise<Result<PersistResult, PersistError>> {
-  const { cluster, summary, whyItMatters, claims, topics, score, snapshot } = input;
+  const { cluster, headline, summary, whyItMatters, claims, topics, score, snapshot } = input;
 
   // Validate before opening the transaction: a hallucinated slug should fail
   // the item, not roll back a partial write.
@@ -81,6 +83,7 @@ export async function persistCluster(
         authors: cluster.primary.authors,
         publishedAt: cluster.primary.publishedAt,
         canonicalUrl: cluster.primary.canonicalUrl,
+        headline,
         summary,
         // An empty take is a real outcome of claim validation, not missing data.
         whyItMatters: whyItMatters || null,

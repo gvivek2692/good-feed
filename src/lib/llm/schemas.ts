@@ -19,7 +19,23 @@ export type ExtractedClaim = z.infer<typeof ClaimSchema>;
 /** Spec: summaries are capped at 120 words. */
 export const SUMMARY_WORD_LIMIT = 120;
 
+/**
+ * Headlines are short enough to scan in a feed. Long enough to say something
+ * specific — a 5-word headline is almost always vaguer than the paper title it
+ * replaced.
+ */
+export const HEADLINE_WORD_LIMIT = 12;
+
 export const SummarizationSchema = z.object({
+  /**
+   * A plain-language headline, replacing the paper title in the feed.
+   *
+   * The highest-risk field in the product after `whyItMatters`: it is the most
+   * prominent text on the card and the thing a reader decides on. It is held to
+   * the same grounding rule — specific and concrete, never a comparative claim
+   * the source does not make.
+   */
+  headline: z.string().min(1),
   /** What the item is. Plain description, no evaluation. */
   summary: z.string().min(1),
   /**
@@ -41,6 +57,7 @@ export type Summarization = z.infer<typeof SummarizationSchema>;
 export const SUMMARIZATION_RESPONSE_SCHEMA: Record<string, unknown> = {
   type: "OBJECT",
   properties: {
+    headline: { type: "STRING" },
     summary: { type: "STRING" },
     whyItMatters: { type: "STRING" },
     claims: {
@@ -55,7 +72,7 @@ export const SUMMARIZATION_RESPONSE_SCHEMA: Record<string, unknown> = {
       },
     },
   },
-  required: ["summary", "whyItMatters", "claims"],
+  required: ["headline", "summary", "whyItMatters", "claims"],
 };
 
 export function wordCount(text: string): number {

@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   findComparativeSentences,
+  isHeadlineGrounded,
   isQuoteGrounded,
   validateClaims,
   type ClaimValidation,
@@ -135,6 +136,53 @@ describe("findComparativeSentences", () => {
     const sentences = findComparativeSentences("It beats the baseline by 3.5 points on MMLU.");
     expect(sentences).toHaveLength(1);
     expect(sentences[0]).toContain("3.5");
+  });
+});
+
+describe("isHeadlineGrounded", () => {
+  const grounded = [
+    {
+      text: "reduces memory use by 40% versus FlashAttention-2",
+      quotedFrom: "reduces memory use by 40% versus FlashAttention-2",
+    },
+  ];
+
+  it("accepts a descriptive headline making no comparison", () => {
+    expect(isHeadlineGrounded("New attention kernel for long-context serving", [], SOURCE)).toBe(
+      true,
+    );
+  });
+
+  it("accepts a comparative headline backed by a verified claim", () => {
+    expect(
+      isHeadlineGrounded(
+        "Kernel reduces memory use by 40% versus FlashAttention-2",
+        grounded,
+        SOURCE,
+      ),
+    ).toBe(true);
+  });
+
+  /**
+   * The headline sits in the most prominent position on the card, so an
+   * ungrounded comparison there is the most damaging place for one.
+   */
+  it("rejects a comparative headline with no claim behind it", () => {
+    expect(isHeadlineGrounded("Kernel outperforms every prior method", [], SOURCE)).toBe(false);
+  });
+
+  it("rejects a comparative headline whose claim quote is not in the source", () => {
+    expect(
+      isHeadlineGrounded(
+        "Kernel beats FlashAttention-3",
+        [{ text: "beats FlashAttention-3", quotedFrom: "beats FlashAttention-3 everywhere" }],
+        SOURCE,
+      ),
+    ).toBe(false);
+  });
+
+  it("rejects a superlative headline that nothing supports", () => {
+    expect(isHeadlineGrounded("The first method to do this", [], SOURCE)).toBe(false);
   });
 });
 

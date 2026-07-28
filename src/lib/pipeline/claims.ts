@@ -132,6 +132,29 @@ function claimSupportsSentence(claim: ExtractedClaim, sentence: string): boolean
 }
 
 /**
+ * Whether a generated headline is safe to show.
+ *
+ * A headline is a single sentence in the most prominent position on the card,
+ * so the take's remedy — delete the offending sentence — is not available:
+ * that would leave no headline at all. Instead an ungrounded comparative
+ * headline is rejected outright and the caller falls back to the source's own
+ * title, which is dull but always true.
+ */
+export function isHeadlineGrounded(
+  headline: string,
+  claims: readonly ExtractedClaim[],
+  quotableSource: string,
+): boolean {
+  const isComparative = COMPARATIVE_PATTERNS.some((pattern) => pattern.test(headline));
+  if (!isComparative) return true;
+
+  return claims.some(
+    (claim) =>
+      isQuoteGrounded(claim.quotedFrom, quotableSource) && claimSupportsSentence(claim, headline),
+  );
+}
+
+/**
  * Strips unsupported assertions from a take before persistence.
  *
  * A comparative sentence survives only if some claim both (a) corresponds to it

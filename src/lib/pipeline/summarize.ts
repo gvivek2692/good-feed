@@ -2,6 +2,7 @@ import { generateStructured, type GenerateImpl, type LlmError } from "@/lib/llm/
 import { buildSummarizationPrompt } from "@/lib/llm/prompts";
 import { SUMMARIZATION_SYSTEM_INSTRUCTION } from "@/lib/llm/prompts";
 import {
+  HEADLINE_WORD_LIMIT,
   SUMMARIZATION_RESPONSE_SCHEMA,
   SUMMARY_WORD_LIMIT,
   SummarizationSchema,
@@ -20,6 +21,7 @@ import { err, ok, type Result } from "@/lib/result";
  */
 export interface SummarizedCluster {
   clusterId: string;
+  headline: string;
   summary: string;
   whyItMatters: string;
   claims: Summarization["claims"];
@@ -85,7 +87,7 @@ export async function summarizeCluster(
 
   if (!generated.ok) return generated;
 
-  const { summary, whyItMatters, claims } = generated.value;
+  const { headline, summary, whyItMatters, claims } = generated.value;
 
   // The word limit is a spec requirement, and the API cannot enforce it. A
   // long summary is a real failure, not a formatting quibble — it means the
@@ -94,6 +96,15 @@ export async function summarizeCluster(
     return err({
       kind: "invalidResponse",
       message: `summary was ${wordCount(summary)} words, limit is ${SUMMARY_WORD_LIMIT}`,
+    });
+  }
+
+  // A headline that runs long is usually the paper title copied back, which
+  // defeats the point of generating one.
+  if (wordCount(headline) > HEADLINE_WORD_LIMIT) {
+    return err({
+      kind: "invalidResponse",
+      message: `headline was ${wordCount(headline)} words, limit is ${HEADLINE_WORD_LIMIT}`,
     });
   }
 
@@ -108,6 +119,7 @@ export async function summarizeCluster(
 
   return ok({
     clusterId: cluster.id,
+    headline: headline.trim(),
     summary: summary.trim(),
     whyItMatters: whyItMatters.trim(),
     claims,

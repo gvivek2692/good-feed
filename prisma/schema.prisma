@@ -49,6 +49,12 @@ model Item {
   publishedAt  DateTime
   canonicalUrl String
 
+  /// Plain-language headline shown in the feed in place of `title`.
+  /// Null until the summarization stage runs, and null when the generated
+  /// headline failed claim validation — the UI falls back to `title`, which is
+  /// duller but always true.
+  headline     String?
+
   /// Null until the summarization stage runs.
   summary      String?
   whyItMatters String?

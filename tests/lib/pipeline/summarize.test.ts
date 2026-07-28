@@ -40,6 +40,7 @@ function respondWith(payload: unknown): GenerateImpl {
 }
 
 const goodResponse = {
+  headline: "FlashLite cuts attention memory 40% versus FlashAttention-2",
   summary: "FlashLite reduces attention memory use for long sequences.",
   whyItMatters: "It cuts memory use by 40% versus FlashAttention-2, which matters at long context.",
   claims: [
@@ -191,6 +192,7 @@ describe("summarizeCluster", () => {
     const promise = summarizeCluster(cluster([item({ text: null })]), {
       maxRetries: 0,
       generateImpl: respondWith({
+        headline: "A link post about attention",
         summary: "A link post about attention.",
         whyItMatters: "It outperforms every prior method.",
         claims: [{ text: "outperforms every prior method", quotedFrom: "outperforms everything" }],
@@ -208,6 +210,7 @@ describe("summarizeCluster", () => {
   it("accepts an empty claims array — a take making no comparison is correct", async () => {
     const result = await summarizeCluster(cluster(), {
       generateImpl: respondWith({
+        headline: "A method for long-sequence attention",
         summary: "A method for long-sequence attention.",
         whyItMatters: "Relevant to engineers working on long-context inference.",
         claims: [],

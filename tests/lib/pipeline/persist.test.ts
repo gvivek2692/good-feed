@@ -51,6 +51,7 @@ function payload(overrides: Partial<PersistableCluster> = {}): PersistableCluste
 
   return {
     cluster: target,
+    headline: "Attention method cuts serving memory by 40%",
     summary: "A method that reduces attention memory during serving.",
     whyItMatters: "It reduces memory use by 40% versus FlashAttention-2.",
     claims: [

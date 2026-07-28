@@ -10,6 +10,8 @@ export interface FeedClaim {
 
 export interface FeedItem {
   id: string;
+  /** Generated headline; null when it failed validation, so `title` is used. */
+  headline: string | null;
   title: string;
   authors: string[];
   publishedAt: Date;
@@ -58,6 +60,7 @@ export async function getFeedItems(query: FeedQuery = {}): Promise<FeedItem[]> {
 
   return rows.map((row) => ({
     id: row.id,
+    headline: row.headline,
     title: row.title,
     authors: row.authors,
     publishedAt: row.publishedAt,

@@ -1,6 +1,6 @@
 import { type PrismaClient } from "@/generated/prisma/client";
 import { type LlmError } from "@/lib/llm/client";
-import { validateClaims } from "@/lib/pipeline/claims";
+import { isHeadlineGrounded, validateClaims } from "@/lib/pipeline/claims";
 import { clusterItems, dedupeWithinSource, type Cluster } from "@/lib/pipeline/clustering";
 import { persistCluster } from "@/lib/pipeline/persist";
 import { type ClassifiedCluster } from "@/lib/pipeline/topics";
@@ -266,8 +266,28 @@ export async function runPipeline(
         continue;
       }
 
+      // An ungrounded comparative headline cannot be repaired by deleting a
+      // sentence the way a take can, so it is dropped in favour of the source
+      // title rather than shown.
+      const headlineOk = isHeadlineGrounded(
+        summarized.value.headline,
+        validated.claims,
+        summarized.value.quotableSource,
+      );
+
+      if (!headlineOk) {
+        drops.push({
+          stage: "validate",
+          reason: "headline-not-grounded",
+          externalId,
+          detail: { headline: summarized.value.headline },
+          assertionOnly: true,
+        });
+      }
+
       const persisted = await persistCluster(prisma, {
         cluster,
+        headline: headlineOk ? summarized.value.headline : null,
         summary: summarized.value.summary,
         whyItMatters: validated.whyItMatters,
         claims: validated.claims,

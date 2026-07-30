@@ -32,6 +32,14 @@ export interface PipelineDeps {
   itemDelayMs?: number;
   /** Stop after this many published items. Unlimited when absent. */
   maxItems?: number;
+  /**
+   * Called as each item is processed, so a long run can show progress.
+   *
+   * A full run paces ~6s per item across ~120 clusters, which is 20+ minutes of
+   * silence. That is indistinguishable from a hang — it cost a live debugging
+   * session to establish that a run was merely slow.
+   */
+  onProgress?: (event: { index: number; total: number; title: string; outcome: string }) => void;
 }
 
 export interface RunSummary {
@@ -205,6 +213,13 @@ export async function runPipeline(
 
       const { cluster } = entry;
       const externalId = cluster.primary.externalId;
+      const report = (outcome: string): void =>
+        deps.onProgress?.({
+          index: processed + 1,
+          total: pending.length,
+          title: cluster.primary.title,
+          outcome,
+        });
 
       // Paced rather than parallel: the constraint is quota per minute, not
       // latency. The first item goes immediately.
@@ -219,6 +234,7 @@ export async function runPipeline(
           externalId,
           detail: { message: summarized.error.message },
         });
+        report(`summarize failed (${summarized.error.kind})`);
         continue;
       }
       counts.summarized += 1;
@@ -252,6 +268,7 @@ export async function runPipeline(
           externalId,
           detail: { message: classified.error.message },
         });
+        report(`classify failed (${classified.error.kind})`);
         continue;
       }
 
@@ -266,6 +283,7 @@ export async function runPipeline(
           externalId,
           detail: { rejected: classified.value.rejected },
         });
+        report("dropped: no topic");
         continue;
       }
 
@@ -306,10 +324,12 @@ export async function runPipeline(
           externalId,
           detail: persisted.error,
         });
+        report(`persist failed (${persisted.error.kind})`);
         continue;
       }
 
       counts.published += 1;
+      report("published");
     }
 
     tally();

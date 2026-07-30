@@ -24,7 +24,11 @@ async function main(): Promise<void> {
 
   const started = Date.now();
   const maxItems = process.argv[4] ? Number(process.argv[4]) : undefined;
-  const result = await runPipeline(prisma, liveDeps({ since, limit, maxItems }));
+  const result = await runPipeline(prisma, {
+    ...liveDeps({ since, limit, maxItems }),
+    onProgress: ({ index, total, title, outcome }) =>
+      console.log(`  [${index}/${total}] ${outcome.padEnd(26)} ${title.slice(0, 52)}`),
+  });
   const elapsed = ((Date.now() - started) / 1000).toFixed(1);
 
   if (!result.ok) {

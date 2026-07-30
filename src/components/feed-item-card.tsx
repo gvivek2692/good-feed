@@ -6,6 +6,7 @@ const SOURCE_LABELS: Record<string, string> = {
   ARXIV: "arXiv",
   HUGGINGFACE: "HuggingFace",
   HACKERNEWS: "Hacker News",
+  GITHUB: "GitHub",
 };
 
 function relativeDay(date: Date): string {

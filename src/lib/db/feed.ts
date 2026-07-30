@@ -105,29 +105,6 @@ export async function getFeedItems(query: FeedQuery = {}): Promise<FeedItem[]> {
   return rows.map(toFeedItem);
 }
 
-/**
- * Published items for the given ids, in the order the ids were given.
- *
- * The caller's order is preserved rather than re-sorted by importance: the
- * saved list is the user's own selection, and reordering it by our score would
- * override the judgment they just made.
- */
-export async function getFeedItemsByIds(ids: string[]): Promise<FeedItem[]> {
-  if (ids.length === 0) return [];
-
-  const rows = await prisma.item.findMany({
-    where: { id: { in: ids }, published: true },
-    include: {
-      claims: true,
-      source: { select: { kind: true } },
-      topics: { include: { topic: true } },
-    },
-  });
-
-  const byId = new Map(rows.map((row) => [row.id, toFeedItem(row)]));
-  return ids.map((id) => byId.get(id)).filter((item): item is FeedItem => item !== undefined);
-}
-
 /** One published item with everything the deep-dive page needs. */
 export async function getFeedItem(id: string): Promise<FeedItem | null> {
   const row = await prisma.item.findFirst({

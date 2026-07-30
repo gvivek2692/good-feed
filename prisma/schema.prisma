@@ -81,11 +81,10 @@ model Item {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  source       Source        @relation(fields: [sourceId], references: [id], onDelete: Cascade)
-  claims       Claim[]
-  topics       ItemTopic[]
-  interactions Interaction[]
-  deepDive     DeepDive?
+  source   Source      @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  claims   Claim[]
+  topics   ItemTopic[]
+  deepDive DeepDive?
 
   @@index([clusterId])
   @@index([published, importanceScore(sort: Desc)])
@@ -133,7 +132,6 @@ model Topic {
   label String
 
   items ItemTopic[]
-  users UserTopic[]
 }
 
 model ItemTopic {
@@ -148,114 +146,6 @@ model ItemTopic {
 
   @@id([itemId, topicId])
   @@index([topicId])
-}
-
-// ---------------------------------------------------------------------------
-// Users
-// ---------------------------------------------------------------------------
-
-model User {
-  id            String    @id @default(cuid())
-  email         String?   @unique
-  emailVerified DateTime?
-  name          String?
-  image         String?
-  githubId      String?   @unique
-
-  /// Drives the "since last visit" feed window.
-  lastVisitedAt DateTime?
-
-  createdAt DateTime @default(now())
-
-  topics       UserTopic[]
-  interactions Interaction[]
-  accounts     Account[]
-  sessions     Session[]
-}
-
-// Auth.js owns the three models below; their field names and types are fixed by
-// @auth/prisma-adapter and are not ours to restyle.
-
-model Account {
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String?
-  access_token      String?
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String?
-  session_state     String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@id([provider, providerAccountId])
-  @@index([userId])
-}
-
-model Session {
-  sessionToken String   @id
-  userId       String
-  expires      DateTime
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-}
-
-model VerificationToken {
-  identifier String
-  token      String
-  expires    DateTime
-
-  @@id([identifier, token])
-}
-
-model UserTopic {
-  userId  String
-  topicId String
-
-  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  topic Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
-
-  @@id([userId, topicId])
-  @@index([topicId])
-}
-
-enum InteractionKind {
-  SEEN
-  DISMISSED
-  OPENED
-  DEEPENED
-  /// Explicitly marked read by the user. Distinct from SEEN, which the feed
-  /// records automatically — "I have dealt with this" is a different statement
-  /// from "this scrolled past me".
-  READ
-  /// Kept for later. Independent of READ: an item can be both.
-  SAVED
-}
-
-model Interaction {
-  id     String          @id @default(cuid())
-  userId String
-  itemId String
-  kind   InteractionKind
-  at     DateTime        @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  item Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
-
-  // One row per user/item/kind — dismissing twice is not two dismissals.
-  @@unique([userId, itemId, kind])
-  @@index([userId, kind])
 }
 
 // ---------------------------------------------------------------------------

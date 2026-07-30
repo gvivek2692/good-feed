@@ -29,7 +29,7 @@ wrongly claiming something "supersedes X" is worse than no summary at all.
 3. As a user, I read a one-paragraph "why this matters" on any item so I understand its significance
    without opening the source.
 4. As a user, I click through to the original source, related items, or a longer explanation.
-5. As a user, I dismiss items I've seen so they don't reappear.
+5. ~~As a user, I dismiss items I've seen so they don't reappear.~~ *(Out of scope — needs a user; see decision 2b.)*
 
 ---
 
@@ -98,7 +98,7 @@ Ingest (manual): npm run ingest
 ```
 src/
   app/                  → Next.js App Router pages and API routes
-    (feed)/             → Feed UI (public; per-user state requires sign-in)
+    (feed)/             → Feed UI (public; no accounts — see decision 2b)
     api/
       cron/ingest/      → Scheduled ingestion entrypoint
   components/           → React components
@@ -132,7 +132,7 @@ Topic         id, slug, label
 ItemTopic     itemId, topicId, confidence
 User          id, email, githubId, createdAt
 UserTopic     userId, topicId
-Interaction   userId, itemId, kind (seen|dismissed|opened|deepened), at
+Interaction   REMOVED 2026-07-30 with the rest of per-user state (decision 2b)
 ```
 
 `clusterId` groups items covering the same underlying development — cross-source coverage count is a
@@ -277,7 +277,7 @@ No default exports except Next.js pages/layouts where the framework requires the
 |---|---|---|---|
 | Unit | Vitest | `tests/` mirroring `src/` | Source adapters, ranking math, claim validation |
 | Integration | Vitest + test DB | `tests/integration/` | Pipeline stages against real Postgres |
-| E2E | Playwright | `e2e/` | Sign in → set topics → read feed → dismiss |
+| E2E | Playwright | `e2e/` | Read feed → filter by topic → open a deep dive |
 
 **Non-negotiable coverage:**
 - Ranking math: unit tested with fixture items and asserted orderings.
@@ -336,9 +336,9 @@ Specific and testable:
 4. `npm test` passes with ranking and claim-validation suites green.
 5. Ingestion runs on schedule, is idempotent, and re-running produces no duplicate items.
 6. Each item offers three exits: source, related items, dig deeper.
-7. Dismissed items do not reappear for that user.
+7. ~~Dismissed items do not reappear for that user.~~ *(Out of scope — decision 2b.)*
 8. `/admin/runs` explains, for any item in the feed, why it ranked where it did.
-9. E2E: sign in → select topics → read feed → dismiss → refresh → dismissed item is absent.
+9. E2E: read feed → filter by topic → open a deep dive → the source link resolves.
 10. A user with 3–5 topics sees 15–25 items/day at the default cutoff; a week with little activity
     produces a correspondingly short feed rather than padded filler.
 11. No secret appears in the repository: `.env*` is gitignored and `.env.example` names variables
@@ -360,7 +360,7 @@ expanded — pre-generating burns tokens on items nobody opens).
 *Why:* Anything richer — tutorial, implementation guide, worked example — is a different product and
 starts pulling toward option C. The expansion is bound by the same claim-grounding rules as the take.
 
-### 2. Cold start: pure signal ranking, plus explicit topic selection at signup
+### 2. Cold start: pure signal ranking ~~plus explicit topic selection at signup~~ (superseded by 2b)
 
 A new user picks topics before seeing a feed; that plus signal ranking is the whole cold-start story.
 No interaction-history personalization in v1.
@@ -369,22 +369,25 @@ No interaction-history personalization in v1.
 an established user's. Personalization from behavior is a phase-2 concern that needs data this
 product does not yet have.
 
-### 2b. The feed is public; only per-user state requires an account
+### 2b. No accounts in v1; the feed is public
 
-Anyone can read the feed. Signing in is required for marking items read and saving them, and
-clicking either control while signed out opens a prompt explaining why rather than a disabled
-button.
+There is no sign-in. Every reader sees the same feed, and there is no per-user state — no
+mark-as-read, no saved items, no per-user topic selection.
 
-*Why:* The content is not the private part — per-user state is. A login wall in front of a feed of
-public papers costs a first-time reader the entire product before they can judge it. Amended from
-the original criterion ("unauthenticated access to /feed redirects to sign-in") by explicit decision
-on 2026-07-28, after the gating question was raised directly.
+*Why:* Decided 2026-07-30 after auth, mark-as-read and save were built and then removed. The
+product's value is the summaries and the ranking; an account gate in front of public papers costs a
+first-time reader the whole product before they can judge it, and per-user state is not what makes
+the feed worth reading.
 
-*Cost, stated plainly:* the signed-out feed is ranked globally rather than by selected topics, so it
-is a weaker view of the product than a signed-in one, and it is a second code path that has to keep
-working.
+*Consequences, stated plainly:*
+- Decision 2 (cold start via explicit topic selection at signup) no longer applies — topics are a
+  URL filter, not a stored preference.
+- Decision 3 (feed cadence: "since last visit") no longer applies — there is no "last visit" without
+  a user. The feed shows the ranked window regardless of who is reading.
+- Task 13 (topic selection UI) and Task 16 (dismiss) are out of scope while this holds; both need a
+  user row.
 
-### 3. Feed cadence: "since last visit", 7-day fallback, 30-day ceiling
+### 3. ~~Feed cadence: "since last visit", 7-day fallback, 30-day ceiling~~ (superseded by 2b)
 
 The feed shows items published since the user's last visit. First visit or a gap over 30 days falls
 back to the trailing 7 days. Recency decay uses a 14-day half-life within whatever window applies.

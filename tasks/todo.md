@@ -352,26 +352,19 @@ items (those are the same story, not related ones).
 
 ## Phase 4: User-facing
 
-### ✅ Task 12: Auth and user bootstrap
+### ❌ Task 12: Auth and user bootstrap — BUILT, THEN REMOVED
 
-**Description:** Auth.js with GitHub OAuth. New users get a `User` row and land in topic selection.
+**Status:** Implemented 2026-07-28 (GitHub OAuth, mark-as-read, save), removed 2026-07-30 by
+explicit decision. See spec decision 2b.
 
-**Acceptance criteria:**
-- [x] Sign in / sign out works
-- [x] `User` created on first sign-in, not duplicated on subsequent ones
-- [x] ~~Unauthenticated access to `/feed` redirects to sign-in~~ — **amended 2026-07-28 by explicit
-  decision**: the feed is public, `/saved` redirects. See spec decision 2b for the reasoning and the
-  cost. The original criterion is struck rather than deleted so the change stays visible.
-- [x] Signed-out clicks on read/save open a prompt explaining that an account is needed
-- [x] Session available server-side in App Router via `src/lib/auth/session.ts`
-
-**Verification:** `npm test -- auth` + manual sign-in
-
-**Dependencies:** T2 · **Scope:** M · *Parallelizable — independent of the pipeline*
+The feed has no accounts. `User`, `Account`, `Session`, `VerificationToken`, `UserTopic` and
+`Interaction` were dropped in migration `20260730131152_remove_auth_and_per_user_state`;
+`next-auth` and `@auth/prisma-adapter` were uninstalled. Reachable in git history at `94c16cd`
+if accounts are ever revisited.
 
 ---
 
-### Task 13: Topic selection UI
+### ❌ Task 13: Topic selection UI — OUT OF SCOPE (no accounts; decision 2b)
 
 **Description:** Post-signup screen to pick from the 15 topics, persisted to `UserTopic`. Editable
 later from settings.
@@ -426,7 +419,7 @@ rules).
 
 ---
 
-### Task 16: Dismiss and interaction tracking
+### ❌ Task 16: Dismiss and interaction tracking — OUT OF SCOPE (no accounts; decision 2b)
 
 **Description:** Record `seen` / `dismissed` / `opened` / `deepened` in `Interaction`. Dismissed
 items never reappear for that user.
@@ -444,7 +437,7 @@ items never reappear for that user.
 ---
 
 ### ✅ Checkpoint D
-- [ ] E2E green: sign in → topics → feed → dismiss → reload → item absent
+- [ ] E2E green: read feed → filter by topic → open a deep dive → source link resolves
 - [ ] Spec success criteria 1–9 verified
 - [ ] Human uses the real feed for a session and reports whether it delivers
 

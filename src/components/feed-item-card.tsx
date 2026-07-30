@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { ItemActions } from "@/components/item-actions";
 import { type FeedItem } from "@/lib/db/feed";
 
 const SOURCE_LABELS: Record<string, string> = {
@@ -30,29 +29,12 @@ function relativeDay(date: Date): string {
  * the triage themselves. It is styled distinctly because it carries a different
  * warranty — the summary describes, the take judges.
  */
-export function FeedItemCard({
-  item,
-  isRead = false,
-  isSaved = false,
-  signedIn = false,
-}: {
-  item: FeedItem;
-  isRead?: boolean;
-  isSaved?: boolean;
-  /** Signed-out readers still get live controls; they prompt for sign-in. */
-  signedIn?: boolean;
-}): React.ReactElement {
+export function FeedItemCard({ item }: { item: FeedItem }): React.ReactElement {
   const headline = item.headline ?? item.title;
   const showOriginalTitle = item.headline !== null && item.headline !== item.title;
 
   return (
-    <article
-      className={`border-b border-zinc-200 py-8 transition-opacity dark:border-zinc-800 ${
-        // Read items dim rather than disappear: the reader chose "done", not
-        // "wrong", and a vanishing item makes the feed feel unstable.
-        isRead ? "opacity-55" : ""
-      }`}
-    >
+    <article className="border-b border-zinc-200 py-8 dark:border-zinc-800">
       <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-zinc-500 dark:text-zinc-400">
         <span className="font-medium text-zinc-700 dark:text-zinc-300">
           {SOURCE_LABELS[item.sourceKind] ?? item.sourceKind}
@@ -159,10 +141,6 @@ export function FeedItemCard({
             </dl>
           </details>
         ) : null}
-
-        <div className="ml-auto flex items-center gap-1">
-          <ItemActions itemId={item.id} isRead={isRead} isSaved={isSaved} signedIn={signedIn} />
-        </div>
       </div>
     </article>
   );

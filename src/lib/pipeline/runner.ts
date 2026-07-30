@@ -229,6 +229,9 @@ export async function runPipeline(
         whyItMatters: summarized.value.whyItMatters,
         claims: summarized.value.claims,
         quotableSource: summarized.value.quotableSource,
+        // A repo's source text is its own README: promotional copy reviewed by
+        // nobody, so self-assessment in it cannot ground a claim.
+        sourceIsSelfPromotional: cluster.items.some((item) => item.kind === "GITHUB"),
       });
 
       for (const rejection of validated.rejected) {

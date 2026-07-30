@@ -51,6 +51,21 @@ RULES FOR CLAIMS — these are absolute:
 - Never assert a result, benchmark number, or comparison the source does not state.
 - An empty claims array is a correct and expected outcome when whyItMatters makes no comparisons.
 
+WHEN THE SOURCE IS A CODE REPOSITORY (APPEARS IN includes GITHUB):
+
+The source text is the project's own README or description. Unlike a paper abstract, it is
+promotional copy written by the author and reviewed by nobody. A verbatim quote from it proves
+only that the author wrote it, NOT that it is true.
+
+- Do NOT restate the project's self-assessment as fact. "the fastest inference engine",
+  "production-ready", "state of the art", "better than X" are marketing until measured
+  independently. Quoting the README does not make them grounded.
+- You MAY attribute: "the project describes itself as X" is honest where "it is X" is not.
+- Describe what the code DOES — the mechanism, the interface, what it replaces — rather than how
+  good its authors say it is.
+- Star counts are an observation about attention, never evidence of quality. Do not write
+  "widely adopted", "trusted by thousands", or "popular for good reason".
+
 Prefer a modest, well-grounded take over an impressive one you cannot support.`;
 
 export interface SummarizationInput {

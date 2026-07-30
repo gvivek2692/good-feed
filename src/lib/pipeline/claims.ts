@@ -27,6 +27,18 @@ export interface ValidateClaimsInput {
   claims: ExtractedClaim[];
   /** Exactly the text the model was shown, from `SummarizedCluster`. */
   quotableSource: string;
+  /**
+   * True when the source is the subject's own promotional copy — a repository
+   * README, a product page — rather than a paper abstract.
+   *
+   * This changes what a verbatim quote proves. Quoting an abstract's "reduces
+   * memory 40%" grounds the claim, because the abstract is a report of a
+   * measurement. Quoting a README's "the fastest inference engine" grounds
+   * nothing: it proves only that the author wrote it. Self-assessment is
+   * therefore rejected as a source of grounding even when the quote matches
+   * exactly.
+   */
+  sourceIsSelfPromotional?: boolean;
 }
 
 /**
@@ -50,6 +62,29 @@ const COMPARATIVE_PATTERNS: readonly RegExp[] = [
   /\b(?:obsoletes?|replaces?|renders?\s+obsolete)\b/i,
   /\bnew\s+(?:record|benchmark)\b/i,
 ];
+
+/**
+ * Self-assessment a project makes about itself.
+ *
+ * These are unfalsifiable as written: no measurement is cited and none is
+ * possible from the text. When the source is the project's own README, a quote
+ * containing one of these is the author's opinion, not evidence, so it cannot
+ * ground an assertion no matter how exactly it matches.
+ */
+const SELF_PROMOTIONAL_PATTERNS: readonly RegExp[] = [
+  /\b(?:fastest|best|most\s+powerful|most\s+advanced|leading|premier|world[- ]class)\b/i,
+  /\bproduction[- ]ready\b/i,
+  /\b(?:blazing(?:ly)?|lightning)\s*(?:fast)?\b/i,
+  /\bstate[- ]of[- ]the[- ]art\b/i,
+  /\b(?:simply|by\s+far)\s+the\s+\w+\b/i,
+  /\b(?:battle[- ]tested|industry[- ]standard|trusted\s+by)\b/i,
+  /\b(?:seamless(?:ly)?|effortless(?:ly)?|magical)\b/i,
+];
+
+/** Whether a span is the subject praising itself rather than reporting a result. */
+export function isSelfPromotional(text: string): boolean {
+  return SELF_PROMOTIONAL_PATTERNS.some((pattern) => pattern.test(text));
+}
 
 /**
  * Puts a quote and its source into the same encoding so they can be compared.
@@ -167,9 +202,15 @@ export function isHeadlineGrounded(
  * with its summary only.
  */
 export function validateClaims(input: ValidateClaimsInput): ClaimValidation {
-  const { whyItMatters, claims, quotableSource } = input;
+  const { whyItMatters, claims, quotableSource, sourceIsSelfPromotional = false } = input;
 
-  const grounded = claims.filter((claim) => isQuoteGrounded(claim.quotedFrom, quotableSource));
+  const grounded = claims.filter((claim) => {
+    if (!isQuoteGrounded(claim.quotedFrom, quotableSource)) return false;
+    // A README quote proves authorship, not fact. Reject self-assessment as
+    // grounding even though the quote itself is genuinely present.
+    if (sourceIsSelfPromotional && isSelfPromotional(claim.quotedFrom)) return false;
+    return true;
+  });
   const rejected: RejectedAssertion[] = [];
   const keptSentences: string[] = [];
   const usedClaims = new Set<ExtractedClaim>();

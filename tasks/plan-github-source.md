@@ -77,6 +77,24 @@ percentile machinery is already per-cluster, so a third one is additive rather t
 
 ---
 
+## Measured during implementation (2026-07-30)
+
+Two results contradicted the plan and are recorded here rather than quietly fixed:
+
+**1. Trending ∩ HN = 0 of 21.** I ranked duplicates the top risk. The sets were disjoint: HN
+surfaces repos when someone submits and upvotes them, trending reflects star velocity. The join key
+is kept (one regex) but the risk is downgraded.
+
+**2. The classifier assigned NO topic to 5 of 6 real trending repos** — they would all be dropped as
+unreachable. Decision A assumed the classifier could act as the AI filter. Two of the five drops are
+correct (`awesome-systematic-trading` is finance, `pascalorg/editor` is 3D graphics), but
+`huggingface/speech-to-speech` should reach `speech-audio` and did not.
+
+The summaries and takes were good — the failure is classification alone, and **0 assertions were
+stripped**, meaning no laundered marketing reached the takes. Diagnosis in progress: the classifier
+receives `owner/repo` as TITLE, which is a slug rather than a description, unlike the paper titles
+and HN headlines it was tuned on.
+
 ## Risks
 
 | Risk | Impact | Mitigation |
@@ -93,7 +111,7 @@ percentile machinery is already per-cluster, so a third one is additive rather t
 
 ## Tasks
 
-### Task G1: GitHub trending source adapter
+### ✅ Task G1: GitHub trending source adapter
 
 **Description:** `src/lib/sources/github.ts` producing `NormalizedItem[]` from `github.com/trending`,
 matching the existing adapter contract. Parses the server-rendered rows; no API token required for
@@ -116,7 +134,7 @@ Each row yields: `owner/name`, `repository_id` (stable numeric id, better than t
 
 ---
 
-### Task G2: Schema and taxonomy for a code source
+### ✅ Task G2: Schema and taxonomy for a code source
 
 **Description:** Add `GITHUB` to the `SourceKind` enum and `ClusterKind`. **Schema change —
 requires your approval per AGENTS.md.**
@@ -130,7 +148,7 @@ requires your approval per AGENTS.md.**
 
 ---
 
-### Task G3: Cross-source repo dedupe
+### ✅ Task G3: Cross-source repo dedupe
 
 **Description:** A repo surfaced by both GitHub and HN must produce one item. Normalize
 `github.com/{owner}/{name}` from HN `canonicalUrl` and match against the repo's full name.
@@ -145,7 +163,7 @@ requires your approval per AGENTS.md.**
 
 ---
 
-### Task G4: What a repo item honestly claims
+### 🔄 Task G4: What a repo item honestly claims
 
 **Description:** The trust-critical task. Decide and implement what `summary` and `whyItMatters`
 may assert for a repo, and what grounds them. A README is promotional text written by the author —
@@ -161,7 +179,7 @@ unlike an abstract, its claims are not peer-reviewed.
 
 ---
 
-### Task G5: Ranking and classification for the code cluster
+### ✅ Task G5: Ranking and classification for the code cluster
 
 **Description:** Signal weights, absolute floor, and a check that the topic classifier places repos
 correctly. Floors matter more here than elsewhere: star-farmed repos are a real failure mode.

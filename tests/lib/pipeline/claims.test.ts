@@ -5,6 +5,7 @@ import {
   findComparativeSentences,
   isHeadlineGrounded,
   isQuoteGrounded,
+  isSelfPromotional,
   validateClaims,
   type ClaimValidation,
 } from "@/lib/pipeline/claims";
@@ -328,5 +329,109 @@ describe("validateClaims", () => {
     });
 
     expect(result.whyItMatters).toBe("A link post.");
+  });
+});
+
+describe("self-promotional sources", () => {
+  const README =
+    "FlashLite is the fastest inference engine available. " +
+    "It caches key-value pairs across layers, and reduces memory use by 40% versus FlashAttention-2.";
+
+  /**
+   * The core distinction. An abstract reporting "reduces memory 40%" is a
+   * measurement; a README calling itself "the fastest" is an opinion. Verbatim
+   * matching cannot tell them apart, so the source's nature has to.
+   */
+  it("rejects a self-assessment quote even though it appears verbatim", () => {
+    const result = validateClaims({
+      whyItMatters: "It is the fastest inference engine available.",
+      claims: [
+        {
+          text: "fastest inference engine",
+          quotedFrom: "is the fastest inference engine available",
+        },
+      ],
+      quotableSource: README,
+      sourceIsSelfPromotional: true,
+    });
+
+    expect(result.whyItMatters).not.toContain("fastest");
+    expect(result.claims).toHaveLength(0);
+    expect(result.rejected).toHaveLength(1);
+  });
+
+  /** The same quote from a peer-reviewed abstract is legitimate grounding. */
+  it("accepts the identical quote when the source is not self-promotional", () => {
+    const result = validateClaims({
+      whyItMatters: "It is the fastest inference engine available.",
+      claims: [
+        {
+          text: "fastest inference engine",
+          quotedFrom: "is the fastest inference engine available",
+        },
+      ],
+      quotableSource: README,
+      sourceIsSelfPromotional: false,
+    });
+
+    expect(result.whyItMatters).toContain("fastest");
+    expect(result.claims).toHaveLength(1);
+  });
+
+  /**
+   * A README can still state a checkable fact. Rejecting everything from a
+   * repo would make repo takes uniformly empty, which is its own failure.
+   */
+  it("keeps a measured claim from a README", () => {
+    const result = validateClaims({
+      whyItMatters: "It reduces memory use by 40% versus FlashAttention-2.",
+      claims: [
+        {
+          text: "reduces memory use by 40% versus FlashAttention-2",
+          quotedFrom: "reduces memory use by 40% versus FlashAttention-2",
+        },
+      ],
+      quotableSource: README,
+      sourceIsSelfPromotional: true,
+    });
+
+    expect(result.whyItMatters).toContain("40%");
+    expect(result.claims).toHaveLength(1);
+  });
+
+  it("leaves a non-comparative description of a repo untouched", () => {
+    const result = validateClaims({
+      whyItMatters: "It caches key-value pairs across layers during serving.",
+      claims: [],
+      quotableSource: README,
+      sourceIsSelfPromotional: true,
+    });
+
+    expect(result.whyItMatters).toContain("caches key-value pairs");
+    expect(result.rejected).toHaveLength(0);
+  });
+
+  it("flags the marketing vocabulary a README actually uses", () => {
+    for (const phrase of [
+      "the fastest tokenizer",
+      "production-ready out of the box",
+      "blazing fast inference",
+      "battle-tested at scale",
+      "seamless integration",
+      "trusted by thousands of teams",
+    ]) {
+      expect(isSelfPromotional(phrase), phrase).toBe(true);
+    }
+  });
+
+  it("does not flag a plain factual statement as marketing", () => {
+    for (const phrase of [
+      "reduces memory use by 40%",
+      "supports Python 3.10 and later",
+      "implements the paged attention algorithm",
+      "runs on a single GPU",
+    ]) {
+      expect(isSelfPromotional(phrase), phrase).toBe(false);
+    }
   });
 });

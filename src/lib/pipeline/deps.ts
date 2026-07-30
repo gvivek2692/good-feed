@@ -1,9 +1,40 @@
 import { classifyCluster } from "@/lib/pipeline/topics";
 import { summarizeCluster } from "@/lib/pipeline/summarize";
 import { type PipelineDeps } from "@/lib/pipeline/runner";
+import { fetchArticleText } from "@/lib/sources/article";
 import { fetchRecent as fetchArxiv } from "@/lib/sources/arxiv";
+import { fetchTrendingRepos } from "@/lib/sources/github";
 import { fetchRecent as fetchHackerNews } from "@/lib/sources/hackernews";
 import { fetchRecent as fetchHuggingFace } from "@/lib/sources/huggingface";
+import { ok, type Result } from "@/lib/result";
+import { type NormalizedItem, type SourceError } from "@/lib/sources/types";
+
+/** A repo's README is the only text substantial enough to summarize from. */
+const MAX_README_CHARS = 6_000;
+
+/**
+ * Replaces each repo's one-line description with its README.
+ *
+ * The trending page gives a single sentence, which produced the same failure HN
+ * link posts did: a summary with nothing behind it. A repo whose README cannot
+ * be fetched keeps its description rather than being dropped — thin but honest
+ * beats absent.
+ */
+async function withReadmes(
+  result: Result<NormalizedItem[], SourceError>,
+): Promise<Result<NormalizedItem[], SourceError>> {
+  if (!result.ok) return result;
+
+  const enriched = await Promise.all(
+    result.value.map(async (item) => {
+      const readme = await fetchArticleText(`${item.canonicalUrl}/blob/HEAD/README.md`);
+      if (!readme.ok) return item;
+      return { ...item, text: readme.value.slice(0, MAX_README_CHARS) };
+    }),
+  );
+
+  return ok(enriched);
+}
 
 export interface LiveDepsOptions {
   /** How far back to fetch. Defaults to 3 days. */
@@ -32,6 +63,10 @@ export function liveDeps(options: LiveDepsOptions = {}): PipelineDeps {
         fetchArxiv({ since, limit }),
         fetchHuggingFace({ since, limit }),
         fetchHackerNews({ since, limit }),
+        // Daily, not weekly: the absolute floor of 50 starsToday is calibrated
+        // against the daily distribution, and the weekly page is a different
+        // scale entirely (min=996, p50=2892).
+        fetchTrendingRepos({ since: "daily" }).then(withReadmes),
       ]),
     summarize: (cluster) => summarizeCluster(cluster),
     classify: (cluster) => classifyCluster(cluster),

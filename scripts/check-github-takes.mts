@@ -19,6 +19,7 @@ if (!repos.ok) throw new Error(repos.error.message);
 
 let laundered = 0;
 let unclassified = 0;
+let failedClassification = 0;
 let done = 0;
 
 for (const item of repos.value.slice(0, LIMIT)) {
@@ -47,13 +48,24 @@ for (const item of repos.value.slice(0, LIMIT)) {
     sourceIsSelfPromotional: true,
   });
 
+  // A failed call and a genuine no-topic result are different outcomes. Folding
+  // both into an empty array once made a rate-limit failure look like the
+  // classifier rejecting the repo, which sent this investigation the wrong way.
   const topics = await classifyCluster(cluster);
-  const slugs = topics.ok ? topics.value.topics.map((t) => t.slug) : [];
-  if (slugs.length === 0) unclassified++;
+  let slugs: string[] = [];
+  let topicStatus: string;
+  if (!topics.ok) {
+    topicStatus = `CLASSIFIER ERROR (${topics.error.kind}): ${topics.error.message.slice(0, 80)}`;
+    failedClassification++;
+  } else {
+    slugs = topics.value.topics.map((t) => t.slug);
+    topicStatus = slugs.join(", ") || "NONE — would be dropped";
+    if (slugs.length === 0) unclassified++;
+  }
 
   done++;
   console.log(`\n${"=".repeat(70)}\n${item.title}  (+${item.signals.starsToday} today)`);
-  console.log(`topics: ${slugs.join(", ") || "NONE — would be dropped"}`);
+  console.log(`topics: ${topicStatus}`);
   console.log(`headline: ${summary.value.headline}`);
   console.log(`take:     ${validated.whyItMatters || "(emptied by validation)"}`);
   if (validated.rejected.length > 0) {
@@ -68,5 +80,6 @@ for (const item of repos.value.slice(0, LIMIT)) {
 
 console.log(`\n${"=".repeat(70)}`);
 console.log(`repos:        ${done}`);
-console.log(`unclassified: ${unclassified} (would be dropped as unreachable)`);
+console.log(`unclassified:  ${unclassified} (genuinely no topic — would be dropped)`);
+console.log(`classifier errors: ${failedClassification} (NOT the same thing)`);
 console.log(`assertions stripped: ${laundered}`);

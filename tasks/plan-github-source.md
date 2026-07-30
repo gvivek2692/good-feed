@@ -85,15 +85,28 @@ Two results contradicted the plan and are recorded here rather than quietly fixe
 surfaces repos when someone submits and upvotes them, trending reflects star velocity. The join key
 is kept (one regex) but the risk is downgraded.
 
-**2. The classifier assigned NO topic to 5 of 6 real trending repos** — they would all be dropped as
-unreachable. Decision A assumed the classifier could act as the AI filter. Two of the five drops are
-correct (`awesome-systematic-trading` is finance, `pascalorg/editor` is 3D graphics), but
-`huggingface/speech-to-speech` should reach `speech-audio` and did not.
+**2. Decision A works — the classifier is a viable AI filter.** Re-measured on the same 6 repos
+after fixing a bug in my own check script:
 
-The summaries and takes were good — the failure is classification alone, and **0 assertions were
-stripped**, meaning no laundered marketing reached the takes. Diagnosis in progress: the classifier
-receives `owner/repo` as TITLE, which is a slug rather than a description, unlike the paper titles
-and HN headlines it was tuned on.
+| Repo | Topics | Correct? |
+|---|---|---|
+| huggingface/speech-to-speech | speech-audio (0.95), agents (0.9) | yes |
+| different-ai/openwork | agents (0.9), tooling-infra (0.8) | yes |
+| microsoft/AI-For-Beginners | none | yes — a curriculum, not a development |
+| awesome-systematic-trading | none | yes — finance |
+| WhiskeySockets/Baileys | none | yes — WhatsApp library |
+| pascalorg/editor | none | yes — 3D graphics |
+
+**2 of 6 kept, 4 dropped, and all six judgments are right.** That is the trending page's ~3-in-14
+AI share being filtered correctly, with no keyword list to maintain.
+
+*The bug, recorded because it nearly changed a decision:* `scripts/check-github-takes.mts` folded a
+failed classifier call and a genuine no-topic result into the same empty array, so rate-limit
+failures were indistinguishable from rejections. It reported "5 of 6 unclassified" and I briefly
+concluded Decision A had failed. The script now reports the two outcomes separately.
+
+**3. Zero laundered marketing.** Across 6 real repos, 0 assertions were stripped — the takes
+described what the code does rather than repeating README self-praise.
 
 ## Risks
 

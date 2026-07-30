@@ -1,7 +1,7 @@
 # Implementation Plan: GitHub trending repos as a fourth source
 
-**Status:** Plan only. Adding a content source is an "ask first" item (AGENTS.md), and two
-decisions below need your answer before Task G1 starts.
+**Status:** G1–G5 done and committed. G6 (live run + ADR) in progress. Decisions A and B were
+approved and both held up under measurement; see "Measured during implementation".
 
 ## Overview
 
@@ -176,7 +176,7 @@ requires your approval per AGENTS.md.**
 
 ---
 
-### 🔄 Task G4: What a repo item honestly claims
+### ✅ Task G4: What a repo item honestly claims
 
 **Description:** The trust-critical task. Decide and implement what `summary` and `whyItMatters`
 may assert for a repo, and what grounds them. A README is promotional text written by the author —
@@ -210,7 +210,7 @@ correctly. Floors matter more here than elsewhere: star-farmed repos are a real 
 
 ---
 
-### Task G6: Wire into the runner and record the ADR
+### 🔄 Task G6: Wire into the runner and record the ADR
 
 **Description:** Add the source to `fetchSources`, and write `docs/adr/003-github-source.md`
 recording the trending-derivation decision, the measured overlap, and the rate-limit constraint.

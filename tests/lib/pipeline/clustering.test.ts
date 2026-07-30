@@ -220,3 +220,102 @@ describe("dedupeWithinSource", () => {
     expect(clusters[0].items).toHaveLength(2);
   });
 });
+
+describe("clustering a GitHub repo with its Hacker News coverage", () => {
+  const repo = () =>
+    item({
+      kind: "GITHUB",
+      externalId: "839428333",
+      title: "huggingface/speech-to-speech",
+      canonicalUrl: "https://github.com/huggingface/speech-to-speech",
+      signals: { starsToday: 627, stars: 8280 },
+    });
+
+  /**
+   * Measured 2026-07-30: 0 of 21 trending repos also appeared on HN, so this
+   * fires rarely. It is kept because the cost is one join key and the failure
+   * it prevents — the same repo twice in one feed — is the most visible kind.
+   */
+  it("merges an HN story that links the same repo", () => {
+    const clusters = clusterItems([
+      repo(),
+      item({
+        kind: "HACKERNEWS",
+        externalId: "hn-1",
+        title: "Show HN: local voice agents",
+        canonicalUrl: "https://github.com/huggingface/speech-to-speech",
+      }),
+    ]);
+
+    expect(clusters).toHaveLength(1);
+    expect(clusters[0].items).toHaveLength(2);
+  });
+
+  /** The repo is the development; the thread is coverage of it. */
+  it("makes the repo the representative, not the thread", () => {
+    const clusters = clusterItems([
+      item({
+        kind: "HACKERNEWS",
+        externalId: "hn-1",
+        title: "Show HN: local voice agents",
+        canonicalUrl: "https://github.com/huggingface/speech-to-speech",
+      }),
+      repo(),
+    ]);
+
+    expect(clusters[0].primary.kind).toBe("GITHUB");
+  });
+
+  it("matches despite a deep link, casing, or a .git suffix", () => {
+    for (const url of [
+      "https://github.com/HuggingFace/Speech-To-Speech",
+      "https://github.com/huggingface/speech-to-speech/blob/main/README.md",
+      "https://github.com/huggingface/speech-to-speech/tree/main/src",
+      "https://github.com/huggingface/speech-to-speech.git",
+      "https://www.github.com/huggingface/speech-to-speech",
+    ]) {
+      const clusters = clusterItems([
+        repo(),
+        item({ kind: "HACKERNEWS", externalId: `hn-${url.length}`, canonicalUrl: url }),
+      ]);
+      expect(clusters, url).toHaveLength(1);
+    }
+  });
+
+  it("does not merge an HN story about a different repo", () => {
+    const clusters = clusterItems([
+      repo(),
+      item({
+        kind: "HACKERNEWS",
+        externalId: "hn-2",
+        canonicalUrl: "https://github.com/someone/unrelated",
+      }),
+    ]);
+
+    expect(clusters).toHaveLength(2);
+  });
+
+  /** A non-repo GitHub URL must not become a join key. */
+  it("ignores GitHub URLs that are not repositories", () => {
+    const clusters = clusterItems([
+      item({ kind: "HACKERNEWS", externalId: "hn-3", canonicalUrl: "https://github.com/features" }),
+      item({ kind: "HACKERNEWS", externalId: "hn-4", canonicalUrl: "https://github.com/pricing" }),
+    ]);
+
+    expect(clusters).toHaveLength(2);
+  });
+
+  it("keeps two unrelated repos as separate clusters", () => {
+    const clusters = clusterItems([
+      repo(),
+      item({
+        kind: "GITHUB",
+        externalId: "999",
+        title: "vllm-project/vllm",
+        canonicalUrl: "https://github.com/vllm-project/vllm",
+      }),
+    ]);
+
+    expect(clusters).toHaveLength(2);
+  });
+});

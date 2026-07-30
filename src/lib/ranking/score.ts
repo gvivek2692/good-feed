@@ -5,7 +5,19 @@ import { type Cluster } from "@/lib/pipeline/clustering";
  * signals are not commensurable, so each is normalized against its own
  * distribution and floored on its own raw units.
  */
-export type ClusterKind = "research" | "discussion";
+/**
+ * The cluster kinds, as a value so the ranking code can iterate them. Adding a
+ * kind here is the single edit needed — every per-cluster structure below is
+ * built from this list rather than spelling the kinds out again.
+ */
+export const CLUSTER_KINDS = ["research", "discussion", "code"] as const;
+
+export type ClusterKind = (typeof CLUSTER_KINDS)[number];
+
+/** Builds a per-cluster record, so no call site can forget a kind. */
+function byCluster<T>(make: () => T): Record<ClusterKind, T> {
+  return Object.fromEntries(CLUSTER_KINDS.map((kind) => [kind, make()])) as Record<ClusterKind, T>;
+}
 
 /** Whether the distribution was derived from fixtures or from real history. */
 export type DistributionSource = "seeded" | "historical";
@@ -69,6 +81,25 @@ const SIGNAL_WEIGHTS: Record<ClusterKind, Record<string, number>> = {
     comments: 0.15,
     commentsPerHour: 0.15,
   },
+  /**
+   * `starsToday` carries most of the weight because it is the only signal here
+   * that describes *now*: GitHub computes it, and it is what makes a repo
+   * trending rather than merely large. Measured on the daily page (n=14):
+   * min=5, p50=180, max=916, with **14 distinct values out of 14** — no ties,
+   * so percentile rank is fully informative. Contrast `hfComments`, excluded
+   * from the research cluster for the opposite reason.
+   *
+   * `stars` is a small term for corroboration only. On its own it ranks by fame
+   * (p50=26k, max=236k) and would put every long-established repo on top, which
+   * is the failure this source exists to avoid.
+   *
+   * `forks` is deliberately absent: measured p50=3253 against stars p50=26219,
+   * it tracks total stars closely enough to add correlation rather than signal.
+   */
+  code: {
+    starsToday: 0.8,
+    stars: 0.2,
+  },
 };
 
 /**
@@ -87,6 +118,19 @@ const SIGNAL_WEIGHTS: Record<ClusterKind, Record<string, number>> = {
 export const ABSOLUTE_FLOORS = {
   research: { upvotes: 8 },
   discussion: { points: 25 },
+  /**
+   * Measured on the daily trending page (n=14): min=5, p25=68, p50=180.
+   *
+   * 50 sits between the observed minimum and p25 — it excludes the tail that is
+   * on the page for reasons other than momentum (`dotnet/aspnetcore` at +5,
+   * `WhiskeySockets/Baileys` at +12) without cutting into the body of the
+   * distribution.
+   *
+   * Assumes the **daily** window. The weekly page is a different scale entirely
+   * (min=996, p50=2892), so `fetchTrendingRepos` must not be switched to weekly
+   * without revisiting this number.
+   */
+  code: { starsToday: 50 },
 } as const;
 
 /** Coverage by a second source clears the research floor on its own (ADR 001). */
@@ -103,6 +147,9 @@ const MIN_RECENCY_MULTIPLIER = 0.6;
 const MAX_RECENCY_MULTIPLIER = 1.4;
 
 export function clusterOf(cluster: Cluster): ClusterKind {
+  // Checked before HN so a repo that merged with its own HN thread is ranked as
+  // code: the repo is the development, the thread is coverage of it.
+  if (cluster.items.some((item) => item.kind === "GITHUB")) return "code";
   return cluster.items.some((item) => item.kind === "HACKERNEWS") ? "discussion" : "research";
 }
 
@@ -152,11 +199,8 @@ export function buildDistributions(
   source: DistributionSource = "seeded",
   builtAt: Date = new Date(),
 ): Distributions {
-  const bySignal: Record<ClusterKind, Record<string, number[]>> = {
-    research: {},
-    discussion: {},
-  };
-  const ages: Record<ClusterKind, number[]> = { research: [], discussion: [] };
+  const bySignal = byCluster<Record<string, number[]>>(() => ({}));
+  const ages = byCluster<number[]>(() => []);
 
   for (const cluster of clusters) {
     const kind = clusterOf(cluster);
@@ -168,9 +212,9 @@ export function buildDistributions(
     );
   }
 
-  const medianAgeDays: Record<ClusterKind, number> = { research: 0, discussion: 0 };
+  const medianAgeDays = byCluster<number>(() => 0);
 
-  for (const kind of ["research", "discussion"] as const) {
+  for (const kind of CLUSTER_KINDS) {
     for (const values of Object.values(bySignal[kind])) {
       values.sort((a, b) => a - b);
     }
@@ -276,6 +320,13 @@ function clearsFloor(scored: ScoredCluster): boolean {
     return (snapshot.raw.upvotes ?? 0) >= ABSOLUTE_FLOORS.research.upvotes;
   }
 
+  if (snapshot.cluster === "code") {
+    return (snapshot.raw.starsToday ?? 0) >= ABSOLUTE_FLOORS.code.starsToday;
+  }
+
+  // Switched on explicitly rather than left as a fallthrough: a new cluster
+  // reaching this line would be floored on `points`, a signal it does not have,
+  // and would be silently rejected in full.
   return (snapshot.raw.points ?? 0) >= ABSOLUTE_FLOORS.discussion.points;
 }
 
@@ -294,7 +345,7 @@ export function rankClusters(
     .map((cluster) => scoreCluster(cluster, distributions, now))
     .sort((a, b) => b.score - a.score || a.cluster.id.localeCompare(b.cluster.id));
 
-  const positions: Record<ClusterKind, number> = { research: 0, discussion: 0 };
+  const positions = byCluster<number>(() => 0);
 
   for (const entry of scored) {
     positions[entry.snapshot.cluster] += 1;

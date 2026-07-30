@@ -8,7 +8,7 @@ import { z } from "zod";
 export const NormalizedItem = z.object({
   /** Stable id within the source. Combined with `kind` it must be unique. */
   externalId: z.string().min(1),
-  kind: z.enum(["ARXIV", "HUGGINGFACE", "HACKERNEWS"]),
+  kind: z.enum(["ARXIV", "HUGGINGFACE", "HACKERNEWS", "GITHUB"]),
   title: z.string().min(1),
   authors: z.array(z.string()),
   publishedAt: z.date(),

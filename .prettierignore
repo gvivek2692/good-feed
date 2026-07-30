@@ -5,3 +5,7 @@ playwright-report/
 test-results/
 package-lock.json
 *.md
+
+# Fixtures are captured verbatim from live sources. Reformatting them would
+# mean the parser is tested against markup we rewrote, not what GitHub serves.
+tests/fixtures/

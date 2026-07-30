@@ -341,3 +341,78 @@ describe("rankClusters", () => {
     ]);
   });
 });
+
+describe("the code cluster", () => {
+  function repo(overrides: { id?: string; starsToday?: number; stars?: number } = {}): Cluster {
+    const item: NormalizedItem = {
+      externalId: overrides.id ?? "1",
+      kind: "GITHUB",
+      title: `owner/repo-${overrides.id ?? "1"}`,
+      authors: ["owner"],
+      publishedAt: NOW,
+      canonicalUrl: `https://github.com/owner/repo-${overrides.id ?? "1"}`,
+      sourceUrl: "https://github.com/trending",
+      text: "A repo",
+      arxivId: null,
+      signals: { starsToday: overrides.starsToday ?? 200, stars: overrides.stars ?? 10_000 },
+      raw: {},
+    };
+    return { id: `c-${overrides.id ?? "1"}`, items: [item], sourceCount: 1, primary: item };
+  }
+
+  it("classifies a repo as code, not research or discussion", () => {
+    expect(clusterOf(repo())).toBe("code");
+  });
+
+  /**
+   * A repo that merged with its own HN thread is still a repo: the repo is the
+   * development and the thread is coverage. Ranking it as discussion would
+   * score it on points it mostly does not have.
+   */
+  it("stays code when an HN story merged into the cluster", () => {
+    const base = repo();
+    const hn: NormalizedItem = {
+      ...base.primary,
+      externalId: "hn-1",
+      kind: "HACKERNEWS",
+      signals: { points: 120 },
+    };
+
+    expect(clusterOf({ ...base, items: [base.primary, hn], sourceCount: 2 })).toBe("code");
+  });
+
+  /** Measured on the daily page: aspnetcore at +5, Baileys at +12 are the tail this excludes. */
+  it("excludes a repo below the starsToday floor", () => {
+    const clusters = [repo({ id: "hot", starsToday: 600 }), repo({ id: "cold", starsToday: 5 })];
+    const distributions = buildDistributions(clusters, "seeded", NOW);
+    const ranked = rankClusters(clusters, distributions, NOW);
+
+    expect(ranked.find((r) => r.cluster.id === "c-hot")?.included).toBe(true);
+    const cold = ranked.find((r) => r.cluster.id === "c-cold");
+    expect(cold?.included).toBe(false);
+    expect(cold?.exclusionReason).toBe("below-absolute-floor");
+  });
+
+  /**
+   * The whole reason this source exists: a repo spiking today must outrank a
+   * famous repo that is merely large. Without this, trending degenerates into
+   * a most-starred list.
+   */
+  it("ranks momentum above total stars", () => {
+    const spiking = repo({ id: "spiking", starsToday: 900, stars: 8_000 });
+    const famous = repo({ id: "famous", starsToday: 60, stars: 200_000 });
+    const clusters = [spiking, famous];
+    const distributions = buildDistributions(clusters, "seeded", NOW);
+    const ranked = rankClusters(clusters, distributions, NOW);
+
+    expect(ranked[0].cluster.id).toBe("c-spiking");
+  });
+
+  it("scores repos against other repos, not against papers or HN stories", () => {
+    const clusters = [repo({ id: "a", starsToday: 900 }), repo({ id: "b", starsToday: 100 })];
+    const distributions = buildDistributions(clusters, "seeded", NOW);
+
+    expect(distributions.bySignal.code.starsToday).toEqual([100, 900]);
+    expect(distributions.bySignal.research.starsToday).toBeUndefined();
+  });
+});

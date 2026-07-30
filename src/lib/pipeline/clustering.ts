@@ -28,7 +28,11 @@ export interface Cluster {
 const SOURCE_PRIORITY: Record<NormalizedItem["kind"], number> = {
   HUGGINGFACE: 0,
   ARXIV: 1,
-  HACKERNEWS: 2,
+  // Above HN so that when a trending repo and an HN story about it merge, the
+  // repo is the representative: the repo is the development, the thread is
+  // coverage of it. HN's discussion signals survive on the merged cluster.
+  GITHUB: 2,
+  HACKERNEWS: 3,
 };
 
 function pickPrimary(items: NormalizedItem[]): NormalizedItem {
@@ -41,6 +45,26 @@ function pickPrimary(items: NormalizedItem[]): NormalizedItem {
 }
 
 /**
+ * `owner/name` from a GitHub URL, lowercased.
+ *
+ * Handles the forms an HN submission actually uses: bare repo, `/blob/...`,
+ * `/tree/...`, a `.git` suffix, and trailing slashes. Returns null for
+ * non-repo GitHub URLs such as `/features` or a gist.
+ */
+function repoSlug(url: string): string | null {
+  const match = /^https?:\/\/(?:www\.)?github\.com\/([^/?#]+)\/([^/?#]+)/i.exec(url);
+  if (!match) return null;
+
+  const owner = match[1];
+  const name = match[2].replace(/\.git$/i, "");
+  // Reserved paths that look like an owner but are not.
+  if (["features", "about", "pricing", "orgs", "sponsors"].includes(owner.toLowerCase())) {
+    return null;
+  }
+  return `${owner}/${name}`.toLowerCase();
+}
+
+/**
  * The key two items must share to be the same development.
  *
  * Papers join on arXiv id. Everything else keys on itself, which means it forms
@@ -48,12 +72,26 @@ function pickPrimary(items: NormalizedItem[]): NormalizedItem {
  * distinct developments rather than coverage of a paper.
  */
 function joinKey(item: NormalizedItem): string {
+  if (item.kind === "GITHUB") {
+    // Keyed on owner/name so an HN story linking the same repo merges into it.
+    return `repo:${item.title.toLowerCase()}`;
+  }
+
   if (item.kind === "HACKERNEWS") {
-    // Deliberately self-keyed even when an HN story links to arXiv. Such a story
-    // is a discussion *about* the paper, and the spec's discussion cluster is
-    // ranked on its own signals. Merging would hide one behind the other.
+    // An HN story pointing at a repo is coverage of that repo, so it shares the
+    // repo's key. Measured 2026-07-30: 0 of 21 trending repos also appeared on
+    // HN, so this fires rarely — but the cost is one regex and the alternative
+    // is the same repo twice in one feed.
+    const repo = repoSlug(item.canonicalUrl);
+    if (repo) return `repo:${repo}`;
+
+    // Otherwise deliberately self-keyed, even when the story links to arXiv:
+    // such a story is a discussion *about* the paper, and the discussion
+    // cluster is ranked on its own signals. Merging would hide one behind the
+    // other.
     return `hn:${item.externalId}`;
   }
+
   return item.arxivId ? `arxiv:${item.arxivId}` : `${item.kind.toLowerCase()}:${item.externalId}`;
 }
 

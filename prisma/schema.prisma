@@ -19,6 +19,7 @@ enum SourceKind {
   ARXIV
   HUGGINGFACE
   HACKERNEWS
+  GITHUB
 }
 
 /// A raw fetched record from one source. Retained verbatim so summaries and

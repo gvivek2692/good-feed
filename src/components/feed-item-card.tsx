@@ -114,34 +114,6 @@ export function FeedItemCard({ item }: { item: FeedItem }): React.ReactElement {
             "Source"
           )}
         </a>
-
-        {/*
-          Ranking must always be explainable in numbers (spec). Kept in a
-          details element so the feed stays readable while the evidence is one
-          click away.
-        */}
-        {item.snapshot ? (
-          <details className="text-xs text-zinc-500 dark:text-zinc-400">
-            <summary className="cursor-pointer select-none hover:text-zinc-700 dark:hover:text-zinc-300">
-              Why is this here? ({item.importanceScore?.toFixed(3)})
-            </summary>
-            <dl className="mt-2 space-y-1 rounded-md bg-zinc-50 p-3 font-mono text-[11px] dark:bg-zinc-900">
-              <div>
-                cluster: {item.snapshot.cluster} · sources: {item.snapshot.sourceCount} · recency
-                &times;{item.snapshot.recencyMultiplier?.toFixed(2)}
-              </div>
-              <div>
-                distribution: {item.snapshot.distributionSource} · rank in cluster:{" "}
-                {item.snapshot.withinClusterPosition}
-              </div>
-              {Object.entries(item.snapshot.percentiles ?? {}).map(([name, value]) => (
-                <div key={name}>
-                  {name}: {item.snapshot?.raw?.[name]} (p{Math.round(value * 100)})
-                </div>
-              ))}
-            </dl>
-          </details>
-        ) : null}
       </div>
     </article>
   );

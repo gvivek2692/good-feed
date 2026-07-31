@@ -1,13 +1,7 @@
 import { prisma } from "@/lib/db/client";
 import { generateDeepDive } from "@/lib/pipeline/deep-dive";
+import { resolveQuotableSource } from "@/lib/pipeline/dive-source";
 import { err, ok, type Result } from "@/lib/result";
-import { fetchArticleText } from "@/lib/sources/article";
-
-/**
- * Below this much text, an item is treated as having no usable body and the
- * linked page is fetched. Matches the deep-dive generator's own threshold.
- */
-const THIN_SOURCE_CHARS = 600;
 
 export interface ItemDeepDive {
   content: string;
@@ -17,12 +11,16 @@ export interface ItemDeepDive {
 export type DeepDiveError = { kind: "not-found" } | { kind: "generation-failed"; message: string };
 
 /**
- * Returns the deep dive for an item, generating it on first request.
+ * Returns the deep dive for an item, generating it if one is missing.
  *
- * Generated on demand rather than at ingest because most items are never
- * opened — pre-generating would spend tokens on every item to serve the few
- * that get read. Cached permanently afterwards: the source does not change, so
- * neither should the explanation.
+ * The pipeline pre-generates a dive for every item it publishes, so in the
+ * normal case this is a single indexed read. Generation here is the fallback
+ * for the items that path could not cover — a dive that failed at publish time
+ * (rate limit, or output that never cleared the length floor) leaves the item
+ * published with no dive rather than withholding it from the feed.
+ *
+ * Cached permanently once written: the source does not change, so neither
+ * should the explanation.
  */
 export async function getOrCreateDeepDive(
   itemId: string,
@@ -42,26 +40,14 @@ export async function getOrCreateDeepDive(
   // The raw payload is retained at ingest precisely so the quotable text can be
   // reconstructed here, rather than re-fetching from the source API.
   const raw = item.source.rawPayload as Record<string, unknown>;
-  let quotableSource =
+  const baseText =
     (raw.summary as string) ??
     (raw.abstract as string) ??
     (raw.story_text as string) ??
     (raw.text as string) ??
     "";
 
-  // A Hacker News link post carries a URL and no body, so the pipeline only
-  // ever saw a title — which produced a 40-word deep dive that explained
-  // nothing. The linked page is the actual source material. Fetched here rather
-  // than at ingest because most items are never opened, and this is the point
-  // where the text is genuinely needed.
-  if (quotableSource.length < THIN_SOURCE_CHARS && item.canonicalUrl) {
-    const article = await fetchArticleText(item.canonicalUrl);
-    // A failed fetch degrades to the title-only path rather than failing the
-    // page: a thin explainer still beats an error.
-    if (article.ok && article.value.length > quotableSource.length) {
-      quotableSource = article.value;
-    }
-  }
+  const quotableSource = await resolveQuotableSource(baseText, item.canonicalUrl);
 
   const generated = await generateDeepDive({
     title: item.title,
@@ -77,8 +63,15 @@ export async function getOrCreateDeepDive(
     return err({ kind: "generation-failed", message: generated.error.message });
   }
 
-  const saved = await prisma.deepDive.create({
-    data: { itemId, content: generated.value.content },
+  // Upsert rather than create: two readers can open the same ungenerated item
+  // at once, both miss the cache above, and both arrive here. `create` would
+  // throw a unique-constraint error on the second, turning a race into a 500.
+  // Whichever lands first wins and the other returns the same row — the dives
+  // are interchangeable, so there is nothing to reconcile.
+  const saved = await prisma.deepDive.upsert({
+    where: { itemId },
+    create: { itemId, content: generated.value.content },
+    update: {},
   });
 
   return ok({ content: saved.content, generatedAt: saved.generatedAt });

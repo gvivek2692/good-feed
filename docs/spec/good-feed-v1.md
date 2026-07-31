@@ -354,8 +354,25 @@ reasoning, and each is revisitable if the reasoning turns out wrong.
 ### 1. "Dig deeper" = one longer generated explanation
 
 A single expansion of the same item: ~500 words, assumes the summary was read, goes into method and
-result detail. Generated on demand and cached, not pre-generated for every item (most are never
-expanded — pre-generating burns tokens on items nobody opens).
+result detail. ~~Generated on demand and cached, not pre-generated for every item (most are never
+expanded — pre-generating burns tokens on items nobody opens).~~ **Amended 2026-07-31:**
+pre-generated for every published item as the pipeline publishes it, and cached. Still generated on
+demand as a fallback when pre-generation fails.
+
+*Why the reversal:* the original reasoning assumed pre-generation meant paying for every *candidate*.
+It does not — the ranking floor already rejects the overwhelming majority before summarization, so a
+dive is only ever generated for an item that reached the feed. Measured on the run of 2026-07-30:
+**130 clusters, 5 published**. Pre-generating those 5 adds ~90s to an 18-minute run.
+
+The cost on the other side was larger than the draft assumed. A cold deep dive measured **9.8–11.5s**
+typically and **27.6s** on a thin source that burned retries — spent inside the page render, with no
+loading state, by whichever reader arrived first. Generation is also non-deterministic in a way that
+matters here: the same item generated twice returned 403 words/1 claim and 361 words/0 claims, the
+second below the length floor. Doing this in the pipeline means a retry costs a background run rather
+than a reader's wait.
+
+Pre-generation failure never withholds an item. The feed card stands on its own, and a rate-limit
+blip must not shrink the feed.
 
 *Why:* Anything richer — tutorial, implementation guide, worked example — is a different product and
 starts pulling toward option C. The expansion is bound by the same claim-grounding rules as the take.

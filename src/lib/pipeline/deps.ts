@@ -1,4 +1,7 @@
+import { prisma } from "@/lib/db/client";
 import { classifyCluster } from "@/lib/pipeline/topics";
+import { generateDeepDive } from "@/lib/pipeline/deep-dive";
+import { resolveQuotableSource } from "@/lib/pipeline/dive-source";
 import { summarizeCluster } from "@/lib/pipeline/summarize";
 import { type PipelineDeps } from "@/lib/pipeline/runner";
 import { fetchArticleText } from "@/lib/sources/article";
@@ -6,7 +9,8 @@ import { fetchRecent as fetchArxiv } from "@/lib/sources/arxiv";
 import { fetchTrendingRepos } from "@/lib/sources/github";
 import { fetchRecent as fetchHackerNews } from "@/lib/sources/hackernews";
 import { fetchRecent as fetchHuggingFace } from "@/lib/sources/huggingface";
-import { ok, type Result } from "@/lib/result";
+import { type LlmError } from "@/lib/llm/client";
+import { err, ok, type Result } from "@/lib/result";
 import { type NormalizedItem, type SourceError } from "@/lib/sources/types";
 
 /** A repo's README is the only text substantial enough to summarize from. */
@@ -34,6 +38,53 @@ async function withReadmes(
   );
 
   return ok(enriched);
+}
+
+/**
+ * Generates and stores one item's deep dive during the pipeline run.
+ *
+ * The summarizer's `quotableSource` is the cluster's own item text, which is
+ * thin for a Hacker News link post or a repo — so it goes through the same
+ * article-fetch resolution the on-demand path uses, rather than generating from
+ * a title.
+ *
+ * Writes with `upsert` for the same reason the on-demand path does: a rerun
+ * over an already-published item must not fail on the unique constraint.
+ */
+async function generateAndStoreDive(input: {
+  itemId: string;
+  quotableSource: string;
+}): Promise<Result<void, LlmError>> {
+  const item = await prisma.item.findUnique({
+    where: { id: input.itemId },
+    include: { source: true },
+  });
+
+  if (!item) {
+    return err({ kind: "invalidResponse", message: `item ${input.itemId} vanished mid-run` });
+  }
+
+  const quotableSource = await resolveQuotableSource(input.quotableSource, item.canonicalUrl);
+
+  const generated = await generateDeepDive({
+    title: item.title,
+    headline: item.headline,
+    summary: item.summary,
+    whyItMatters: item.whyItMatters,
+    quotableSource,
+    authors: item.authors,
+    sourceKinds: [item.source.kind],
+  });
+
+  if (!generated.ok) return err(generated.error);
+
+  await prisma.deepDive.upsert({
+    where: { itemId: input.itemId },
+    create: { itemId: input.itemId, content: generated.value.content },
+    update: { content: generated.value.content },
+  });
+
+  return ok(undefined);
 }
 
 export interface LiveDepsOptions {
@@ -70,6 +121,7 @@ export function liveDeps(options: LiveDepsOptions = {}): PipelineDeps {
       ]),
     summarize: (cluster) => summarizeCluster(cluster),
     classify: (cluster) => classifyCluster(cluster),
+    generateDive: generateAndStoreDive,
     now: () => new Date(),
     itemDelayMs: options.itemDelayMs ?? 6_000,
     maxItems: options.maxItems,

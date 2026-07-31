@@ -28,10 +28,10 @@ function readingMinutes(text: string): number {
 /**
  * The deep-dive page.
  *
- * Generated on first visit and cached, per the spec's resolved decision 1 —
- * most items are never opened, so pre-generating would spend tokens on every
- * item to serve the few that get read. The first visitor waits; everyone after
- * reads from the database.
+ * The pipeline pre-generates a dive as it publishes each item, so this is
+ * normally a cached read. `getOrCreateDeepDive` still generates on demand for
+ * items whose pre-generation failed — those readers wait, as every reader used
+ * to before spec decision 1 was amended.
  */
 export default async function ItemPage({
   params,

@@ -40,6 +40,23 @@ export interface PipelineDeps {
    * session to establish that a run was merely slow.
    */
   onProgress?: (event: { index: number; total: number; title: string; outcome: string }) => void;
+  /**
+   * Generates and stores the deep dive for a freshly published item.
+   *
+   * Pre-generated here rather than on first click because the first reader
+   * otherwise waits on a live model call inside the page render — measured at
+   * 9.8–11.5s, with no loading state. Doing it here costs ~11s on a run already
+   * paced at 6s per item, and the reader always gets a cached read.
+   *
+   * Failure is deliberately non-fatal: the item stays published and
+   * `getOrCreateDeepDive` regenerates on demand. A rate-limit blip must not
+   * shrink the feed, and the card is worth reading without the expansion.
+   * Absent in tests, which should not make model calls.
+   */
+  generateDive?: (input: {
+    itemId: string;
+    quotableSource: string;
+  }) => Promise<Result<void, LlmError>>;
 }
 
 export interface RunSummary {
@@ -77,6 +94,15 @@ interface Drop {
    * the dropped-item count.
    */
   assertionOnly?: boolean;
+  /**
+   * True when the item published but its deep dive did not pre-generate.
+   *
+   * Separate from `assertionOnly`: that one means a published item with a
+   * trimmed take, and counting a deferred dive as a stripped assertion would
+   * misreport what the run actually did to the text. Excluded from the dropped
+   * count for the same reason — the item is in the feed.
+   */
+  diveDeferred?: boolean;
 }
 
 /**
@@ -138,9 +164,12 @@ export async function runPipeline(
     assertionsStripped: 0,
   };
 
-  /** Items absent from the feed; stripped assertions are tallied separately. */
+  /**
+   * Items absent from the feed. Stripped assertions and deferred deep dives are
+   * both logged as drops but describe *published* items, so neither counts here.
+   */
   const tally = (): void => {
-    counts.dropped = drops.filter((drop) => !drop.assertionOnly).length;
+    counts.dropped = drops.filter((drop) => !drop.assertionOnly && !drop.diveDeferred).length;
     counts.assertionsStripped = drops.filter((drop) => drop.assertionOnly).length;
   };
 
@@ -329,6 +358,31 @@ export async function runPipeline(
       }
 
       counts.published += 1;
+
+      // After the item is counted as published, never before: a failed dive
+      // must not cost the feed an item that summarized, validated, and
+      // persisted successfully.
+      if (deps.generateDive) {
+        const dive = await deps.generateDive({
+          itemId: persisted.value.itemId,
+          quotableSource: summarized.value.quotableSource,
+        });
+
+        if (!dive.ok) {
+          drops.push({
+            stage: "deep-dive",
+            reason: dive.error.kind,
+            externalId,
+            detail: dive.error,
+            // The item is in the feed; only its pre-generated expansion is
+            // missing, and the page regenerates it on demand.
+            diveDeferred: true,
+          });
+          report("published (dive deferred)");
+          continue;
+        }
+      }
+
       report("published");
     }
 

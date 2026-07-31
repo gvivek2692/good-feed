@@ -9,7 +9,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 
 import { PrismaClient } from "@/generated/prisma/client";
 import { runPipeline, type PipelineDeps } from "@/lib/pipeline/runner";
-import { ok } from "@/lib/result";
+import { err, ok } from "@/lib/result";
 import { type NormalizedItem } from "@/lib/sources/types";
 
 const connectionString = process.env.DATABASE_URL;
@@ -260,6 +260,58 @@ describeDb("runPipeline", () => {
     // The strip is still recorded, so a run log shows what was removed.
     const drops = await prisma.droppedItem.findMany({ where: { runId: result.value.runId } });
     expect(drops.some((drop) => drop.stage === "validate")).toBe(true);
+  });
+
+  it("pre-generates a deep dive for each published item", async () => {
+    const seen: string[] = [];
+
+    const result = await runPipeline(
+      prisma,
+      deps({
+        fetchSources: async () => [ok([item("a")])],
+        generateDive: async ({ itemId }) => {
+          seen.push(itemId);
+          return ok(undefined);
+        },
+      }),
+    );
+
+    if (!result.ok) throw new Error("expected success");
+
+    expect(result.value.published).toBe(1);
+    expect(seen).toHaveLength(1);
+  });
+
+  /**
+   * The whole point of pre-generating is that it cannot make the feed worse. A
+   * dive that fails leaves the item published and falls back to on-demand
+   * generation, so the worst case is exactly the old behaviour.
+   */
+  it("still publishes an item whose deep dive fails to generate", async () => {
+    const result = await runPipeline(
+      prisma,
+      deps({
+        fetchSources: async () => [ok([item("a")])],
+        generateDive: async () => err({ kind: "rateLimit", message: "quota exhausted" }),
+      }),
+    );
+
+    if (!result.ok) throw new Error("expected success");
+
+    expect(result.value.published).toBe(1);
+    // A deferred dive is neither a dropped item nor a stripped assertion.
+    expect(result.value.dropped).toBe(0);
+    expect(result.value.assertionsStripped).toBe(0);
+
+    // The item is genuinely in the feed, not merely counted.
+    const published = await prisma.item.count({
+      where: { published: true, source: { externalId: { startsWith: "runner-test" } } },
+    });
+    expect(published).toBe(1);
+
+    // ...and the failure is still recorded, so a run log explains the gap.
+    const drops = await prisma.droppedItem.findMany({ where: { runId: result.value.runId } });
+    expect(drops.some((drop) => drop.stage === "deep-dive")).toBe(true);
   });
 
   /**

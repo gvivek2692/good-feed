@@ -22,5 +22,38 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /*
+   * Geist, not Arial. layout.tsx loads the font and globals maps it to
+   * --font-sans, but this rule used to hardcode Arial and override both — the
+   * fonts were downloaded on every page load and never rendered.
+   */
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/*
+ * Prose measure.
+ *
+ * Body text was running 96 characters per line, well past the 45–75 that keeps
+ * a reader from losing their place on the return sweep. The container stays
+ * wide — the meta row and filters want the room — so the limit is applied to
+ * the text itself rather than to the page.
+ */
+/*
+ * 34rem ≈ 66 characters at the take's 17px. Fixed rather than `68ch`: the ch
+ * unit scales with the element's own font size, so the same class produced 85
+ * characters on the 17px take and far fewer on the 13px claims — measured, the
+ * first attempt did not constrain the take at all.
+ */
+.prose-measure {
+  max-width: 34rem;
+}
+
+/* The topic row scrolls horizontally; a visible bar under the pills reads as
+   a rendering fault rather than an affordance. */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }

@@ -26,53 +26,60 @@ export default async function Home({
 
   return (
     <div className="min-h-full bg-white dark:bg-zinc-950">
-      <header className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="mx-auto max-w-3xl px-6 py-8">
-          <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            good-feed
+      <header className="border-b border-zinc-200/70 dark:border-zinc-800/70">
+        <div className="mx-auto max-w-2xl px-6 pb-7 pt-12">
+          <h1 className="text-[2rem] font-semibold tracking-[-0.03em] text-zinc-900 dark:text-zinc-50">
+            good&#8203;<span className="text-zinc-400 dark:text-zinc-600">/</span>feed
           </h1>
-          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+          <p className="mt-2 max-w-md text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
             What happened in AI research and engineering — and why it matters.
           </p>
-          <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-500">
+          <p className="mt-4 font-mono text-[11px] uppercase tracking-wider text-zinc-400 dark:text-zinc-600">
             {stats.published} items
-            {stats.lastRunAt ? (
-              <> · last ingest {stats.lastRunAt.toISOString().slice(0, 16).replace("T", " ")}</>
-            ) : null}
-            {stats.droppedLastRun > 0 ? <> · {stats.droppedLastRun} dropped that run</> : null}
+            {stats.lastRunAt ? <> · updated {stats.lastRunAt.toISOString().slice(0, 10)}</> : null}
           </p>
         </div>
       </header>
 
-      <nav className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="mx-auto flex max-w-3xl flex-wrap gap-2 px-6 py-3">
-          <Link
-            href="/"
-            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-              !topic
-                ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
-            }`}
-          >
-            All
-          </Link>
-          {topics.map((entry) => (
+      {/*
+        One scrolling row rather than three wrapped ones. Fourteen topics wrapped
+        to three rows on desktop and six on mobile, so a reader scrolled past a
+        control bar to reach the first item.
+      */}
+      <nav className="sticky top-0 z-10 border-b border-zinc-200/70 bg-white/85 backdrop-blur-md dark:border-zinc-800/70 dark:bg-zinc-950/85">
+        <div className="mx-auto max-w-2xl px-6">
+          <div className="scrollbar-none flex gap-1.5 overflow-x-auto py-3">
             <Link
-              key={entry.slug}
-              href={`/?topic=${entry.slug}`}
-              className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-                topic === entry.slug
+              href="/"
+              className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                !topic
                   ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                  : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
+                  : "text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
               }`}
             >
-              {entry.label} <span className="opacity-60">{entry.count}</span>
+              All
             </Link>
-          ))}
+            {topics.map((entry) => (
+              <Link
+                key={entry.slug}
+                href={`/?topic=${entry.slug}`}
+                className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                  topic === entry.slug
+                    ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+                    : "text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                }`}
+              >
+                {entry.label}{" "}
+                <span className={topic === entry.slug ? "opacity-60" : "text-zinc-400"}>
+                  {entry.count}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </nav>
 
-      <main className="mx-auto max-w-3xl px-6">
+      <main className="mx-auto max-w-2xl px-6">
         {items.length === 0 ? (
           /*
            * A quiet week produces a short feed, by design — the spec forbids
@@ -87,7 +94,7 @@ export default async function Home({
         )}
       </main>
 
-      <footer className="mx-auto max-w-3xl px-6 py-10 text-xs text-zinc-400 dark:text-zinc-600">
+      <footer className="mx-auto max-w-2xl border-t border-zinc-200/70 px-6 py-10 text-xs leading-relaxed text-zinc-400 dark:border-zinc-800/70 dark:text-zinc-600">
         Ranked by observable signals, not by an LLM. Every comparative claim quotes its source.
       </footer>
     </div>

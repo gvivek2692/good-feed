@@ -12,6 +12,14 @@ const SOURCE_LABELS: Record<string, string> = {
   GITHUB: "GitHub",
 };
 
+/** Matches the feed card, so an item looks the same in both places. */
+const SOURCE_ACCENTS: Record<string, string> = {
+  ARXIV: "text-rose-700 dark:text-rose-400",
+  HUGGINGFACE: "text-amber-700 dark:text-amber-400",
+  HACKERNEWS: "text-orange-700 dark:text-orange-400",
+  GITHUB: "text-violet-700 dark:text-violet-400",
+};
+
 /** ~250wpm, the usual estimate for non-technical prose. */
 function readingMinutes(text: string): number {
   return Math.max(1, Math.round(text.trim().split(/\s+/).length / 250));
@@ -50,9 +58,14 @@ export default async function ItemPage({
         </div>
       </header>
 
-      <article className="mx-auto max-w-2xl px-6 py-10">
+      {/*
+        Narrower than the feed's container: this is 400+ words of continuous
+        prose, where line length matters most. 36rem holds ~66 characters at the
+        body size.
+      */}
+      <article className="mx-auto max-w-[36rem] px-6 py-12">
         <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-zinc-500 dark:text-zinc-400">
-          <span className="font-medium text-zinc-700 dark:text-zinc-300">
+          <span className={`font-semibold tracking-wide ${SOURCE_ACCENTS[item.sourceKind] ?? ""}`}>
             {SOURCE_LABELS[item.sourceKind] ?? item.sourceKind}
           </span>
           {item.topics.map((topic) => (

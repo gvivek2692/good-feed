@@ -42,7 +42,7 @@ export function Markdown({ content }: { content: string }): React.ReactElement {
   const blocks = content.split(/\n{2,}/).filter((block) => block.trim());
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {blocks.map((block, index) => {
         const trimmed = block.trim();
         const key = `block-${index}`;
@@ -53,8 +53,8 @@ export function Markdown({ content }: { content: string }): React.ReactElement {
           const text = heading[2];
           const className =
             level === 2
-              ? "mt-8 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50"
-              : "mt-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100";
+              ? "mt-10 text-[1.3rem] font-semibold tracking-[-0.015em] text-zinc-900 dark:text-zinc-50"
+              : "mt-8 text-[1.0625rem] font-semibold text-zinc-900 dark:text-zinc-100";
 
           return level === 2 ? (
             <h2 key={key} className={className}>
@@ -76,7 +76,7 @@ export function Markdown({ content }: { content: string }): React.ReactElement {
                 {listItems.map((line, itemIndex) => (
                   <li
                     key={`${key}-${itemIndex}`}
-                    className="text-[17px] leading-relaxed text-zinc-700 dark:text-zinc-300"
+                    className="text-[17px] leading-[1.75] text-zinc-700 dark:text-zinc-300"
                   >
                     {renderInline(line.replace(/^\s*[-*]\s/, ""), `${key}-${itemIndex}`)}
                   </li>
@@ -87,7 +87,7 @@ export function Markdown({ content }: { content: string }): React.ReactElement {
         }
 
         return (
-          <p key={key} className="text-[17px] leading-relaxed text-zinc-700 dark:text-zinc-300">
+          <p key={key} className="text-[17px] leading-[1.75] text-zinc-700 dark:text-zinc-300">
             {renderInline(trimmed, key)}
           </p>
         );

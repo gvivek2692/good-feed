@@ -1,0 +1,94 @@
+# Scheduled feed refresh.
+#
+# The feed is only as current as the last pipeline run, and until now that ran
+# by hand. This runs it every three days against the hosted database that the
+# deployed app reads from.
+#
+# Three days rather than daily: the ranking floor rejects most candidates, and
+# a quiet stretch should produce a short feed rather than a padded one. Running
+# more often mainly spends Gemini quota re-examining items already rejected.
+name: ingest
+
+on:
+  schedule:
+    # 06:00 UTC on the 1st, 4th, 7th ... 25th. GitHub cron has no "every 3 days"
+    # primitive, so a day-of-month list is the honest spelling.
+    #
+    # The 28th is deliberately absent. Including it puts a run one day after the
+    # previous one in February (28th → 1st), spending a full quota cycle to
+    # re-examine items the ranking floor already rejected. Dropping it makes the
+    # worst case a 7-day gap instead — the right way to be wrong, since a quiet
+    # feed is by design and a double-spend is not.
+    #
+    # Scheduled runs are queued rather than guaranteed on time; GitHub delays
+    # them under load, so treat this as approximate.
+    - cron: "0 6 1,4,7,10,13,16,19,22,25 * *"
+  # So a refresh can be forced without waiting for the schedule.
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "How far back to fetch"
+        required: false
+        default: "3"
+      limit:
+        description: "Max items per source"
+        required: false
+        default: "30"
+
+# A second run starting while one is mid-flight would double-spend quota and
+# race on the same rows. Queued rather than cancelled: an in-progress ingest
+# has already paid for its API calls and should be allowed to finish.
+concurrency:
+  group: ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    # A full pass paced at 6s per item ran ~18 minutes, and deep-dive
+    # pre-generation adds to that. 60 minutes leaves room for retry backoff
+    # without letting a wedged run burn a full six-hour job slot.
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # migrate deploy, not migrate dev: applies committed migrations without
+      # prompting or generating new ones. Safe to re-run when nothing changed.
+      - name: Apply migrations
+        run: npx prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      # Prisma 7 does not regenerate the client during migrate.
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      # Idempotent — topics are upserted, so this is safe on every run and
+      # covers a database that has never been seeded.
+      - name: Seed topics
+        run: npx tsx prisma/seed.ts
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: Run pipeline
+        run: npx tsx scripts/check-pipeline.mts "${{ inputs.days || '3' }}" "${{ inputs.limit || '30' }}"
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      # Covers items whose deep dive failed to pre-generate during the run —
+      # a rate-limit blip leaves the item published with no dive, and without
+      # this the first reader would pay the generation wait.
+      - name: Backfill any missing deep dives
+        run: npx tsx scripts/backfill-deep-dives.mts 20
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
